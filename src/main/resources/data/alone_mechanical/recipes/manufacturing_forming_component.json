@@ -1,0 +1,27 @@
+{
+  "category": "misc",
+  "pattern": [
+    "SPS",
+    "CBC",
+    "SPS"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "alone_mechanical:steel_ingot"
+    },
+    "B": {
+      "item": "alone_mechanical:basic_circuit"
+    },
+    "P": {
+      "item": "minecraft:piston"
+    },
+    "C": {
+      "item": "minecraft:copper_ingot"
+    }
+  },
+  "result": {
+    "count": 1,
+    "item": "alone_mechanical:forming_component"
+  }
+}

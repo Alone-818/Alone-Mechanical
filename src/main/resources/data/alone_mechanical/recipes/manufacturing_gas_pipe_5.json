@@ -1,0 +1,24 @@
+{
+  "category": "misc",
+  "pattern": [
+    "PPP",
+    "MEM",
+    "PPP"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "E": {
+      "item": "alone_mechanical:quantum_circuit"
+    },
+    "P": {
+      "item": "alone_mechanical:gas_pipe_4"
+    },
+    "M": {
+      "item": "alone_mechanical:quantum_ingot"
+    }
+  },
+  "result": {
+    "count": 6,
+    "item": "alone_mechanical:gas_pipe_5"
+  }
+}

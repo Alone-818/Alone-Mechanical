@@ -1,0 +1,9 @@
+{
+  "experience": 0.0,
+  "type": "minecraft:blasting",
+  "cookingtime": 100,
+  "ingredient": {
+    "item": "alone_mechanical:copper_dust"
+  },
+  "result": "minecraft:copper_ingot"
+}

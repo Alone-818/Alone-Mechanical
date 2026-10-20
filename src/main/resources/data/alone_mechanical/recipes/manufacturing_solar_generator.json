@@ -1,0 +1,30 @@
+{
+  "category": "misc",
+  "pattern": [
+    "GGG",
+    "QCQ",
+    "SWS"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "Q": {
+      "item": "alone_mechanical:quartz_sand"
+    },
+    "G": {
+      "tag": "forge:glass"
+    },
+    "W": {
+      "item": "alone_mechanical:copper_wire"
+    },
+    "C": {
+      "item": "alone_mechanical:basic_circuit"
+    },
+    "S": {
+      "item": "alone_mechanical:steel_plate"
+    }
+  },
+  "result": {
+    "count": 1,
+    "item": "alone_mechanical:solar_generator"
+  }
+}

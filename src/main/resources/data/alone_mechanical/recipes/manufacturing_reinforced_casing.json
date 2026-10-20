@@ -1,0 +1,24 @@
+{
+  "category": "misc",
+  "pattern": [
+    "SOS",
+    "OCO",
+    "SOS"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "alone_mechanical:steel_plate"
+    },
+    "O": {
+      "item": "minecraft:obsidian"
+    },
+    "C": {
+      "item": "alone_mechanical:advanced_circuit"
+    }
+  },
+  "result": {
+    "count": 4,
+    "item": "alone_mechanical:reinforced_casing"
+  }
+}

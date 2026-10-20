@@ -1,0 +1,29 @@
+{
+  "gas_outputs": [
+    null,
+    {
+      "gas": "alone_mechanical:steam",
+      "amount": 50
+    }
+  ],
+  "type": "alone_mechanical:machine",
+  "fluid_outputs": [
+    {
+      "fluid": "alone_mechanical:nuclear_waste",
+      "amount": 1
+    }
+  ],
+  "machine": "alone_mechanical:nuclear_reactor",
+  "fluid_inputs": [
+    {
+      "fluid": "alone_mechanical:enriched_uranium_fuel",
+      "amount": 1
+    },
+    {
+      "fluid": "minecraft:water",
+      "amount": 50
+    }
+  ],
+  "energy_per_tick": 0,
+  "ticks": 1
+}

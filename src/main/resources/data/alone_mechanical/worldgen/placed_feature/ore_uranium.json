@@ -1,0 +1,28 @@
+{
+  "placement": [
+    {
+      "count": 8,
+      "type": "minecraft:count"
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "height": {
+        "max_inclusive": {
+          "absolute": 64
+        },
+        "type": "minecraft:trapezoid",
+        "plateau": 0,
+        "min_inclusive": {
+          "absolute": -64
+        }
+      },
+      "type": "minecraft:height_range"
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ],
+  "feature": "alone_mechanical:ore_uranium"
+}

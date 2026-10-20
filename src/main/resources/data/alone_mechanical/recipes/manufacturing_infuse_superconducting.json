@@ -1,0 +1,27 @@
+{
+  "energy_per_tick": 140,
+  "type": "alone_mechanical:machine",
+  "ticks": 240,
+  "machine": "alone_mechanical:infuser",
+  "fluid_inputs": [
+    null,
+    {
+      "amount": 500,
+      "fluid": "alone_mechanical:heavy_water"
+    }
+  ],
+  "item_inputs": [
+    {
+      "ingredient": {
+        "item": "alone_mechanical:superconducting_matrix"
+      },
+      "count": 2
+    }
+  ],
+  "item_outputs": [
+    {
+      "count": 2,
+      "item": "alone_mechanical:superconducting_ingot"
+    }
+  ]
+}

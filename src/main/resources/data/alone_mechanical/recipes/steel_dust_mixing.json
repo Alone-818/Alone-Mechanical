@@ -1,0 +1,15 @@
+{
+  "result": {
+    "item": "alone_mechanical:steel_dust",
+    "count": 1
+  },
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "alone_mechanical:iron_dust"
+    },
+    {
+      "item": "alone_mechanical:coal_dust"
+    }
+  ]
+}

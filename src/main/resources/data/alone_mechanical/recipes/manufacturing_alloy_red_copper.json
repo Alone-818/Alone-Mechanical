@@ -1,0 +1,26 @@
+{
+  "energy_per_tick": 30,
+  "item_outputs": [
+    {
+      "count": 2,
+      "item": "alone_mechanical:red_copper_compound"
+    }
+  ],
+  "type": "alone_mechanical:machine",
+  "ticks": 140,
+  "machine": "alone_mechanical:alloy_smelter",
+  "item_inputs": [
+    {
+      "ingredient": {
+        "item": "alone_mechanical:copper_dust"
+      },
+      "count": 2
+    },
+    {
+      "ingredient": {
+        "item": "minecraft:redstone"
+      },
+      "count": 1
+    }
+  ]
+}

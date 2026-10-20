@@ -1,0 +1,27 @@
+{
+  "category": "misc",
+  "pattern": [
+    " W ",
+    "SCS",
+    " B "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "alone_mechanical:steel_plate"
+    },
+    "B": {
+      "item": "alone_mechanical:intermediate_battery"
+    },
+    "W": {
+      "item": "minecraft:gold_ingot"
+    },
+    "C": {
+      "item": "alone_mechanical:diamond_dust"
+    }
+  },
+  "result": {
+    "count": 1,
+    "item": "alone_mechanical:advanced_battery_casing"
+  }
+}

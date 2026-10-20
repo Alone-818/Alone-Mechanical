@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "alone_mechanical:item/hot_invar_billet"
+  },
+  "parent": "minecraft:item/generated"
+}

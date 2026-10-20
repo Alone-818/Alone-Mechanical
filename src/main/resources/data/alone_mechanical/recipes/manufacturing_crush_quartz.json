@@ -1,0 +1,20 @@
+{
+  "energy_per_tick": 20,
+  "item_outputs": [
+    {
+      "count": 2,
+      "item": "alone_mechanical:quartz_sand"
+    }
+  ],
+  "type": "alone_mechanical:machine",
+  "ticks": 80,
+  "machine": "alone_mechanical:crusher",
+  "item_inputs": [
+    {
+      "ingredient": {
+        "item": "minecraft:quartz"
+      },
+      "count": 1
+    }
+  ]
+}

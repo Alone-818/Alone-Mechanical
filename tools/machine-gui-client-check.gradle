@@ -1,0 +1,8 @@
+gradle.beforeProject { project ->
+    project.afterEvaluate {
+        project.minecraft.runs.client.workingDirectory(project.file('run-gui-check'))
+        project.minecraft.runs.client.property('alone_mechanical.verifyMachineGui','true')
+        project.minecraft.runs.client.args('--quickPlaySingleplayer','Machine GUI Preview','--width','1280','--height','720')
+        project.minecraft.runs.client.mods.getByName(project.mod_id).source(project.sourceSets.gameTest)
+    }
+}

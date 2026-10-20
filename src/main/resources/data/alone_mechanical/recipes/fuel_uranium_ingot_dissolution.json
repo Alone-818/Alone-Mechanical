@@ -1,0 +1,27 @@
+{
+  "type": "alone_mechanical:machine",
+  "machine": "alone_mechanical:dissolution",
+  "ticks": 240,
+  "energy_per_tick": 100,
+  "fluid_inputs": [
+    null,
+    {
+      "fluid": "alone_mechanical:sulfuric_acid",
+      "amount": 1000
+    }
+  ],
+  "item_inputs": [
+    {
+      "ingredient": {
+        "tag": "forge:ingots/uranium"
+      },
+      "count": 4
+    }
+  ],
+  "fluid_outputs": [
+    {
+      "fluid": "alone_mechanical:uranium_slurry",
+      "amount": 1000
+    }
+  ]
+}

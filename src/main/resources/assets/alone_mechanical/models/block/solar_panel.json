@@ -1,0 +1,76 @@
+{
+  "textures": {
+    "panel": "alone_mechanical:block/solar_panel",
+    "particle": "alone_mechanical:block/solar_panel"
+  },
+  "elements": [
+    {
+      "to": [
+        7,
+        0.5,
+        6
+      ],
+      "from": [
+        -7,
+        -0.5,
+        -6
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#panel"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#panel"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#panel"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#panel"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#panel"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#panel"
+        }
+      }
+    }
+  ]
+}

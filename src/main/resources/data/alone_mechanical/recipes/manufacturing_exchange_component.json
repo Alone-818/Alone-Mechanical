@@ -1,0 +1,27 @@
+{
+  "category": "misc",
+  "pattern": [
+    "SCS",
+    "WBW",
+    "SCS"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "alone_mechanical:steel_plate"
+    },
+    "B": {
+      "item": "alone_mechanical:chemical_circuit"
+    },
+    "W": {
+      "item": "alone_mechanical:copper_wire"
+    },
+    "C": {
+      "item": "minecraft:copper_block"
+    }
+  },
+  "result": {
+    "count": 1,
+    "item": "alone_mechanical:exchange_component"
+  }
+}

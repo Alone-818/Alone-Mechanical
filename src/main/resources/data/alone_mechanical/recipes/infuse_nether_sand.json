@@ -1,0 +1,27 @@
+{
+  "machine": "alone_mechanical:infuser",
+  "fluid_inputs": [
+    null,
+    {
+      "fluid": "alone_mechanical:nether_dimension_conversion",
+      "amount": 250
+    }
+  ],
+  "type": "alone_mechanical:machine",
+  "item_outputs": [
+    {
+      "item": "minecraft:soul_sand",
+      "count": 1
+    }
+  ],
+  "ticks": 100,
+  "item_inputs": [
+    {
+      "ingredient": {
+        "item": "minecraft:sand"
+      },
+      "count": 1
+    }
+  ],
+  "energy_per_tick": 40
+}

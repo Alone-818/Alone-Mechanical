@@ -1,0 +1,29 @@
+{
+  "gas_outputs": [
+    {
+      "amount": 50,
+      "gas": "alone_mechanical:steam"
+    }
+  ],
+  "machine": "alone_mechanical:boiler",
+  "fluid_inputs": [
+    {
+      "fluid": "minecraft:water",
+      "amount": 50
+    },
+    {
+      "fluid": "alone_mechanical:superheated_heat_carrier",
+      "amount": 1
+    }
+  ],
+  "fluid_outputs": [
+    null,
+    {
+      "fluid": "alone_mechanical:heat_carrier",
+      "amount": 1
+    }
+  ],
+  "type": "alone_mechanical:machine",
+  "energy_per_tick": 0,
+  "ticks": 1
+}

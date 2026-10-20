@@ -1,0 +1,9 @@
+{
+  "cookingtime": 200,
+  "experience": 0.3,
+  "type": "minecraft:smelting",
+  "result": "alone_mechanical:red_copper_ingot",
+  "ingredient": {
+    "item": "alone_mechanical:red_copper_compound"
+  }
+}

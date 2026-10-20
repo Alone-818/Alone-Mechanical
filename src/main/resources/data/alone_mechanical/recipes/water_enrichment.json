@@ -1,0 +1,25 @@
+{
+  "energy_per_tick": 40,
+  "type": "alone_mechanical:machine",
+  "ticks": 100,
+  "gas_outputs": [
+    {
+      "amount": 950,
+      "gas": "alone_mechanical:steam"
+    }
+  ],
+  "fluid_outputs": [
+    null,
+    {
+      "fluid": "alone_mechanical:enriched_water",
+      "amount": 50
+    }
+  ],
+  "machine": "alone_mechanical:distillation_tower",
+  "fluid_inputs": [
+    {
+      "fluid": "minecraft:water",
+      "amount": 1000
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "particle": "alone_mechanical:block/universal_port",
+    "end": "alone_mechanical:block/machine_casing_top",
+    "side": "alone_mechanical:block/universal_port_0"
+  }
+}

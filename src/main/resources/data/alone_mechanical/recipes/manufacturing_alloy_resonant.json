@@ -1,0 +1,26 @@
+{
+  "energy_per_tick": 80,
+  "item_outputs": [
+    {
+      "count": 2,
+      "item": "alone_mechanical:resonant_matrix"
+    }
+  ],
+  "type": "alone_mechanical:machine",
+  "ticks": 220,
+  "machine": "alone_mechanical:alloy_smelter",
+  "item_inputs": [
+    {
+      "ingredient": {
+        "item": "alone_mechanical:invar_ingot"
+      },
+      "count": 2
+    },
+    {
+      "ingredient": {
+        "item": "minecraft:ender_pearl"
+      },
+      "count": 1
+    }
+  ]
+}

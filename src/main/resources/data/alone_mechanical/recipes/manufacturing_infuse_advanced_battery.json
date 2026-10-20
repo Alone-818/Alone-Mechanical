@@ -1,0 +1,27 @@
+{
+  "energy_per_tick": 60,
+  "type": "alone_mechanical:machine",
+  "ticks": 200,
+  "machine": "alone_mechanical:infuser",
+  "fluid_inputs": [
+    null,
+    {
+      "amount": 1000,
+      "fluid": "alone_mechanical:advanced_electrolyte"
+    }
+  ],
+  "item_inputs": [
+    {
+      "ingredient": {
+        "item": "alone_mechanical:advanced_battery_casing"
+      },
+      "count": 1
+    }
+  ],
+  "item_outputs": [
+    {
+      "count": 1,
+      "item": "alone_mechanical:advanced_battery"
+    }
+  ]
+}

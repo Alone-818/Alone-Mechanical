@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "alone_mechanical:item/iron_plate"
+  },
+  "parent": "minecraft:item/generated"
+}

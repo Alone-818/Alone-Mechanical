@@ -1,0 +1,18 @@
+{
+  "type": "alone_mechanical:machine",
+  "ticks": 100,
+  "fluid_outputs": [
+    {
+      "fluid": "minecraft:water",
+      "amount": 1000
+    }
+  ],
+  "machine": "alone_mechanical:condensation_tower",
+  "gas_inputs": [
+    {
+      "amount": 1000,
+      "gas": "alone_mechanical:steam"
+    }
+  ],
+  "energy_per_tick": 20
+}

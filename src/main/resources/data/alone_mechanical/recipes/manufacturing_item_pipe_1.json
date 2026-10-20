@@ -1,0 +1,24 @@
+{
+  "category": "misc",
+  "pattern": [
+    "III",
+    "CMC",
+    "III"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "C": {
+      "item": "alone_mechanical:red_copper_ingot"
+    },
+    "M": {
+      "item": "minecraft:chest"
+    },
+    "I": {
+      "item": "minecraft:iron_nugget"
+    }
+  },
+  "result": {
+    "count": 8,
+    "item": "alone_mechanical:item_pipe_1"
+  }
+}

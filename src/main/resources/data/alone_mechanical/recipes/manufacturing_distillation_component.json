@@ -1,0 +1,30 @@
+{
+  "category": "misc",
+  "pattern": [
+    "SWS",
+    "GBG",
+    "SFS"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "alone_mechanical:steel_plate"
+    },
+    "B": {
+      "item": "alone_mechanical:basic_circuit"
+    },
+    "F": {
+      "item": "minecraft:furnace"
+    },
+    "W": {
+      "item": "alone_mechanical:copper_wire"
+    },
+    "G": {
+      "tag": "forge:glass"
+    }
+  },
+  "result": {
+    "count": 1,
+    "item": "alone_mechanical:distillation_component"
+  }
+}

@@ -1,0 +1,7 @@
+gradle.beforeProject { project ->
+    project.layout.buildDirectory.set(project.file('build/pipe-speed-check'))
+    project.afterEvaluate {
+        // Reuse the existing dedicated GameTest fixture, never a player save.
+        project.minecraft.runs.gameTestServer.workingDirectory(project.file('run-generator-test'))
+    }
+}

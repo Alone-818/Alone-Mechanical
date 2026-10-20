@@ -1,0 +1,27 @@
+{
+  "category": "misc",
+  "pattern": [
+    "SUS",
+    "BAB",
+    "SUS"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "alone_mechanical:steel_plate"
+    },
+    "B": {
+      "item": "alone_mechanical:advanced_battery"
+    },
+    "U": {
+      "item": "alone_mechanical:uranium_ingot"
+    },
+    "A": {
+      "item": "alone_mechanical:advanced_circuit"
+    }
+  },
+  "result": {
+    "count": 2,
+    "item": "alone_mechanical:reactor_fuel_rod"
+  }
+}

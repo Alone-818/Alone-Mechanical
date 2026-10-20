@@ -1,0 +1,21 @@
+{
+  "values": [
+    "alone_mechanical:machine_casing",
+    "alone_mechanical:reinforced_casing",
+    "alone_mechanical:energy_coil",
+    "alone_mechanical:efficiency_coil",
+    "alone_mechanical:energy_matrix",
+    "alone_mechanical:processing_matrix",
+    "alone_mechanical:structural_glass",
+    "alone_mechanical:item_port",
+    "alone_mechanical:fluid_port",
+    "alone_mechanical:gas_port",
+    "alone_mechanical:universal_port",
+    "alone_mechanical:machine_controller",
+    "alone_mechanical:fluid_tank",
+    "alone_mechanical:gas_tank",
+    "alone_mechanical:storage_tank",
+    "alone_mechanical:item_vault"
+  ],
+  "replace": false
+}

@@ -1,0 +1,27 @@
+{
+  "category": "misc",
+  "pattern": [
+    "GCG",
+    "BDB",
+    "GCG"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "B": {
+      "item": "alone_mechanical:high_power_battery"
+    },
+    "G": {
+      "item": "alone_mechanical:steel_gear"
+    },
+    "C": {
+      "item": "alone_mechanical:advanced_circuit"
+    }
+  },
+  "result": {
+    "count": 1,
+    "item": "alone_mechanical:processing_matrix"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "alone_mechanical:block/structural_glass"
+    },
+    "facing=east": {
+      "model": "alone_mechanical:block/structural_glass"
+    },
+    "facing=south": {
+      "model": "alone_mechanical:block/structural_glass"
+    },
+    "facing=west": {
+      "model": "alone_mechanical:block/structural_glass"
+    }
+  }
+}

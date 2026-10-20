@@ -1,0 +1,25 @@
+{
+  "type": "alone_mechanical:machine",
+  "machine": "alone_mechanical:separator_degassing",
+  "ticks": 200,
+  "energy_per_tick": 160,
+  "fluid_inputs": [
+    {
+      "fluid": "alone_mechanical:molten_salt",
+      "amount": 1000
+    }
+  ],
+  "gas_outputs": [
+    null,
+    {
+      "amount": 500,
+      "gas": "alone_mechanical:chlorine"
+    }
+  ],
+  "fluid_outputs": [
+    {
+      "fluid": "alone_mechanical:heat_carrier",
+      "amount": 500
+    }
+  ]
+}

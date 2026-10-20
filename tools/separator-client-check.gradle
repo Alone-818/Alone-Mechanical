@@ -1,0 +1,9 @@
+gradle.beforeProject { project ->
+    project.afterEvaluate {
+        project.minecraft.runs.client.workingDirectory(project.file('run-separator-check'))
+        project.minecraft.runs.client.property('alone_mechanical.verifySeparator','true')
+        project.minecraft.runs.client.property('alone_mechanical.jeiSmokeTest','true')
+        project.minecraft.runs.client.args('--quickPlaySingleplayer','Separator Preview','--width','1280','--height','720')
+        project.minecraft.runs.client.mods.getByName(project.mod_id).source(project.sourceSets.gameTest)
+    }
+}

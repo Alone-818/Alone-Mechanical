@@ -1,0 +1,9 @@
+{
+  "ingredient": {
+    "item": "alone_mechanical:gold_dust"
+  },
+  "experience": 0.7,
+  "cookingtime": 200,
+  "type": "minecraft:smelting",
+  "result": "minecraft:gold_ingot"
+}

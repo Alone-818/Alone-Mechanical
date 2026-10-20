@@ -1,0 +1,27 @@
+{
+  "category": "misc",
+  "pattern": [
+    " G ",
+    "CBC",
+    " I "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": {
+      "item": "minecraft:bucket"
+    },
+    "G": {
+      "tag": "forge:glass"
+    },
+    "C": {
+      "item": "minecraft:copper_ingot"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "count": 1,
+    "item": "alone_mechanical:fluid_sampling_gun"
+  }
+}

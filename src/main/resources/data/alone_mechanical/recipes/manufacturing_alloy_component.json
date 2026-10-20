@@ -1,0 +1,27 @@
+{
+  "category": "misc",
+  "pattern": [
+    "CFC",
+    "IBI",
+    "CFC"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": {
+      "item": "alone_mechanical:basic_circuit"
+    },
+    "F": {
+      "item": "minecraft:furnace"
+    },
+    "C": {
+      "item": "minecraft:copper_ingot"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "count": 1,
+    "item": "alone_mechanical:alloy_component"
+  }
+}

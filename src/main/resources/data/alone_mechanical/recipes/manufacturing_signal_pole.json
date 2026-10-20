@@ -1,0 +1,24 @@
+{
+  "category": "misc",
+  "pattern": [
+    " C ",
+    " I ",
+    "RIR"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "C": {
+      "item": "minecraft:copper_ingot"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "count": 4,
+    "item": "alone_mechanical:signal_pole"
+  }
+}

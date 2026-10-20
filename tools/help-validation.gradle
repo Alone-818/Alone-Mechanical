@@ -1,0 +1,16 @@
+// Keep this validation independent of other builds or GUI checks in the workspace.
+gradle.beforeProject { project ->
+    def outputPath=project.findProperty('helpBuildRoot') ?: 'build-help-check'
+    project.layout.buildDirectory.set(project.layout.projectDirectory.dir(outputPath.toString()))
+    project.afterEvaluate {
+        if(project.hasProperty('helpSourceRoot')){
+            def sourceRoot=project.file(project.property('helpSourceRoot'))
+            project.sourceSets.main.java.setSrcDirs([new File(sourceRoot,'main/java')])
+            project.sourceSets.main.resources.setSrcDirs([new File(sourceRoot,'main/resources')])
+            project.sourceSets.gameTest.java.setSrcDirs([new File(sourceRoot,'gametest/java')])
+            project.sourceSets.gameTest.resources.setSrcDirs([new File(sourceRoot,'gametest/resources')])
+        }
+        project.minecraft.runs.gameTestServer.workingDirectory(project.file('run-help-gametest'))
+        project.minecraft.runs.client.workingDirectory(project.file('run-help-check'))
+    }
+}

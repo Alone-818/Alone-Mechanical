@@ -1,0 +1,20 @@
+{
+  "energy_per_tick": 20,
+  "item_outputs": [
+    {
+      "count": 4,
+      "item": "alone_mechanical:copper_wire"
+    }
+  ],
+  "type": "alone_mechanical:machine",
+  "ticks": 60,
+  "machine": "alone_mechanical:forming_machine",
+  "item_inputs": [
+    {
+      "ingredient": {
+        "item": "alone_mechanical:copper_plate"
+      },
+      "count": 1
+    }
+  ]
+}

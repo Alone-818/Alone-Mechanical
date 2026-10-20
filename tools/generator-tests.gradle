@@ -1,0 +1,6 @@
+gradle.beforeProject { project ->
+    project.layout.buildDirectory.set(project.file('build/generator-check'))
+    project.afterEvaluate {
+        project.minecraft.runs.gameTestServer.workingDirectory(project.file('run-generator-test'))
+    }
+}

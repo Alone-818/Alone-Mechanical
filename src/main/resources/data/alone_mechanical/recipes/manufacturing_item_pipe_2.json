@@ -1,0 +1,24 @@
+{
+  "category": "misc",
+  "pattern": [
+    "PPP",
+    "MEM",
+    "PPP"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "E": {
+      "item": "alone_mechanical:copper_wire"
+    },
+    "P": {
+      "item": "alone_mechanical:item_pipe_1"
+    },
+    "M": {
+      "item": "alone_mechanical:invar_ingot"
+    }
+  },
+  "result": {
+    "count": 6,
+    "item": "alone_mechanical:item_pipe_2"
+  }
+}

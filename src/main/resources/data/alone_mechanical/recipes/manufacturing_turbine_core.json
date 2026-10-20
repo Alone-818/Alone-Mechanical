@@ -1,0 +1,30 @@
+{
+  "category": "misc",
+  "pattern": [
+    "SGS",
+    "WCW",
+    "SBS"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "alone_mechanical:steel_plate"
+    },
+    "B": {
+      "item": "alone_mechanical:intermediate_battery"
+    },
+    "G": {
+      "item": "alone_mechanical:steel_gear"
+    },
+    "W": {
+      "item": "alone_mechanical:copper_wire"
+    },
+    "C": {
+      "item": "alone_mechanical:chemical_circuit"
+    }
+  },
+  "result": {
+    "count": 1,
+    "item": "alone_mechanical:turbine_core"
+  }
+}

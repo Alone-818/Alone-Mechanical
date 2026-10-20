@@ -1,0 +1,15 @@
+{
+  "result": {
+    "item": "alone_mechanical:tutorial_book",
+    "count": 1
+  },
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:book"
+    },
+    {
+      "item": "minecraft:iron_nugget"
+    }
+  ]
+}

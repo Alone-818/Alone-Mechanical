@@ -1,0 +1,8 @@
+// Optional client validation; no release code or user-world changes.
+gradle.beforeProject { project ->
+    project.afterEvaluate {
+        project.minecraft.runs.client.workingDirectory(project.file('run-textures-check'))
+        project.minecraft.runs.client.property('alone_mechanical.verifyTextures', 'true')
+        project.minecraft.runs.client.mods.getByName(project.mod_id).source(project.sourceSets.gameTest)
+    }
+}

@@ -1,0 +1,9 @@
+{
+  "cookingtime": 200,
+  "experience": 0.2,
+  "type": "minecraft:smelting",
+  "result": "alone_mechanical:steel_ingot",
+  "ingredient": {
+    "item": "alone_mechanical:steel_dust"
+  }
+}

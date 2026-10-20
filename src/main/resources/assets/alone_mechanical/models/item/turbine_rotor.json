@@ -1,0 +1,17 @@
+{
+  "display": {
+    "gui": {
+      "rotation": [
+        25,
+        135,
+        0
+      ],
+      "scale": [
+        0.8,
+        0.8,
+        0.8
+      ]
+    }
+  },
+  "parent": "alone_mechanical:block/turbine_rotor"
+}

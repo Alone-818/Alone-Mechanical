@@ -1,0 +1,27 @@
+{
+  "category": "misc",
+  "pattern": [
+    "ICI",
+    "PBP",
+    "III"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": {
+      "item": "alone_mechanical:basic_circuit"
+    },
+    "C": {
+      "item": "minecraft:copper_ingot"
+    },
+    "P": {
+      "item": "minecraft:piston"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "count": 1,
+    "item": "alone_mechanical:electric_pump"
+  }
+}

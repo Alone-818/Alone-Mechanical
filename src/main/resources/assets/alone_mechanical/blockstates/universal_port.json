@@ -1,0 +1,68 @@
+{
+  "variants": {
+    "facing=north,io_mode=0": {
+      "model": "alone_mechanical:block/universal_port_0",
+      "y": 0
+    },
+    "facing=east,io_mode=0": {
+      "model": "alone_mechanical:block/universal_port_0",
+      "y": 90
+    },
+    "facing=south,io_mode=0": {
+      "model": "alone_mechanical:block/universal_port_0",
+      "y": 180
+    },
+    "facing=west,io_mode=0": {
+      "model": "alone_mechanical:block/universal_port_0",
+      "y": 270
+    },
+    "facing=north,io_mode=1": {
+      "model": "alone_mechanical:block/universal_port_1",
+      "y": 0
+    },
+    "facing=east,io_mode=1": {
+      "model": "alone_mechanical:block/universal_port_1",
+      "y": 90
+    },
+    "facing=south,io_mode=1": {
+      "model": "alone_mechanical:block/universal_port_1",
+      "y": 180
+    },
+    "facing=west,io_mode=1": {
+      "model": "alone_mechanical:block/universal_port_1",
+      "y": 270
+    },
+    "facing=north,io_mode=2": {
+      "model": "alone_mechanical:block/universal_port_2",
+      "y": 0
+    },
+    "facing=east,io_mode=2": {
+      "model": "alone_mechanical:block/universal_port_2",
+      "y": 90
+    },
+    "facing=south,io_mode=2": {
+      "model": "alone_mechanical:block/universal_port_2",
+      "y": 180
+    },
+    "facing=west,io_mode=2": {
+      "model": "alone_mechanical:block/universal_port_2",
+      "y": 270
+    },
+    "facing=north,io_mode=3": {
+      "model": "alone_mechanical:block/universal_port_3",
+      "y": 0
+    },
+    "facing=east,io_mode=3": {
+      "model": "alone_mechanical:block/universal_port_3",
+      "y": 90
+    },
+    "facing=south,io_mode=3": {
+      "model": "alone_mechanical:block/universal_port_3",
+      "y": 180
+    },
+    "facing=west,io_mode=3": {
+      "model": "alone_mechanical:block/universal_port_3",
+      "y": 270
+    }
+  }
+}

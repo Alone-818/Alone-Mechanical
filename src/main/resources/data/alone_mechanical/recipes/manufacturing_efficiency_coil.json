@@ -1,0 +1,24 @@
+{
+  "category": "misc",
+  "pattern": [
+    "WWW",
+    "RCR",
+    "WWW"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "R": {
+      "item": "minecraft:redstone_block"
+    },
+    "W": {
+      "item": "alone_mechanical:copper_wire"
+    },
+    "C": {
+      "item": "alone_mechanical:chemical_circuit"
+    }
+  },
+  "result": {
+    "count": 1,
+    "item": "alone_mechanical:efficiency_coil"
+  }
+}

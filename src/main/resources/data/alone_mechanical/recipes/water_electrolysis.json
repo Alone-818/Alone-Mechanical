@@ -1,0 +1,22 @@
+{
+  "gas_outputs": [
+    {
+      "amount": 1000,
+      "gas": "alone_mechanical:hydrogen"
+    },
+    {
+      "amount": 500,
+      "gas": "alone_mechanical:oxygen"
+    }
+  ],
+  "machine": "alone_mechanical:separator_electrolysis",
+  "fluid_inputs": [
+    {
+      "fluid": "minecraft:water",
+      "amount": 1000
+    }
+  ],
+  "type": "alone_mechanical:machine",
+  "energy_per_tick": 60,
+  "ticks": 200
+}

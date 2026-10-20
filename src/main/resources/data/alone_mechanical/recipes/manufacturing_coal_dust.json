@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "alone_mechanical:carbon_dust"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "result": {
+    "count": 1,
+    "item": "alone_mechanical:coal_dust"
+  }
+}

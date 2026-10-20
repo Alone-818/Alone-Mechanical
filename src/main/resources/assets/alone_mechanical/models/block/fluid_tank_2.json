@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "top": "alone_mechanical:block/fluid_tank",
+    "side": "alone_mechanical:block/fluid_tank",
+    "front": "alone_mechanical:block/fluid_tank_2"
+  }
+}

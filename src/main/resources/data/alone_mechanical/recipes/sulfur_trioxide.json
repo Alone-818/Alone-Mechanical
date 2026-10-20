@@ -1,0 +1,22 @@
+{
+  "type": "alone_mechanical:machine",
+  "ticks": 160,
+  "gas_outputs": [
+    {
+      "amount": 1000,
+      "gas": "alone_mechanical:sulfur_trioxide"
+    }
+  ],
+  "machine": "alone_mechanical:gas_reactor",
+  "gas_inputs": [
+    {
+      "amount": 1000,
+      "gas": "alone_mechanical:sulfur_dioxide"
+    },
+    {
+      "amount": 500,
+      "gas": "alone_mechanical:oxygen"
+    }
+  ],
+  "energy_per_tick": 60
+}

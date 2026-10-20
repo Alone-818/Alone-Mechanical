@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "alone_mechanical:item/advanced_circuit"
+  },
+  "parent": "minecraft:item/generated"
+}

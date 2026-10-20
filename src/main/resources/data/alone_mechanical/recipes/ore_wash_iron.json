@@ -1,0 +1,22 @@
+{
+  "type": "alone_mechanical:machine",
+  "machine": "alone_mechanical:liquid_reactor",
+  "ticks": 160,
+  "energy_per_tick": 60,
+  "fluid_outputs": [
+    {
+      "fluid": "alone_mechanical:washed_iron_slurry",
+      "amount": 2000
+    }
+  ],
+  "fluid_inputs": [
+    {
+      "fluid": "alone_mechanical:crude_iron_slurry",
+      "amount": 1000
+    },
+    {
+      "fluid": "minecraft:water",
+      "amount": 1000
+    }
+  ]
+}

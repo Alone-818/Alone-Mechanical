@@ -1,0 +1,8 @@
+{
+  "textures": {
+    "all": "alone_mechanical:block/storage_tank_ct_top_14"
+  },
+  "render_type": "minecraft:cutout",
+  "ambientocclusion": false,
+  "parent": "minecraft:block/cube_all"
+}

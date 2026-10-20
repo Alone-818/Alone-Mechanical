@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "alone_mechanical:block/fluid_tank"
+    },
+    "facing=east": {
+      "model": "alone_mechanical:block/fluid_tank"
+    },
+    "facing=south": {
+      "model": "alone_mechanical:block/fluid_tank"
+    },
+    "facing=west": {
+      "model": "alone_mechanical:block/fluid_tank"
+    }
+  }
+}

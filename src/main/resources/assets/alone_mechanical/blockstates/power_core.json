@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "part=0": {
+      "model": "alone_mechanical:block/power_core"
+    },
+    "part=1": {
+      "model": "alone_mechanical:block/power_core"
+    },
+    "part=2": {
+      "model": "alone_mechanical:block/power_core"
+    },
+    "part=3": {
+      "model": "alone_mechanical:block/power_core"
+    },
+    "part=4": {
+      "model": "alone_mechanical:block/power_core"
+    }
+  }
+}

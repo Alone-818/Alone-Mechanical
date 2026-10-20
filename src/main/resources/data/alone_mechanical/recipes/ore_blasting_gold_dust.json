@@ -1,0 +1,9 @@
+{
+  "experience": 0.0,
+  "type": "minecraft:blasting",
+  "cookingtime": 100,
+  "ingredient": {
+    "item": "alone_mechanical:gold_dust"
+  },
+  "result": "minecraft:gold_ingot"
+}

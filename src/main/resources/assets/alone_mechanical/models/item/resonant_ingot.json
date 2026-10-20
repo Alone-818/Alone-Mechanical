@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "alone_mechanical:item/resonant_ingot"
+  },
+  "parent": "minecraft:item/generated"
+}

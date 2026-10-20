@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "alone_mechanical:item/superconducting_ingot"
+  },
+  "parent": "minecraft:item/generated"
+}

@@ -1,0 +1,21 @@
+{
+  "category": "misc",
+  "pattern": [
+    "ICI",
+    "C C",
+    "ICI"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "C": {
+      "item": "minecraft:chest"
+    }
+  },
+  "result": {
+    "count": 4,
+    "item": "alone_mechanical:item_vault"
+  }
+}

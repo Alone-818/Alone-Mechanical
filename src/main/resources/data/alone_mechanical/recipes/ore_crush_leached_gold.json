@@ -1,0 +1,20 @@
+{
+  "type": "alone_mechanical:machine",
+  "machine": "alone_mechanical:crusher",
+  "ticks": 60,
+  "energy_per_tick": 20,
+  "item_inputs": [
+    {
+      "ingredient": {
+        "item": "alone_mechanical:leached_gold_concentrate"
+      },
+      "count": 1
+    }
+  ],
+  "item_outputs": [
+    {
+      "count": 1,
+      "item": "alone_mechanical:gold_dust"
+    }
+  ]
+}

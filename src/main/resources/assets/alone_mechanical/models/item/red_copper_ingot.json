@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "alone_mechanical:item/red_copper_ingot"
+  },
+  "parent": "minecraft:item/generated"
+}

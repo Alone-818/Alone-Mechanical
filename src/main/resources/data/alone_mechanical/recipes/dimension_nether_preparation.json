@@ -1,0 +1,27 @@
+{
+  "type": "alone_mechanical:machine",
+  "machine": "alone_mechanical:dissolution",
+  "ticks": 200,
+  "energy_per_tick": 80,
+  "fluid_outputs": [
+    {
+      "amount": 1000,
+      "fluid": "alone_mechanical:nether_dimension_conversion"
+    }
+  ],
+  "item_inputs": [
+    {
+      "count": 1,
+      "ingredient": {
+        "item": "minecraft:blaze_powder"
+      }
+    }
+  ],
+  "fluid_inputs": [
+    null,
+    {
+      "amount": 1000,
+      "fluid": "minecraft:lava"
+    }
+  ]
+}

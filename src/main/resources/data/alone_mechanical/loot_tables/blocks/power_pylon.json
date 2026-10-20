@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "alone_mechanical:power_pylon"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        },
+        {
+          "block": "alone_mechanical:power_pylon",
+          "properties": {
+            "part": "0"
+          },
+          "condition": "minecraft:block_state_property"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "category": "misc",
+  "pattern": [
+    " W ",
+    "ICI",
+    " I "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "W": {
+      "item": "alone_mechanical:copper_wire"
+    },
+    "C": {
+      "item": "alone_mechanical:carbon_dust"
+    },
+    "I": {
+      "item": "alone_mechanical:iron_plate"
+    }
+  },
+  "result": {
+    "count": 2,
+    "item": "alone_mechanical:basic_battery_casing"
+  }
+}

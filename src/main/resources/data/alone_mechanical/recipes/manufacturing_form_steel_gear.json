@@ -1,0 +1,20 @@
+{
+  "energy_per_tick": 30,
+  "item_outputs": [
+    {
+      "count": 1,
+      "item": "alone_mechanical:steel_gear"
+    }
+  ],
+  "type": "alone_mechanical:machine",
+  "ticks": 100,
+  "machine": "alone_mechanical:forming_machine",
+  "item_inputs": [
+    {
+      "ingredient": {
+        "item": "alone_mechanical:steel_plate"
+      },
+      "count": 2
+    }
+  ]
+}

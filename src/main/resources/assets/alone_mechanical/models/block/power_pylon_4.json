@@ -1,0 +1,72 @@
+{
+  "textures": {
+    "all": "alone_mechanical:block/power_pylon",
+    "particle": "alone_mechanical:block/power_pylon"
+  },
+  "elements": [
+    {
+      "to": [
+        10,
+        16,
+        10
+      ],
+      "from": [
+        6,
+        0,
+        6
+      ],
+      "faces": {
+        "down": {
+          "texture": "#all"
+        },
+        "up": {
+          "texture": "#all"
+        },
+        "north": {
+          "texture": "#all"
+        },
+        "south": {
+          "texture": "#all"
+        },
+        "west": {
+          "texture": "#all"
+        },
+        "east": {
+          "texture": "#all"
+        }
+      }
+    },
+    {
+      "to": [
+        15,
+        14,
+        11
+      ],
+      "from": [
+        1,
+        11,
+        5
+      ],
+      "faces": {
+        "down": {
+          "texture": "#all"
+        },
+        "up": {
+          "texture": "#all"
+        },
+        "north": {
+          "texture": "#all"
+        },
+        "south": {
+          "texture": "#all"
+        },
+        "west": {
+          "texture": "#all"
+        },
+        "east": {
+          "texture": "#all"
+        }
+      }
+    }
+  ]
+}

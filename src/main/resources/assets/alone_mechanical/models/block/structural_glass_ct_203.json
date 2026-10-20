@@ -1,0 +1,8 @@
+{
+  "textures": {
+    "all": "alone_mechanical:block/structural_glass_ct_203"
+  },
+  "render_type": "minecraft:cutout",
+  "ambientocclusion": false,
+  "parent": "minecraft:block/cube_all"
+}

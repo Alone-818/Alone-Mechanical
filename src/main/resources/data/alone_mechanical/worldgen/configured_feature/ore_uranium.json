@@ -1,0 +1,27 @@
+{
+  "config": {
+    "targets": [
+      {
+        "state": {
+          "Name": "alone_mechanical:uranium_ore"
+        },
+        "target": {
+          "tag": "minecraft:stone_ore_replaceables",
+          "predicate_type": "minecraft:tag_match"
+        }
+      },
+      {
+        "state": {
+          "Name": "alone_mechanical:deepslate_uranium_ore"
+        },
+        "target": {
+          "tag": "minecraft:deepslate_ore_replaceables",
+          "predicate_type": "minecraft:tag_match"
+        }
+      }
+    ],
+    "discard_chance_on_air_exposure": 0.0,
+    "size": 8
+  },
+  "type": "minecraft:ore"
+}

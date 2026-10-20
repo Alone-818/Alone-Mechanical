@@ -1,0 +1,30 @@
+{
+  "category": "misc",
+  "pattern": [
+    "SGS",
+    "WBW",
+    "SPS"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "alone_mechanical:steel_plate"
+    },
+    "B": {
+      "item": "alone_mechanical:basic_circuit"
+    },
+    "G": {
+      "item": "alone_mechanical:steel_gear"
+    },
+    "W": {
+      "item": "alone_mechanical:copper_wire"
+    },
+    "P": {
+      "item": "minecraft:piston"
+    }
+  },
+  "result": {
+    "count": 1,
+    "item": "alone_mechanical:air_separation_component"
+  }
+}

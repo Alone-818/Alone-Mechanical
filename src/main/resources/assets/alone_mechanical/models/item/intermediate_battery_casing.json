@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "layer0": "alone_mechanical:item/intermediate_battery_casing"
+  },
+  "parent": "minecraft:item/generated"
+}

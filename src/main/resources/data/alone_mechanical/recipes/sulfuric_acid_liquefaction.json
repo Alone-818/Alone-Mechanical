@@ -1,0 +1,19 @@
+{
+  "conversion": "gas_to_liquid",
+  "type": "alone_mechanical:machine",
+  "ticks": 100,
+  "fluid_outputs": [
+    {
+      "fluid": "alone_mechanical:sulfuric_acid",
+      "amount": 1000
+    }
+  ],
+  "machine": "alone_mechanical:gas_liquid_converter",
+  "gas_inputs": [
+    {
+      "amount": 1000,
+      "gas": "alone_mechanical:sulfuric_acid"
+    }
+  ],
+  "energy_per_tick": 40
+}

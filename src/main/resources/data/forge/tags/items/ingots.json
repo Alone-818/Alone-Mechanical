@@ -1,0 +1,12 @@
+{
+  "values": [
+    "#forge:ingots/steel",
+    "#forge:ingots/uranium",
+    "#forge:ingots/red_copper",
+    "#forge:ingots/invar",
+    "#forge:ingots/resonant",
+    "#forge:ingots/superconducting",
+    "#forge:ingots/quantum"
+  ],
+  "replace": false
+}

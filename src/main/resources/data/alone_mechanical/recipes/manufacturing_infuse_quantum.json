@@ -1,0 +1,27 @@
+{
+  "energy_per_tick": 240,
+  "type": "alone_mechanical:machine",
+  "ticks": 300,
+  "machine": "alone_mechanical:infuser",
+  "fluid_inputs": [
+    null,
+    {
+      "amount": 500,
+      "fluid": "alone_mechanical:heat_carrier"
+    }
+  ],
+  "item_inputs": [
+    {
+      "ingredient": {
+        "item": "alone_mechanical:quantum_matrix"
+      },
+      "count": 2
+    }
+  ],
+  "item_outputs": [
+    {
+      "count": 2,
+      "item": "alone_mechanical:quantum_ingot"
+    }
+  ]
+}

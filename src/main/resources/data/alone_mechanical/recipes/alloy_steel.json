@@ -1,0 +1,26 @@
+{
+  "machine": "alone_mechanical:alloy_smelter",
+  "item_outputs": [
+    {
+      "item": "alone_mechanical:steel_ingot",
+      "count": 2
+    }
+  ],
+  "type": "alone_mechanical:machine",
+  "energy_per_tick": 40,
+  "ticks": 200,
+  "item_inputs": [
+    {
+      "ingredient": {
+        "tag": "forge:dusts/iron"
+      },
+      "count": 2
+    },
+    {
+      "ingredient": {
+        "tag": "forge:dusts/carbon"
+      },
+      "count": 1
+    }
+  ]
+}

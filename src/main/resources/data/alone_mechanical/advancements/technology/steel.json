@@ -1,0 +1,32 @@
+{
+  "criteria": {
+    "has_milestone": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "alone_mechanical:steel_plate"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "parent": "alone_mechanical:technology/root",
+  "display": {
+    "icon": {
+      "item": "alone_mechanical:steel_plate"
+    },
+    "show_toast": true,
+    "announce_to_chat": false,
+    "frame": "task",
+    "title": {
+      "translate": "advancement.alone_mechanical.steel.title"
+    },
+    "description": {
+      "translate": "advancement.alone_mechanical.steel.description"
+    },
+    "hidden": false
+  }
+}

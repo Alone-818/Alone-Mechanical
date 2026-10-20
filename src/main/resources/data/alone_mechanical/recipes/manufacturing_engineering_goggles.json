@@ -1,0 +1,27 @@
+{
+  "category": "misc",
+  "pattern": [
+    "C C",
+    "GBG",
+    " L "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": {
+      "item": "alone_mechanical:basic_circuit"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "G": {
+      "tag": "forge:glass"
+    },
+    "C": {
+      "item": "minecraft:copper_ingot"
+    }
+  },
+  "result": {
+    "count": 1,
+    "item": "alone_mechanical:engineering_goggles"
+  }
+}

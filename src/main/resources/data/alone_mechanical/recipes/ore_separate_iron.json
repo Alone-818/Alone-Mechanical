@@ -1,0 +1,25 @@
+{
+  "type": "alone_mechanical:machine",
+  "machine": "alone_mechanical:separator_slurry_separation",
+  "ticks": 240,
+  "energy_per_tick": 100,
+  "fluid_inputs": [
+    {
+      "fluid": "alone_mechanical:washed_iron_slurry",
+      "amount": 2000
+    }
+  ],
+  "item_outputs": [
+    {
+      "count": 5,
+      "item": "alone_mechanical:iron_compound_crystal"
+    }
+  ],
+  "fluid_outputs": [
+    null,
+    {
+      "fluid": "alone_mechanical:acidic_mother_liquor",
+      "amount": 1000
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "category": "misc",
+  "pattern": [
+    "EGE",
+    "CSC",
+    "WBW"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "E": {
+      "item": "minecraft:ender_pearl"
+    },
+    "W": {
+      "item": "alone_mechanical:copper_wire"
+    },
+    "G": {
+      "item": "alone_mechanical:solar_generator"
+    },
+    "C": {
+      "item": "alone_mechanical:chemical_circuit"
+    },
+    "B": {
+      "item": "alone_mechanical:intermediate_battery"
+    },
+    "S": {
+      "item": "alone_mechanical:steel_plate"
+    }
+  },
+  "result": {
+    "count": 1,
+    "item": "alone_mechanical:lunar_generator"
+  }
+}

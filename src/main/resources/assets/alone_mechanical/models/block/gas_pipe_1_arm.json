@@ -1,0 +1,61 @@
+{
+  "textures": {
+    "side": "alone_mechanical:block/gas_pipe_1_side",
+    "all": "alone_mechanical:block/gas_pipe_1",
+    "particle": "alone_mechanical:block/gas_pipe_1"
+  },
+  "elements": [
+    {
+      "to": [
+        11,
+        11,
+        5
+      ],
+      "from": [
+        5,
+        5,
+        0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            5
+          ],
+          "texture": "#side"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            5
+          ],
+          "texture": "#side"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            5
+          ],
+          "texture": "#side",
+          "rotation": 90
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            5
+          ],
+          "texture": "#side",
+          "rotation": 90
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "name": "alone_mechanical:deepslate_uranium_ore",
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "predicate": {
+                    "enchantments": [
+                      {
+                        "levels": {
+                          "min": 1
+                        },
+                        "enchantment": "minecraft:silk_touch"
+                      }
+                    ]
+                  },
+                  "condition": "minecraft:match_tool"
+                }
+              ]
+            },
+            {
+              "name": "alone_mechanical:raw_uranium",
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "function": "minecraft:apply_bonus",
+                  "formula": "minecraft:ore_drops"
+                },
+                {
+                  "function": "minecraft:explosion_decay"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

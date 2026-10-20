@@ -1,0 +1,20 @@
+{
+  "energy_per_tick": 20,
+  "item_outputs": [
+    {
+      "count": 1,
+      "item": "alone_mechanical:iron_plate"
+    }
+  ],
+  "type": "alone_mechanical:machine",
+  "ticks": 60,
+  "machine": "alone_mechanical:forging_press",
+  "item_inputs": [
+    {
+      "ingredient": {
+        "item": "minecraft:iron_ingot"
+      },
+      "count": 1
+    }
+  ]
+}

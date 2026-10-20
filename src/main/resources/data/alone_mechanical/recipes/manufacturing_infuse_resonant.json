@@ -1,0 +1,27 @@
+{
+  "energy_per_tick": 80,
+  "item_outputs": [
+    {
+      "count": 2,
+      "item": "alone_mechanical:resonant_ingot"
+    }
+  ],
+  "type": "alone_mechanical:machine",
+  "ticks": 180,
+  "machine": "alone_mechanical:infuser",
+  "item_inputs": [
+    {
+      "ingredient": {
+        "item": "alone_mechanical:resonant_matrix"
+      },
+      "count": 2
+    }
+  ],
+  "gas_inputs": [
+    null,
+    {
+      "gas": "alone_mechanical:oxygen",
+      "amount": 500
+    }
+  ]
+}

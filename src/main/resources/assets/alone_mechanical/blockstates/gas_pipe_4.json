@@ -1,0 +1,483 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "alone_mechanical:block/gas_pipe_4"
+      },
+      "when": {
+        "OR": [
+          {
+            "east": "false",
+            "up": "false",
+            "north": "false",
+            "west": "false",
+            "down": "false",
+            "south": "false"
+          },
+          {
+            "down": "true",
+            "up": "false"
+          },
+          {
+            "down": "false",
+            "up": "true"
+          },
+          {
+            "north": "true",
+            "south": "false"
+          },
+          {
+            "north": "false",
+            "south": "true"
+          },
+          {
+            "west": "true",
+            "east": "false"
+          },
+          {
+            "west": "false",
+            "east": "true"
+          },
+          {
+            "north": "true",
+            "up": "true"
+          },
+          {
+            "east": "true",
+            "up": "true"
+          },
+          {
+            "north": "true",
+            "east": "true"
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "alone_mechanical:block/gas_pipe_4_straight",
+        "y": 0,
+        "x": 0,
+        "uvlock": false
+      },
+      "when": {
+        "up": "false",
+        "west": "false",
+        "east": "false",
+        "south": "true",
+        "down": "false",
+        "north": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "alone_mechanical:block/gas_pipe_4_straight",
+        "y": 90,
+        "x": 0,
+        "uvlock": false
+      },
+      "when": {
+        "up": "false",
+        "west": "true",
+        "east": "true",
+        "south": "false",
+        "down": "false",
+        "north": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "alone_mechanical:block/gas_pipe_4_straight",
+        "y": 0,
+        "x": 270,
+        "uvlock": false
+      },
+      "when": {
+        "up": "true",
+        "west": "false",
+        "east": "false",
+        "south": "false",
+        "down": "true",
+        "north": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "alone_mechanical:block/gas_pipe_4_arm",
+        "y": 90,
+        "x": 0,
+        "uvlock": false
+      },
+      "when": {
+        "AND": [
+          {
+            "east": "true"
+          },
+          {
+            "OR": [
+              {
+                "east": "false",
+                "up": "false",
+                "north": "false",
+                "west": "false",
+                "down": "false",
+                "south": "false"
+              },
+              {
+                "down": "true",
+                "up": "false"
+              },
+              {
+                "down": "false",
+                "up": "true"
+              },
+              {
+                "north": "true",
+                "south": "false"
+              },
+              {
+                "north": "false",
+                "south": "true"
+              },
+              {
+                "west": "true",
+                "east": "false"
+              },
+              {
+                "west": "false",
+                "east": "true"
+              },
+              {
+                "north": "true",
+                "up": "true"
+              },
+              {
+                "east": "true",
+                "up": "true"
+              },
+              {
+                "north": "true",
+                "east": "true"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "alone_mechanical:block/gas_pipe_4_arm",
+        "y": 0,
+        "x": 270,
+        "uvlock": false
+      },
+      "when": {
+        "AND": [
+          {
+            "up": "true"
+          },
+          {
+            "OR": [
+              {
+                "east": "false",
+                "up": "false",
+                "north": "false",
+                "west": "false",
+                "down": "false",
+                "south": "false"
+              },
+              {
+                "down": "true",
+                "up": "false"
+              },
+              {
+                "down": "false",
+                "up": "true"
+              },
+              {
+                "north": "true",
+                "south": "false"
+              },
+              {
+                "north": "false",
+                "south": "true"
+              },
+              {
+                "west": "true",
+                "east": "false"
+              },
+              {
+                "west": "false",
+                "east": "true"
+              },
+              {
+                "north": "true",
+                "up": "true"
+              },
+              {
+                "east": "true",
+                "up": "true"
+              },
+              {
+                "north": "true",
+                "east": "true"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "alone_mechanical:block/gas_pipe_4_arm",
+        "y": 0,
+        "x": 0,
+        "uvlock": false
+      },
+      "when": {
+        "AND": [
+          {
+            "north": "true"
+          },
+          {
+            "OR": [
+              {
+                "east": "false",
+                "up": "false",
+                "north": "false",
+                "west": "false",
+                "down": "false",
+                "south": "false"
+              },
+              {
+                "down": "true",
+                "up": "false"
+              },
+              {
+                "down": "false",
+                "up": "true"
+              },
+              {
+                "north": "true",
+                "south": "false"
+              },
+              {
+                "north": "false",
+                "south": "true"
+              },
+              {
+                "west": "true",
+                "east": "false"
+              },
+              {
+                "west": "false",
+                "east": "true"
+              },
+              {
+                "north": "true",
+                "up": "true"
+              },
+              {
+                "east": "true",
+                "up": "true"
+              },
+              {
+                "north": "true",
+                "east": "true"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "alone_mechanical:block/gas_pipe_4_arm",
+        "y": 270,
+        "x": 0,
+        "uvlock": false
+      },
+      "when": {
+        "AND": [
+          {
+            "west": "true"
+          },
+          {
+            "OR": [
+              {
+                "east": "false",
+                "up": "false",
+                "north": "false",
+                "west": "false",
+                "down": "false",
+                "south": "false"
+              },
+              {
+                "down": "true",
+                "up": "false"
+              },
+              {
+                "down": "false",
+                "up": "true"
+              },
+              {
+                "north": "true",
+                "south": "false"
+              },
+              {
+                "north": "false",
+                "south": "true"
+              },
+              {
+                "west": "true",
+                "east": "false"
+              },
+              {
+                "west": "false",
+                "east": "true"
+              },
+              {
+                "north": "true",
+                "up": "true"
+              },
+              {
+                "east": "true",
+                "up": "true"
+              },
+              {
+                "north": "true",
+                "east": "true"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "alone_mechanical:block/gas_pipe_4_arm",
+        "y": 0,
+        "x": 90,
+        "uvlock": false
+      },
+      "when": {
+        "AND": [
+          {
+            "down": "true"
+          },
+          {
+            "OR": [
+              {
+                "east": "false",
+                "up": "false",
+                "north": "false",
+                "west": "false",
+                "down": "false",
+                "south": "false"
+              },
+              {
+                "down": "true",
+                "up": "false"
+              },
+              {
+                "down": "false",
+                "up": "true"
+              },
+              {
+                "north": "true",
+                "south": "false"
+              },
+              {
+                "north": "false",
+                "south": "true"
+              },
+              {
+                "west": "true",
+                "east": "false"
+              },
+              {
+                "west": "false",
+                "east": "true"
+              },
+              {
+                "north": "true",
+                "up": "true"
+              },
+              {
+                "east": "true",
+                "up": "true"
+              },
+              {
+                "north": "true",
+                "east": "true"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "alone_mechanical:block/gas_pipe_4_arm",
+        "y": 180,
+        "x": 0,
+        "uvlock": false
+      },
+      "when": {
+        "AND": [
+          {
+            "south": "true"
+          },
+          {
+            "OR": [
+              {
+                "east": "false",
+                "up": "false",
+                "north": "false",
+                "west": "false",
+                "down": "false",
+                "south": "false"
+              },
+              {
+                "down": "true",
+                "up": "false"
+              },
+              {
+                "down": "false",
+                "up": "true"
+              },
+              {
+                "north": "true",
+                "south": "false"
+              },
+              {
+                "north": "false",
+                "south": "true"
+              },
+              {
+                "west": "true",
+                "east": "false"
+              },
+              {
+                "west": "false",
+                "east": "true"
+              },
+              {
+                "north": "true",
+                "up": "true"
+              },
+              {
+                "east": "true",
+                "up": "true"
+              },
+              {
+                "north": "true",
+                "east": "true"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "category": "misc",
+  "pattern": [
+    "IPI",
+    "IBI",
+    "IPI"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": {
+      "item": "alone_mechanical:basic_circuit"
+    },
+    "P": {
+      "item": "minecraft:piston"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "count": 1,
+    "item": "alone_mechanical:crusher_core"
+  }
+}

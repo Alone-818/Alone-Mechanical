@@ -1,0 +1,9 @@
+{
+  "type": "alone_mechanical:machine",
+  "machine": "alone_mechanical:gas_liquid_converter",
+  "conversion": "gas_to_liquid",
+  "gas_inputs": [{"gas": "alone_mechanical_test:conversion_gas", "amount": 1000}],
+  "fluid_outputs": [{"fluid": "minecraft:water", "amount": 500}],
+  "ticks": 4,
+  "energy_per_tick": 10
+}

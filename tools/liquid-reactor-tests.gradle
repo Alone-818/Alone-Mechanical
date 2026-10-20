@@ -1,0 +1,6 @@
+// Isolate test-world locks from other running development servers.
+gradle.beforeProject { project ->
+    project.afterEvaluate {
+        project.minecraft.runs.gameTestServer.workingDirectory(project.file('run-liquid-reactor-test'))
+    }
+}

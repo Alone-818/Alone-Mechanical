@@ -1,0 +1,22 @@
+{
+  "type": "alone_mechanical:machine",
+  "ticks": 120,
+  "gas_outputs": [
+    {
+      "amount": 1000,
+      "gas": "alone_mechanical:sulfuric_acid"
+    }
+  ],
+  "machine": "alone_mechanical:gas_reactor",
+  "gas_inputs": [
+    {
+      "amount": 1000,
+      "gas": "alone_mechanical:sulfur_trioxide"
+    },
+    {
+      "amount": 1000,
+      "gas": "alone_mechanical:steam"
+    }
+  ],
+  "energy_per_tick": 60
+}

@@ -1,0 +1,32 @@
+{
+  "criteria": {
+    "has_milestone": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "alone_mechanical:advanced_circuit"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "parent": "alone_mechanical:technology/chemistry",
+  "display": {
+    "icon": {
+      "item": "alone_mechanical:advanced_circuit"
+    },
+    "show_toast": true,
+    "announce_to_chat": false,
+    "frame": "task",
+    "title": {
+      "translate": "advancement.alone_mechanical.advanced.title"
+    },
+    "description": {
+      "translate": "advancement.alone_mechanical.advanced.description"
+    },
+    "hidden": false
+  }
+}

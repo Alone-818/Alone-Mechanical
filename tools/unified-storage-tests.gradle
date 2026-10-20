@@ -1,0 +1,7 @@
+// Separate compiler output and test-world locks from other development launches.
+gradle.beforeProject { project ->
+    project.layout.buildDirectory.set(project.file('build/unified-storage-check'))
+    project.afterEvaluate {
+        project.minecraft.runs.gameTestServer.workingDirectory(project.file('run-unified-storage-test'))
+    }
+}

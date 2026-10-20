@@ -1,0 +1,9 @@
+{
+  "cookingtime": 100,
+  "experience": 0.2,
+  "type": "minecraft:blasting",
+  "result": "alone_mechanical:steel_ingot",
+  "ingredient": {
+    "item": "alone_mechanical:steel_dust"
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "elements": [
+    {
+      "to": [
+        2,
+        15,
+        9
+      ],
+      "faces": {
+        "north": {
+          "texture": "#metal"
+        },
+        "south": {
+          "texture": "#metal"
+        },
+        "east": {
+          "texture": "#metal"
+        },
+        "west": {
+          "texture": "#metal"
+        },
+        "up": {
+          "texture": "#metal"
+        },
+        "down": {
+          "texture": "#metal"
+        }
+      },
+      "from": [
+        1,
+        1,
+        7
+      ]
+    },
+    {
+      "to": [
+        15,
+        15,
+        9
+      ],
+      "faces": {
+        "north": {
+          "texture": "#metal"
+        },
+        "south": {
+          "texture": "#metal"
+        },
+        "east": {
+          "texture": "#metal"
+        },
+        "west": {
+          "texture": "#metal"
+        },
+        "up": {
+          "texture": "#metal"
+        },
+        "down": {
+          "texture": "#metal"
+        }
+      },
+      "from": [
+        14,
+        1,
+        7
+      ]
+    },
+    {
+      "to": [
+        14,
+        2,
+        9
+      ],
+      "faces": {
+        "north": {
+          "texture": "#metal"
+        },
+        "south": {
+          "texture": "#metal"
+        },
+        "east": {
+          "texture": "#metal"
+        },
+        "west": {
+          "texture": "#metal"
+        },
+        "up": {
+          "texture": "#metal"
+        },
+        "down": {
+          "texture": "#metal"
+        }
+      },
+      "from": [
+        2,
+        1,
+        7
+      ]
+    },
+    {
+      "to": [
+        14,
+        15,
+        9
+      ],
+      "faces": {
+        "north": {
+          "texture": "#metal"
+        },
+        "south": {
+          "texture": "#metal"
+        },
+        "east": {
+          "texture": "#metal"
+        },
+        "west": {
+          "texture": "#metal"
+        },
+        "up": {
+          "texture": "#metal"
+        },
+        "down": {
+          "texture": "#metal"
+        }
+      },
+      "from": [
+        2,
+        14,
+        7
+      ]
+    },
+    {
+      "to": [
+        8.5,
+        8.5,
+        16
+      ],
+      "faces": {
+        "north": {
+          "texture": "#shaft"
+        },
+        "south": {
+          "texture": "#shaft"
+        },
+        "east": {
+          "texture": "#shaft"
+        },
+        "west": {
+          "texture": "#shaft"
+        },
+        "up": {
+          "texture": "#shaft"
+        },
+        "down": {
+          "texture": "#shaft"
+        }
+      },
+      "from": [
+        7.5,
+        7.5,
+        0
+      ]
+    }
+  ],
+  "ambientocclusion": false,
+  "textures": {
+    "blade": "minecraft:block/iron_block",
+    "hub": "minecraft:block/gold_block",
+    "particle": "minecraft:block/iron_block",
+    "shaft": "minecraft:block/deepslate_tiles",
+    "metal": "minecraft:block/iron_block"
+  }
+}

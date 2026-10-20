@@ -1,0 +1,25 @@
+{
+  "machine": "alone_mechanical:crusher",
+  "item_outputs": [
+    {
+      "item": "alone_mechanical:iron_dust",
+      "count": 2
+    }
+  ],
+  "type": "alone_mechanical:machine",
+  "energy_per_tick": 20,
+  "ticks": 100,
+  "item_inputs": [
+    {
+      "ingredient": [
+        {
+          "item": "minecraft:raw_iron"
+        },
+        {
+          "tag": "forge:raw_materials/iron"
+        }
+      ],
+      "count": 1
+    }
+  ]
+}

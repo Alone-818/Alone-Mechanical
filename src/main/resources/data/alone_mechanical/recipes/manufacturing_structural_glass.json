@@ -1,0 +1,21 @@
+{
+  "category": "misc",
+  "pattern": [
+    "GIG",
+    "IGI",
+    "GIG"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "I": {
+      "item": "minecraft:iron_nugget"
+    },
+    "G": {
+      "tag": "forge:glass"
+    }
+  },
+  "result": {
+    "count": 8,
+    "item": "alone_mechanical:structural_glass"
+  }
+}

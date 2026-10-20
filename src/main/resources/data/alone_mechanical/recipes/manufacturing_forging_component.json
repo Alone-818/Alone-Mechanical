@@ -1,0 +1,27 @@
+{
+  "category": "misc",
+  "pattern": [
+    "SPS",
+    "IBI",
+    "SPS"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "alone_mechanical:steel_ingot"
+    },
+    "B": {
+      "item": "alone_mechanical:basic_circuit"
+    },
+    "P": {
+      "item": "minecraft:piston"
+    },
+    "I": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "result": {
+    "count": 1,
+    "item": "alone_mechanical:forging_component"
+  }
+}

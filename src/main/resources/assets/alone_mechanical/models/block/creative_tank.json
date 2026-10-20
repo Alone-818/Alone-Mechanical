@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "side": "alone_mechanical:block/storage_tank_ct_side_0",
+    "bottom": "minecraft:block/purpur_block",
+    "top": "minecraft:block/purpur_block"
+  },
+  "render_type": "minecraft:cutout"
+}

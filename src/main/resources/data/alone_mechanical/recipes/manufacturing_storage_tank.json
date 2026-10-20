@@ -1,0 +1,21 @@
+{
+  "category": "misc",
+  "pattern": [
+    "IGI",
+    "G G",
+    "IGI"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "G": {
+      "tag": "forge:glass"
+    }
+  },
+  "result": {
+    "count": 4,
+    "item": "alone_mechanical:storage_tank"
+  }
+}

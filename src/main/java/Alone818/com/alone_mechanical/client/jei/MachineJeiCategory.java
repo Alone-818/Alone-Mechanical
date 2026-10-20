@@ -1,0 +1,68 @@
+package Alone818.com.alone_mechanical.client.jei;
+
+import Alone818.com.alone_mechanical.recipe.RecipeDisplays;
+import Alone818.com.alone_mechanical.client.GasRendering;
+import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
+import mezz.jei.api.helpers.IGuiHelper;
+import mezz.jei.api.recipe.*;
+import mezz.jei.api.recipe.category.IRecipeCategory;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import java.util.*;
+
+public final class MachineJeiCategory implements IRecipeCategory<RecipeDisplays.Display> {
+    private final RecipeType<RecipeDisplays.Display> type;
+    private final IDrawable background,icon;
+    public MachineJeiCategory(RecipeType<RecipeDisplays.Display> type,IGuiHelper helper,ItemStack core){this.type=type;this.background=helper.createBlankDrawable(168,90);this.icon=helper.createDrawableIngredient(VanillaTypes.ITEM_STACK,core);}
+    @Override public RecipeType<RecipeDisplays.Display> getRecipeType(){return type;}
+    @Override public Component getTitle(){return Component.translatable("machine.alone_mechanical."+type.getUid().getPath());}
+    @Override public IDrawable getBackground(){return background;}
+    @Override public IDrawable getIcon(){return icon;}
+    @Override public ResourceLocation getRegistryName(RecipeDisplays.Display recipe){return recipe.id();}
+    @Override public void setRecipe(IRecipeLayoutBuilder builder,RecipeDisplays.Display r,IFocusGroup focuses){
+        // These are lookup aliases only; the recipe still consumes/produces the displayed media.
+        var sources=CreativeTankJei.recipeSources(r,true);if(!sources.isEmpty())builder.addInvisibleIngredients(RecipeIngredientRole.INPUT).addItemStacks(sources);
+        sources=CreativeTankJei.recipeSources(r,false);if(!sources.isEmpty())builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).addItemStacks(sources);
+        for(int i=0;i<2;i++){
+            int count=r.counts()[i];
+            if(count>0){List<ItemStack> stacks=Arrays.stream(r.inputs()[i].getItems()).map(s->{var copy=s.copy();copy.setCount(count);return copy;}).toList();builder.addSlot(RecipeIngredientRole.INPUT,8+i*22,8).addItemStacks(stacks);}
+            if(!r.outputs()[i].isEmpty()){
+                var outputSlot=builder.addSlot(RecipeIngredientRole.OUTPUT,118+i*22,8);
+                if(i==0&&!r.alternateOutput().isEmpty())outputSlot.addItemStacks(List.of(r.outputs()[i],r.alternateOutput()))
+                    .addTooltipCallback((view,tooltip)->tooltip.add(Component.translatable("jei.alone_mechanical.exclusive_half")));
+                else outputSlot.addItemStack(r.outputs()[i]);
+            }
+        }
+        for(int i=0;i<4;i++)if(!r.fluids()[i].isEmpty())builder.addSlot(i<2?RecipeIngredientRole.INPUT:RecipeIngredientRole.OUTPUT,(i<2?8:118)+(i%2)*22,30).addFluidStack(r.fluids()[i].getFluid(),r.fluids()[i].getAmount(),r.fluids()[i].getTag()).setFluidRenderer(Math.max(1000,r.fluids()[i].getAmount()),false,16,16);
+    }
+    @Override public void draw(RecipeDisplays.Display r,IRecipeSlotsView slots,GuiGraphics graphics,double mouseX,double mouseY){
+        var font=Minecraft.getInstance().font;
+        for(int i=0;i<r.gases().length;i++)if(!r.gases()[i].isEmpty()){
+            int x=(i<2?8:118)+(i%2)*22;
+            graphics.fill(x-1,29,x+17,47,0xff526573);
+            GasRendering.draw(graphics,r.gases()[i],r.gases()[i].amount(),x,30,16,16);
+        }
+        graphics.drawString(font,"→",76,12,0xff526573,false);
+        var name=RecipeDisplays.recipeName(r);if(net.minecraft.locale.Language.getInstance().has("recipe."+r.id().getNamespace()+"."+r.id().getPath().replace('/','.'))){
+            graphics.pose().pushPose();graphics.pose().translate(6,0,0);float scale=Math.min(1,156f/Math.max(1,font.width(name)));graphics.pose().scale(scale,scale,1);graphics.drawString(font,name,0,0,0xff526573,false);graphics.pose().popPose();
+        }
+        graphics.drawString(font,Component.translatable("jei.alone_mechanical.duration",r.ticks()),8,54,0xff526573,false);
+        graphics.drawString(font,Component.translatable("jei.alone_mechanical.energy",r.energy()),8,66,0xff526573,false);
+        if(!r.gasInfo().isEmpty()){
+            graphics.pose().pushPose();graphics.pose().translate(8,78,0);float scale=Math.min(1,152f/Math.max(1,font.width(r.gasInfo())));graphics.pose().scale(scale,scale,1);graphics.drawString(font,r.gasInfo(),0,0,0xff526573,false);graphics.pose().popPose();
+        }
+    }
+    @Override public List<Component> getTooltipStrings(RecipeDisplays.Display r,IRecipeSlotsView slots,double mouseX,double mouseY){
+        for(int i=0;i<r.gases().length;i++)if(!r.gases()[i].isEmpty()){
+            int x=(i<2?8:118)+(i%2)*22;
+            if(mouseX>=x&&mouseX<x+16&&mouseY>=30&&mouseY<46)return List.of(GasRendering.name(r.gases()[i]),Component.literal(r.gases()[i].amount()+" mB"));
+        }
+        return List.of();
+    }
+}

@@ -1,0 +1,8 @@
+{
+  "textures": {
+    "all": "alone_mechanical:block/item_vault_ct_top_6"
+  },
+  "render_type": "minecraft:cutout",
+  "ambientocclusion": false,
+  "parent": "minecraft:block/cube_all"
+}

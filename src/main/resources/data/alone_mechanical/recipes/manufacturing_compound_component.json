@@ -1,0 +1,27 @@
+{
+  "category": "misc",
+  "pattern": [
+    "SGS",
+    "WBW",
+    "SGS"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "alone_mechanical:steel_plate"
+    },
+    "B": {
+      "item": "alone_mechanical:basic_circuit"
+    },
+    "W": {
+      "item": "alone_mechanical:copper_wire"
+    },
+    "G": {
+      "tag": "forge:glass"
+    }
+  },
+  "result": {
+    "count": 1,
+    "item": "alone_mechanical:compound_component"
+  }
+}

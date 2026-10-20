@@ -1,0 +1,14 @@
+{
+  "values": [
+    "#forge:dusts/iron",
+    "#forge:dusts/copper",
+    "#forge:dusts/gold",
+    "#forge:dusts/carbon",
+    "#forge:dusts/steel",
+    "#forge:dusts/uranium",
+    "#forge:dusts/sulfur",
+    "#forge:dusts/thorium",
+    "#forge:dusts/depleted_uranium"
+  ],
+  "replace": false
+}

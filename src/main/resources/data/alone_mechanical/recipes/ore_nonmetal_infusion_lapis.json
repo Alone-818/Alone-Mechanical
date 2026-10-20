@@ -1,0 +1,27 @@
+{
+  "type": "alone_mechanical:machine",
+  "machine": "alone_mechanical:infuser",
+  "ticks": 200,
+  "energy_per_tick": 80,
+  "fluid_inputs": [
+    null,
+    {
+      "fluid": "alone_mechanical:sulfuric_acid",
+      "amount": 500
+    }
+  ],
+  "item_inputs": [
+    {
+      "ingredient": {
+        "tag": "forge:ores/lapis"
+      },
+      "count": 1
+    }
+  ],
+  "item_outputs": [
+    {
+      "count": 5,
+      "item": "alone_mechanical:lapis_enriched_crystal"
+    }
+  ]
+}

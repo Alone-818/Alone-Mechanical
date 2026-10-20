@@ -1,0 +1,30 @@
+{
+  "category": "misc",
+  "pattern": [
+    "SFS",
+    "WCW",
+    "SBS"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "alone_mechanical:steel_plate"
+    },
+    "B": {
+      "item": "alone_mechanical:intermediate_battery"
+    },
+    "F": {
+      "item": "minecraft:blast_furnace"
+    },
+    "W": {
+      "item": "alone_mechanical:copper_wire"
+    },
+    "C": {
+      "item": "alone_mechanical:chemical_circuit"
+    }
+  },
+  "result": {
+    "count": 1,
+    "item": "alone_mechanical:calcination_component"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "alone_mechanical:machine",
+  "machine": "alone_mechanical:gas_reactor",
+  "ticks": 200,
+  "energy_per_tick": 80,
+  "gas_inputs": [
+    {
+      "amount": 1000,
+      "gas": "alone_mechanical:nitrogen"
+    },
+    {
+      "amount": 3000,
+      "gas": "alone_mechanical:hydrogen"
+    }
+  ],
+  "gas_outputs": [
+    {
+      "amount": 2000,
+      "gas": "alone_mechanical:ammonia"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "top": "alone_mechanical:block/machine_controller_top",
+    "front": "alone_mechanical:block/machine_controller",
+    "side": "alone_mechanical:block/machine_controller_side"
+  }
+}

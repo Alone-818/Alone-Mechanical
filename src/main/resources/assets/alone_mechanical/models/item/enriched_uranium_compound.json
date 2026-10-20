@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "alone_mechanical:item/enriched_uranium_compound"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "alone_mechanical:machine",
+  "machine": "alone_mechanical:infuser",
+  "ticks": 160,
+  "energy_per_tick": 40,
+  "item_inputs": [
+    {
+      "ingredient": {
+        "tag": "forge:raw_materials/gold"
+      },
+      "count": 1
+    }
+  ],
+  "item_outputs": [
+    {
+      "count": 3,
+      "item": "alone_mechanical:leached_gold_concentrate"
+    }
+  ],
+  "gas_inputs": [
+    null,
+    {
+      "amount": 200,
+      "gas": "alone_mechanical:oxygen"
+    }
+  ]
+}

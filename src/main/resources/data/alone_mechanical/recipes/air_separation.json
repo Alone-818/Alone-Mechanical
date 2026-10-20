@@ -1,0 +1,16 @@
+{
+  "energy_per_tick": 20,
+  "type": "alone_mechanical:machine",
+  "gas_outputs": [
+    {
+      "amount": 400,
+      "gas": "alone_mechanical:nitrogen"
+    },
+    {
+      "amount": 100,
+      "gas": "alone_mechanical:oxygen"
+    }
+  ],
+  "machine": "alone_mechanical:air_separation_tower",
+  "ticks": 100
+}

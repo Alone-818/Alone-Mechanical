@@ -1,0 +1,24 @@
+{
+  "category": "misc",
+  "pattern": [
+    "ICI",
+    "CHC",
+    "ICI"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "H": {
+      "item": "minecraft:hopper"
+    },
+    "C": {
+      "item": "minecraft:copper_ingot"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "count": 4,
+    "item": "alone_mechanical:universal_port"
+  }
+}

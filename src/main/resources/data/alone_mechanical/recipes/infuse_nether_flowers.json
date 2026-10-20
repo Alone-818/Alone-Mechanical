@@ -1,0 +1,31 @@
+{
+  "alternate_output": {
+    "item": "minecraft:warped_fungus",
+    "count": 1
+  },
+  "item_outputs": [
+    {
+      "item": "minecraft:crimson_fungus",
+      "count": 1
+    }
+  ],
+  "type": "alone_mechanical:machine",
+  "ticks": 100,
+  "energy_per_tick": 40,
+  "machine": "alone_mechanical:infuser",
+  "item_inputs": [
+    {
+      "ingredient": {
+        "tag": "minecraft:flowers"
+      },
+      "count": 1
+    }
+  ],
+  "fluid_inputs": [
+    null,
+    {
+      "fluid": "alone_mechanical:nether_dimension_conversion",
+      "amount": 250
+    }
+  ]
+}

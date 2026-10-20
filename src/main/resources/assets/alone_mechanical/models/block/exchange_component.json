@@ -1,0 +1,203 @@
+{
+  "parent": "minecraft:block/block",
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "faces": {
+        "north": {
+          "texture": "#casing"
+        },
+        "south": {
+          "texture": "#casing"
+        },
+        "east": {
+          "texture": "#casing"
+        },
+        "west": {
+          "texture": "#casing"
+        },
+        "up": {
+          "texture": "#casing"
+        },
+        "down": {
+          "texture": "#casing"
+        }
+      },
+      "to": [
+        16,
+        16,
+        16
+      ]
+    },
+    {
+      "from": [
+        3,
+        3,
+        -0.15
+      ],
+      "faces": {
+        "north": {
+          "texture": "#panel"
+        },
+        "south": {
+          "texture": "#panel"
+        },
+        "east": {
+          "texture": "#panel"
+        },
+        "west": {
+          "texture": "#panel"
+        },
+        "up": {
+          "texture": "#panel"
+        },
+        "down": {
+          "texture": "#panel"
+        }
+      },
+      "to": [
+        13,
+        13,
+        0
+      ]
+    },
+    {
+      "from": [
+        4,
+        5,
+        -0.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#pipe"
+        },
+        "south": {
+          "texture": "#pipe"
+        },
+        "east": {
+          "texture": "#pipe"
+        },
+        "west": {
+          "texture": "#pipe"
+        },
+        "up": {
+          "texture": "#pipe"
+        },
+        "down": {
+          "texture": "#pipe"
+        }
+      },
+      "to": [
+        12,
+        7,
+        -0.15
+      ]
+    },
+    {
+      "from": [
+        4,
+        9,
+        -0.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#pipe"
+        },
+        "south": {
+          "texture": "#pipe"
+        },
+        "east": {
+          "texture": "#pipe"
+        },
+        "west": {
+          "texture": "#pipe"
+        },
+        "up": {
+          "texture": "#pipe"
+        },
+        "down": {
+          "texture": "#pipe"
+        }
+      },
+      "to": [
+        12,
+        11,
+        -0.15
+      ]
+    },
+    {
+      "from": [
+        10,
+        4,
+        -0.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#pipe"
+        },
+        "south": {
+          "texture": "#pipe"
+        },
+        "east": {
+          "texture": "#pipe"
+        },
+        "west": {
+          "texture": "#pipe"
+        },
+        "up": {
+          "texture": "#pipe"
+        },
+        "down": {
+          "texture": "#pipe"
+        }
+      },
+      "to": [
+        12,
+        8,
+        -0.15
+      ]
+    },
+    {
+      "from": [
+        4,
+        8,
+        -0.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#pipe"
+        },
+        "south": {
+          "texture": "#pipe"
+        },
+        "east": {
+          "texture": "#pipe"
+        },
+        "west": {
+          "texture": "#pipe"
+        },
+        "up": {
+          "texture": "#pipe"
+        },
+        "down": {
+          "texture": "#pipe"
+        }
+      },
+      "to": [
+        6,
+        12,
+        -0.15
+      ]
+    }
+  ],
+  "textures": {
+    "particle": "alone_mechanical:block/machine_casing",
+    "pipe": "minecraft:block/iron_block",
+    "casing": "alone_mechanical:block/machine_casing",
+    "panel": "minecraft:block/copper_block"
+  }
+}

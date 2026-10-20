@@ -1,0 +1,27 @@
+{
+  "category": "misc",
+  "pattern": [
+    " G ",
+    "RBR",
+    " I "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "B": {
+      "item": "alone_mechanical:basic_circuit"
+    },
+    "G": {
+      "tag": "forge:glass"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "count": 1,
+    "item": "alone_mechanical:machine_controller"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "values": [
+    "alone_mechanical:enriched_uranium_fuel",
+    "alone_mechanical:mox_fuel",
+    "alone_mechanical:thorium_fuel"
+  ],
+  "replace": false
+}

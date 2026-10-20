@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "top": "alone_mechanical:block/electric_pump_top",
+    "front": "alone_mechanical:block/electric_pump",
+    "bottom": "alone_mechanical:block/electric_pump_bottom",
+    "side": "alone_mechanical:block/electric_pump_side"
+  }
+}

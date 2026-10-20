@@ -1,0 +1,32 @@
+{
+  "criteria": {
+    "has_milestone": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "alone_mechanical:basic_circuit"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "frame": "task",
+    "title": {
+      "translate": "advancement.alone_mechanical.root.title"
+    },
+    "show_toast": true,
+    "description": {
+      "translate": "advancement.alone_mechanical.root.description"
+    },
+    "icon": {
+      "item": "alone_mechanical:basic_circuit"
+    },
+    "announce_to_chat": false,
+    "background": "minecraft:textures/block/stone.png",
+    "hidden": false
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "criteria": {
+    "has_milestone": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "alone_mechanical:chemical_circuit"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "parent": "alone_mechanical:technology/steel",
+  "display": {
+    "icon": {
+      "item": "alone_mechanical:chemical_circuit"
+    },
+    "show_toast": true,
+    "announce_to_chat": false,
+    "frame": "task",
+    "title": {
+      "translate": "advancement.alone_mechanical.chemistry.title"
+    },
+    "description": {
+      "translate": "advancement.alone_mechanical.chemistry.description"
+    },
+    "hidden": false
+  }
+}

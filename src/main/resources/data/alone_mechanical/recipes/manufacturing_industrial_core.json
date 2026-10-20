@@ -1,0 +1,27 @@
+{
+  "category": "misc",
+  "pattern": [
+    "IRI",
+    "CBC",
+    "IRI"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "B": {
+      "item": "alone_mechanical:basic_circuit"
+    },
+    "C": {
+      "item": "minecraft:copper_ingot"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "count": 1,
+    "item": "alone_mechanical:industrial_core"
+  }
+}

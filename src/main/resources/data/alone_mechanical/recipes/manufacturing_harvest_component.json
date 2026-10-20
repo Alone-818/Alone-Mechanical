@@ -1,0 +1,30 @@
+{
+  "category": "misc",
+  "pattern": [
+    "STS",
+    "GCG",
+    "SBS"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "alone_mechanical:steel_plate"
+    },
+    "G": {
+      "item": "alone_mechanical:steel_gear"
+    },
+    "T": {
+      "item": "minecraft:iron_hoe"
+    },
+    "C": {
+      "item": "alone_mechanical:chemical_circuit"
+    },
+    "B": {
+      "item": "alone_mechanical:basic_battery"
+    }
+  },
+  "result": {
+    "count": 1,
+    "item": "alone_mechanical:harvest_component"
+  }
+}

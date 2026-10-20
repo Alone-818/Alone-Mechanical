@@ -1,0 +1,27 @@
+{
+  "category": "misc",
+  "pattern": [
+    "GQG",
+    "CBC",
+    "GQG"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "Q": {
+      "item": "alone_mechanical:quartz_sand"
+    },
+    "B": {
+      "item": "alone_mechanical:advanced_battery"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "C": {
+      "item": "alone_mechanical:chemical_circuit"
+    }
+  },
+  "result": {
+    "count": 2,
+    "item": "alone_mechanical:advanced_circuit"
+  }
+}

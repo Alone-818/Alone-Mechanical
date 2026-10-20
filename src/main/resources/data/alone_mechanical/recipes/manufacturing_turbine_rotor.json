@@ -1,0 +1,21 @@
+{
+  "category": "misc",
+  "pattern": [
+    " S ",
+    "SGS",
+    " S "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "alone_mechanical:steel_plate"
+    },
+    "G": {
+      "item": "alone_mechanical:steel_gear"
+    }
+  },
+  "result": {
+    "count": 1,
+    "item": "alone_mechanical:turbine_rotor"
+  }
+}

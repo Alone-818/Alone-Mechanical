@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "pattern": [
+    "I I",
+    " I ",
+    " I "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "count": 1,
+    "item": "alone_mechanical:wrench"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "category": "misc",
+  "pattern": [
+    "WRW",
+    "CBC",
+    "WSW"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "alone_mechanical:steel_plate"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "W": {
+      "item": "alone_mechanical:copper_wire"
+    },
+    "C": {
+      "item": "alone_mechanical:basic_circuit"
+    },
+    "B": {
+      "item": "alone_mechanical:basic_battery"
+    }
+  },
+  "result": {
+    "count": 2,
+    "item": "alone_mechanical:chemical_circuit"
+  }
+}
