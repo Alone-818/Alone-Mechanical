@@ -1,0 +1,22 @@
+{
+  "type": "alone_mechanical:machine",
+  "machine": "alone_mechanical:separator_liquid_precipitation",
+  "ticks": 240,
+  "energy_per_tick": 100,
+  "fluid_inputs": [
+    {
+      "fluid": "alone_mechanical:uranium_slurry",
+      "amount": 1000
+    }
+  ],
+  "item_outputs": [
+    {
+      "item": "alone_mechanical:enriched_uranium_compound",
+      "count": 1
+    },
+    {
+      "item": "alone_mechanical:depleted_uranium_dust",
+      "count": 3
+    }
+  ]
+}

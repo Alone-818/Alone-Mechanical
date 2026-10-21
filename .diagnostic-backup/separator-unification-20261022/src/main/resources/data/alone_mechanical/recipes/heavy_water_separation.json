@@ -1,0 +1,22 @@
+{
+  "energy_per_tick": 60,
+  "type": "alone_mechanical:machine",
+  "ticks": 200,
+  "fluid_outputs": [
+    {
+      "fluid": "minecraft:water",
+      "amount": 900
+    },
+    {
+      "fluid": "alone_mechanical:heavy_water",
+      "amount": 100
+    }
+  ],
+  "machine": "alone_mechanical:separator_liquid_fractionation",
+  "fluid_inputs": [
+    {
+      "fluid": "alone_mechanical:enriched_water",
+      "amount": 1000
+    }
+  ]
+}

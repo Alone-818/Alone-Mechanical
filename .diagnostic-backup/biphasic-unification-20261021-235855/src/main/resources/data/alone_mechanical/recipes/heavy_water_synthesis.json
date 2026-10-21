@@ -1,0 +1,22 @@
+{
+  "type": "alone_mechanical:machine",
+  "ticks": 100,
+  "gas_outputs": [
+    {
+      "amount": 1000,
+      "gas": "alone_mechanical:heavy_water_steam"
+    }
+  ],
+  "machine": "alone_mechanical:gas_reactor",
+  "gas_inputs": [
+    {
+      "amount": 1000,
+      "gas": "alone_mechanical:deuterium"
+    },
+    {
+      "amount": 500,
+      "gas": "alone_mechanical:oxygen"
+    }
+  ],
+  "energy_per_tick": 80
+}

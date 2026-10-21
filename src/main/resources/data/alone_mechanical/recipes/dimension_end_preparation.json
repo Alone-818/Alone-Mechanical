@@ -1,27 +1,27 @@
 {
   "type": "alone_mechanical:machine",
-  "machine": "alone_mechanical:dissolution",
+  "machine": "alone_mechanical:reaction",
   "ticks": 400,
   "energy_per_tick": 240,
-  "fluid_outputs": [
-    {
-      "amount": 250,
-      "fluid": "alone_mechanical:end_dimension_conversion"
-    }
-  ],
   "item_inputs": [
     {
-      "count": 4,
       "ingredient": {
         "item": "minecraft:ender_pearl"
-      }
+      },
+      "count": 4
     }
   ],
   "fluid_inputs": [
     null,
     {
-      "amount": 1000,
-      "fluid": "alone_mechanical:heavy_water"
+      "fluid": "alone_mechanical:heavy_water",
+      "amount": 1000
+    }
+  ],
+  "fluid_outputs": [
+    {
+      "fluid": "alone_mechanical:end_dimension_conversion",
+      "amount": 250
     }
   ]
 }

@@ -241,13 +241,25 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 // A running development client must never read classes that another build replaces.
-// Include optional client-check source sets, and keep each launch's files outside build/.
+// Include optional client-check source sets and keep the snapshot outside build/.
 afterEvaluate {
     def clientMod = minecraft.runs.client.mods.getByName(mod_id)
     def originalSources = new ArrayList(clientMod.sources)
     def mutableOutputs = originalSources.collectMany { it.output.files as List }.toSet()
-    def launchRoot = layout.projectDirectory.dir(".gradle/client-runtime/${UUID.randomUUID()}")
+    def launchRoot = layout.projectDirectory.dir(".gradle/client-runtime/intellij-runClient")
     def snapshotTask = tasks.register('snapshotClientRuntime', Copy) {
+        doFirst {
+            def legacyClasspathPath = new File(project.projectDir, 'build/classpath/runClient_minecraftClasspath.txt').canonicalPath.toLowerCase(Locale.ROOT)
+            def clientRunning = ProcessHandle.allProcesses().anyMatch { handle ->
+                def commandLine = handle.info().commandLine().orElse('').toLowerCase(Locale.ROOT)
+                commandLine.contains('cpw.mods.bootstraplauncher.bootstraplauncher') &&
+                    commandLine.contains('--launchtarget forgeclientuserdev') &&
+                    commandLine.contains(legacyClasspathPath)
+            }
+            if (clientRunning) {
+                throw new GradleException("Refusing to refresh the client runtime snapshot while this project's Minecraft development client is running. Close that client and retry.")
+            }
+        }
         into launchRoot
         originalSources.each { original ->
             dependsOn tasks.named(original.classesTaskName)
@@ -271,3 +283,4 @@ afterEvaluate {
         dependsOn snapshotTask
     }
 }
+

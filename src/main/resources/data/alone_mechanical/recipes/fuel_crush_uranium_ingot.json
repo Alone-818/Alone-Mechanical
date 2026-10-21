@@ -3,18 +3,18 @@
   "machine": "alone_mechanical:crusher",
   "ticks": 100,
   "energy_per_tick": 20,
+  "item_outputs": [
+    {
+      "item": "alone_mechanical:uranium_dust",
+      "count": 1
+    }
+  ],
   "item_inputs": [
     {
       "ingredient": {
         "tag": "forge:ingots/uranium"
       },
       "count": 1
-    }
-  ],
-  "item_outputs": [
-    {
-      "count": 1,
-      "item": "alone_mechanical:uranium_dust"
     }
   ]
 }

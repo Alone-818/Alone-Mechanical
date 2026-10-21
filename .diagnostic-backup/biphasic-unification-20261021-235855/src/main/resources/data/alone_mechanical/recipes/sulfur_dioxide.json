@@ -1,0 +1,27 @@
+{
+  "item_inputs": [
+    {
+      "ingredient": {
+        "tag": "forge:dusts/sulfur"
+      },
+      "count": 1
+    }
+  ],
+  "type": "alone_mechanical:machine",
+  "ticks": 100,
+  "gas_outputs": [
+    {
+      "amount": 1000,
+      "gas": "alone_mechanical:sulfur_dioxide"
+    }
+  ],
+  "machine": "alone_mechanical:solid_gasification",
+  "gas_inputs": [
+    null,
+    {
+      "amount": 1000,
+      "gas": "alone_mechanical:oxygen"
+    }
+  ],
+  "energy_per_tick": 40
+}

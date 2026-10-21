@@ -1,22 +1,22 @@
 {
+  "energy_per_tick": 120,
+  "machine": "alone_mechanical:separator",
   "type": "alone_mechanical:machine",
+  "gas_inputs": [
+    {
+      "gas": "alone_mechanical:hydrogen",
+      "amount": 1000
+    }
+  ],
   "ticks": 200,
   "gas_outputs": [
     {
-      "amount": 990,
-      "gas": "alone_mechanical:hydrogen"
+      "gas": "alone_mechanical:hydrogen",
+      "amount": 990
     },
     {
-      "amount": 10,
-      "gas": "alone_mechanical:deuterium"
+      "gas": "alone_mechanical:deuterium",
+      "amount": 10
     }
-  ],
-  "machine": "alone_mechanical:separator_gas_fractionation",
-  "gas_inputs": [
-    {
-      "amount": 1000,
-      "gas": "alone_mechanical:hydrogen"
-    }
-  ],
-  "energy_per_tick": 120
+  ]
 }

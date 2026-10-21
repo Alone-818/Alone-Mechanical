@@ -1,6 +1,6 @@
 {
   "type": "alone_mechanical:machine",
-  "machine": "alone_mechanical:separator_slurry_separation",
+  "machine": "alone_mechanical:separator",
   "ticks": 240,
   "energy_per_tick": 100,
   "fluid_inputs": [

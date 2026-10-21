@@ -1,0 +1,27 @@
+{
+  "type": "alone_mechanical:machine",
+  "machine": "alone_mechanical:infuser",
+  "ticks": 160,
+  "energy_per_tick": 40,
+  "gas_inputs": [
+    null,
+    {
+      "amount": 200,
+      "gas": "alone_mechanical:oxygen"
+    }
+  ],
+  "item_outputs": [
+    {
+      "count": 3,
+      "item": "alone_mechanical:washed_emerald_concentrate"
+    }
+  ],
+  "item_inputs": [
+    {
+      "count": 1,
+      "ingredient": {
+        "tag": "forge:ores/emerald"
+      }
+    }
+  ]
+}

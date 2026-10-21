@@ -1,6 +1,6 @@
 {
   "type": "alone_mechanical:machine",
-  "machine": "alone_mechanical:separator_liquid_fractionation",
+  "machine": "alone_mechanical:separator",
   "ticks": 160,
   "energy_per_tick": 80,
   "fluid_outputs": [

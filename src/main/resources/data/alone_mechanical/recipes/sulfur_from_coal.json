@@ -21,7 +21,7 @@
     }
   ],
   "ticks": 200,
-  "machine": "alone_mechanical:crystallization",
+  "machine": "alone_mechanical:reaction",
   "fluid_inputs": [
     null,
     {

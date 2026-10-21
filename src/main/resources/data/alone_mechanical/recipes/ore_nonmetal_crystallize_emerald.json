@@ -1,0 +1,27 @@
+{
+  "type": "alone_mechanical:machine",
+  "machine": "alone_mechanical:infuser",
+  "ticks": 100,
+  "energy_per_tick": 80,
+  "fluid_inputs": [
+    null,
+    {
+      "fluid": "minecraft:water",
+      "amount": 200
+    }
+  ],
+  "item_outputs": [
+    {
+      "count": 1,
+      "item": "alone_mechanical:washed_emerald_concentrate"
+    }
+  ],
+  "item_inputs": [
+    {
+      "count": 1,
+      "ingredient": {
+        "item": "alone_mechanical:emerald_enriched_crystal"
+      }
+    }
+  ]
+}

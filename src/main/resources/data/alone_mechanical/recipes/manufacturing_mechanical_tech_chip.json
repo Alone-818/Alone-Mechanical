@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "S": {
+      "item": "alone_mechanical:steel_ingot"
+    },
+    "C": {
+      "item": "minecraft:copper_ingot"
+    },
+    "B": {
+      "item": "alone_mechanical:basic_tech_chip"
+    }
+  },
+  "result": {
+    "item": "alone_mechanical:mechanical_tech_chip",
+    "count": 2
+  },
+  "pattern": [
+    "SCS",
+    "RBR",
+    "SCS"
+  ],
+  "category": "misc"
+}

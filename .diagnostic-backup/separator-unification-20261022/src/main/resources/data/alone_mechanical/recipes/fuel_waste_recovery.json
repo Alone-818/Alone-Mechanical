@@ -1,0 +1,22 @@
+{
+  "type": "alone_mechanical:machine",
+  "machine": "alone_mechanical:separator_liquid_precipitation",
+  "ticks": 300,
+  "energy_per_tick": 120,
+  "fluid_inputs": [
+    {
+      "fluid": "alone_mechanical:nuclear_waste",
+      "amount": 1000
+    }
+  ],
+  "item_outputs": [
+    {
+      "item": "alone_mechanical:recovered_fuel_pellet",
+      "count": 1
+    },
+    {
+      "item": "alone_mechanical:sealed_nuclear_waste",
+      "count": 9
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "type": "alone_mechanical:machine",
-  "machine": "alone_mechanical:separator_degassing",
+  "machine": "alone_mechanical:separator",
   "ticks": 200,
   "energy_per_tick": 160,
   "fluid_inputs": [
@@ -9,16 +9,16 @@
       "amount": 1000
     }
   ],
-  "gas_outputs": [
-    null,
-    {
-      "amount": 500,
-      "gas": "alone_mechanical:chlorine"
-    }
-  ],
   "fluid_outputs": [
     {
       "fluid": "alone_mechanical:heat_carrier",
+      "amount": 500
+    }
+  ],
+  "gas_outputs": [
+    null,
+    {
+      "gas": "alone_mechanical:chlorine",
       "amount": 500
     }
   ]

@@ -12,7 +12,7 @@
       "amount": 100
     }
   ],
-  "machine": "alone_mechanical:separator_liquid_fractionation",
+  "machine": "alone_mechanical:separator",
   "fluid_inputs": [
     {
       "fluid": "alone_mechanical:enriched_water",

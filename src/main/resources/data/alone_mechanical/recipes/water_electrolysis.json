@@ -9,7 +9,7 @@
       "gas": "alone_mechanical:oxygen"
     }
   ],
-  "machine": "alone_mechanical:separator_electrolysis",
+  "machine": "alone_mechanical:separator",
   "fluid_inputs": [
     {
       "fluid": "minecraft:water",

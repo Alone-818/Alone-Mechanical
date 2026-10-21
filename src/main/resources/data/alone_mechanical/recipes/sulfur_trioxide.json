@@ -7,7 +7,7 @@
       "gas": "alone_mechanical:sulfur_trioxide"
     }
   ],
-  "machine": "alone_mechanical:gas_reactor",
+  "machine": "alone_mechanical:reaction",
   "gas_inputs": [
     {
       "amount": 1000,

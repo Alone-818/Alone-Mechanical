@@ -1,15 +1,8 @@
 {
   "type": "alone_mechanical:machine",
-  "machine": "alone_mechanical:crystallization",
+  "machine": "alone_mechanical:reaction",
   "ticks": 200,
   "energy_per_tick": 60,
-  "fluid_inputs": [
-    null,
-    {
-      "fluid": "alone_mechanical:heavy_water",
-      "amount": 100
-    }
-  ],
   "item_inputs": [
     {
       "ingredient": {
@@ -18,10 +11,17 @@
       "count": 4
     }
   ],
+  "fluid_inputs": [
+    null,
+    {
+      "fluid": "alone_mechanical:heavy_water",
+      "amount": 100
+    }
+  ],
   "item_outputs": [
     {
-      "count": 4,
-      "item": "alone_mechanical:thorium_dust"
+      "item": "alone_mechanical:thorium_dust",
+      "count": 4
     }
   ]
 }

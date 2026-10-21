@@ -1,0 +1,10 @@
+{
+  "values": [
+    "alone_mechanical:basic_tech_chip",
+    "alone_mechanical:mechanical_tech_chip",
+    "alone_mechanical:chemical_tech_chip",
+    "alone_mechanical:superconducting_tech_chip",
+    "alone_mechanical:quantum_tech_chip"
+  ],
+  "replace": false
+}

@@ -1,5 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
+  "key": {
+    "G": {
+      "item": "minecraft:glass_pane"
+    },
+    "C": {
+      "item": "minecraft:copper_ingot"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    }
+  },
   "pattern": [
     "L L",
     "CGC",
@@ -7,16 +18,5 @@
   ],
   "result": {
     "item": "alone_mechanical:engineering_goggles"
-  },
-  "key": {
-    "C": {
-      "item": "minecraft:copper_ingot"
-    },
-    "G": {
-      "item": "minecraft:glass_pane"
-    },
-    "L": {
-      "item": "minecraft:leather"
-    }
   }
 }

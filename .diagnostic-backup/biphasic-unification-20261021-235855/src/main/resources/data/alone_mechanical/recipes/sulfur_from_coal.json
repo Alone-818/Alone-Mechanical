@@ -1,0 +1,32 @@
+{
+  "item_inputs": [
+    {
+      "ingredient": [
+        {
+          "item": "minecraft:coal"
+        },
+        {
+          "item": "minecraft:charcoal"
+        }
+      ],
+      "count": 1
+    }
+  ],
+  "energy_per_tick": 40,
+  "type": "alone_mechanical:machine",
+  "item_outputs": [
+    {
+      "count": 1,
+      "item": "alone_mechanical:sulfur"
+    }
+  ],
+  "ticks": 200,
+  "machine": "alone_mechanical:crystallization",
+  "fluid_inputs": [
+    null,
+    {
+      "fluid": "minecraft:water",
+      "amount": 1000
+    }
+  ]
+}

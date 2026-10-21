@@ -3,6 +3,12 @@
   "machine": "alone_mechanical:distillation_tower",
   "ticks": 200,
   "energy_per_tick": 60,
+  "fluid_inputs": [
+    {
+      "fluid": "alone_mechanical:raw_water",
+      "amount": 1000
+    }
+  ],
   "fluid_outputs": [
     {
       "fluid": "minecraft:water",
@@ -11,12 +17,6 @@
     {
       "fluid": "alone_mechanical:brine",
       "amount": 100
-    }
-  ],
-  "fluid_inputs": [
-    {
-      "fluid": "alone_mechanical:raw_water",
-      "amount": 1000
     }
   ]
 }

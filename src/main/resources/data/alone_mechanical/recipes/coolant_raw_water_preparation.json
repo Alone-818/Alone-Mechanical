@@ -1,21 +1,21 @@
 {
   "type": "alone_mechanical:machine",
-  "machine": "alone_mechanical:dissolution",
+  "machine": "alone_mechanical:reaction",
   "ticks": 100,
   "energy_per_tick": 40,
-  "fluid_inputs": [
-    null,
-    {
-      "fluid": "minecraft:water",
-      "amount": 1000
-    }
-  ],
   "item_inputs": [
     {
       "ingredient": {
         "item": "minecraft:gravel"
       },
       "count": 1
+    }
+  ],
+  "fluid_inputs": [
+    null,
+    {
+      "fluid": "minecraft:water",
+      "amount": 1000
     }
   ],
   "fluid_outputs": [

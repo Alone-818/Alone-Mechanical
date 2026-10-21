@@ -7,7 +7,7 @@
       "gas": "alone_mechanical:sulfuric_acid"
     }
   ],
-  "machine": "alone_mechanical:gas_reactor",
+  "machine": "alone_mechanical:reaction",
   "gas_inputs": [
     {
       "amount": 1000,

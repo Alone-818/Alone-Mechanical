@@ -32,6 +32,7 @@ public final class MachineDefinitions {
     public static final ResourceLocation GAS_REACTOR=new ResourceLocation("alone_mechanical","gas_reactor");
     public static final ResourceLocation REACTION_CORE=new ResourceLocation("alone_mechanical","reaction");
     public static final ResourceLocation SEPARATION_CORE=new ResourceLocation("alone_mechanical","separation");
+    public static final ResourceLocation SEPARATOR=new ResourceLocation("alone_mechanical","separator");
     public record SeparatorProfile(ResourceLocation id,PartKind input,PartKind firstOutput,PartKind secondOutput){
         public PartKind kind(int channel){return channel==0?input:channel==2?firstOutput:channel==3?secondOutput:null;}
         public boolean matches(PartKind[] stores){return stores.length>=4&&stores[0]==input&&stores[1]==null&&((stores[2]==firstOutput&&stores[3]==secondOutput)||(stores[2]==secondOutput&&stores[3]==firstOutput));}
@@ -56,8 +57,11 @@ public final class MachineDefinitions {
         separator("gas_liquid_separation",PartKind.GAS_TANK,PartKind.FLUID_TANK,PartKind.GAS_TANK),
         separator("gas_fractionation",PartKind.GAS_TANK,PartKind.GAS_TANK,PartKind.GAS_TANK));
     private static SeparatorProfile separator(String name,PartKind input,PartKind first,PartKind second){return new SeparatorProfile(new ResourceLocation("alone_mechanical","separator_"+name),input,first,second);}
+    /** Recognizes the unified separator and legacy profile IDs for world/recipe migration. */
+    public static boolean isSeparator(ResourceLocation id){return id!=null&&id.getNamespace().equals("alone_mechanical")&&(id.equals(SEPARATOR)||id.getPath().startsWith("separator_"));}
     public static SeparatorProfile separator(ResourceLocation id){return SEPARATORS.stream().filter(p->p.id().equals(id)).findFirst().orElse(null);}
-    public static ResourceLocation resolveSeparator(PartKind[] stores){return SEPARATORS.stream().filter(p->p.matches(stores)).map(SeparatorProfile::id).findFirst().orElse(UNKNOWN);}
+    public static SeparatorProfile separatorProfile(PartKind input,PartKind first,PartKind second){return input==null||first==null||second==null?null:new SeparatorProfile(SEPARATOR,input,first,second);}
+    public static ResourceLocation resolveSeparator(PartKind[] stores){return stores!=null&&SEPARATORS.stream().anyMatch(p->p.matches(stores))?SEPARATOR:UNKNOWN;}
     public static final ResourceLocation CONVERSION_CORE=new ResourceLocation("alone_mechanical","conversion");
     public static final ResourceLocation GAS_LIQUID_CONVERTER=new ResourceLocation("alone_mechanical","gas_liquid_converter");
     public record ReactorProfile(ResourceLocation id,PartKind first,PartKind second,PartKind output){
@@ -76,7 +80,7 @@ public final class MachineDefinitions {
         reactor("solid_fusion",PartKind.ITEM_VAULT,PartKind.ITEM_VAULT,PartKind.ITEM_VAULT));
     private static ReactorProfile reactor(String id,PartKind first,PartKind second,PartKind output){return new ReactorProfile(new ResourceLocation("alone_mechanical",id),first,second,output);}
     public static ReactorProfile reactor(ResourceLocation id){return REACTORS.stream().filter(p->p.id.equals(id)).findFirst().orElse(null);}
-    public static ResourceLocation resolveReactor(PartKind[] stores){return REACTORS.stream().filter(p->p.matches(stores)).map(ReactorProfile::id).findFirst().orElse(UNKNOWN);}
+    public static ResourceLocation resolveReactor(PartKind[] stores){return stores!=null&&stores.length>=4&&stores[0]!=null&&stores[1]!=null&&stores[2]!=null&&stores[3]==null&&java.util.stream.IntStream.range(0,3).allMatch(i->java.util.Set.of(PartKind.ITEM_VAULT,PartKind.FLUID_TANK,PartKind.GAS_TANK).contains(stores[i]))?REACTION_CORE:UNKNOWN;}
     static {
         for(var type:List.of(DISTILLATION_TOWER,CONDENSATION_TOWER,EXCHANGE_TOWER,AIR_SEPARATION_TOWER))register(new Definition(type,type,Set::isEmpty));
         for(var type:List.of(SLAUGHTER,BREEDING,HARVEST,REPELLER))register(new Definition(type,INDUSTRIAL_CORE,k->k.contains(PartKind.ITEM_VAULT)));

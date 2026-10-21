@@ -8,7 +8,7 @@
   "energy_per_tick": 60,
   "type": "alone_mechanical:machine",
   "ticks": 200,
-  "machine": "alone_mechanical:liquid_capture",
+  "machine": "alone_mechanical:reaction",
   "fluid_inputs": [
     {
       "amount": 1000,

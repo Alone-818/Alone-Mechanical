@@ -1,20 +1,20 @@
 {
   "variants": {
     "facing=north": {
-      "model": "alone_mechanical:block/exchange_component",
-      "y": 0
+      "y": 0,
+      "model": "alone_mechanical:block/exchange_component"
     },
     "facing=east": {
-      "model": "alone_mechanical:block/exchange_component",
-      "y": 90
+      "y": 90,
+      "model": "alone_mechanical:block/exchange_component"
     },
     "facing=south": {
-      "model": "alone_mechanical:block/exchange_component",
-      "y": 180
+      "y": 180,
+      "model": "alone_mechanical:block/exchange_component"
     },
     "facing=west": {
-      "model": "alone_mechanical:block/exchange_component",
-      "y": 270
+      "y": 270,
+      "model": "alone_mechanical:block/exchange_component"
     }
   }
 }

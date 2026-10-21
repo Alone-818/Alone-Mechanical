@@ -8,7 +8,7 @@
   "energy_per_tick": 60,
   "type": "alone_mechanical:machine",
   "ticks": 160,
-  "machine": "alone_mechanical:dissolution",
+  "machine": "alone_mechanical:reaction",
   "fluid_inputs": [
     null,
     {

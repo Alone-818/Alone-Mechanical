@@ -1,22 +1,22 @@
 {
   "type": "alone_mechanical:machine",
-  "machine": "alone_mechanical:liquid_reactor",
+  "machine": "alone_mechanical:reaction",
   "ticks": 100,
   "energy_per_tick": 80,
   "fluid_inputs": [
     {
-      "amount": 1000,
-      "fluid": "minecraft:water"
+      "fluid": "minecraft:water",
+      "amount": 1000
     },
     {
-      "amount": 250,
-      "fluid": "alone_mechanical:nether_dimension_conversion"
+      "fluid": "alone_mechanical:nether_dimension_conversion",
+      "amount": 250
     }
   ],
   "fluid_outputs": [
     {
-      "amount": 1000,
-      "fluid": "minecraft:lava"
+      "fluid": "minecraft:lava",
+      "amount": 1000
     }
   ]
 }

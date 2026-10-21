@@ -1,7 +1,6 @@
 package Alone818.com.alone_mechanical.client.jei;
 
 import Alone818.com.alone_mechanical.recipe.RecipeDisplays;
-import Alone818.com.alone_mechanical.client.GasRendering;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -39,15 +38,14 @@ public final class MachineJeiCategory implements IRecipeCategory<RecipeDisplays.
                 else outputSlot.addItemStack(r.outputs()[i]);
             }
         }
-        for(int i=0;i<4;i++)if(!r.fluids()[i].isEmpty())builder.addSlot(i<2?RecipeIngredientRole.INPUT:RecipeIngredientRole.OUTPUT,(i<2?8:118)+(i%2)*22,30).addFluidStack(r.fluids()[i].getFluid(),r.fluids()[i].getAmount(),r.fluids()[i].getTag()).setFluidRenderer(Math.max(1000,r.fluids()[i].getAmount()),false,16,16);
+        for(int i=0;i<4;i++){
+            int x=(i<2?8:118)+(i%2)*22;
+            if(!r.fluids()[i].isEmpty())builder.addSlot(i<2?RecipeIngredientRole.INPUT:RecipeIngredientRole.OUTPUT,x,30).addFluidStack(r.fluids()[i].getFluid(),r.fluids()[i].getAmount(),r.fluids()[i].getTag()).setFluidRenderer(Math.max(1000,r.fluids()[i].getAmount()),false,16,16);
+            if(!r.gases()[i].isEmpty())builder.addSlot(i<2?RecipeIngredientRole.INPUT:RecipeIngredientRole.OUTPUT,x,30).addIngredient(GasJeiIngredient.TYPE,r.gases()[i]);
+        }
     }
     @Override public void draw(RecipeDisplays.Display r,IRecipeSlotsView slots,GuiGraphics graphics,double mouseX,double mouseY){
         var font=Minecraft.getInstance().font;
-        for(int i=0;i<r.gases().length;i++)if(!r.gases()[i].isEmpty()){
-            int x=(i<2?8:118)+(i%2)*22;
-            graphics.fill(x-1,29,x+17,47,0xff526573);
-            GasRendering.draw(graphics,r.gases()[i],r.gases()[i].amount(),x,30,16,16);
-        }
         graphics.drawString(font,"→",76,12,0xff526573,false);
         var name=RecipeDisplays.recipeName(r);if(net.minecraft.locale.Language.getInstance().has("recipe."+r.id().getNamespace()+"."+r.id().getPath().replace('/','.'))){
             graphics.pose().pushPose();graphics.pose().translate(6,0,0);float scale=Math.min(1,156f/Math.max(1,font.width(name)));graphics.pose().scale(scale,scale,1);graphics.drawString(font,name,0,0,0xff526573,false);graphics.pose().popPose();
@@ -59,10 +57,6 @@ public final class MachineJeiCategory implements IRecipeCategory<RecipeDisplays.
         }
     }
     @Override public List<Component> getTooltipStrings(RecipeDisplays.Display r,IRecipeSlotsView slots,double mouseX,double mouseY){
-        for(int i=0;i<r.gases().length;i++)if(!r.gases()[i].isEmpty()){
-            int x=(i<2?8:118)+(i%2)*22;
-            if(mouseX>=x&&mouseX<x+16&&mouseY>=30&&mouseY<46)return List.of(GasRendering.name(r.gases()[i]),Component.literal(r.gases()[i].amount()+" mB"));
-        }
         return List.of();
     }
 }

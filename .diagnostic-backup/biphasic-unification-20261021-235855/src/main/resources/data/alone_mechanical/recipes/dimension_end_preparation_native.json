@@ -1,0 +1,27 @@
+{
+  "type": "alone_mechanical:machine",
+  "machine": "alone_mechanical:dissolution",
+  "ticks": 240,
+  "energy_per_tick": 120,
+  "item_inputs": [
+    {
+      "ingredient": {
+        "item": "minecraft:popped_chorus_fruit"
+      },
+      "count": 1
+    }
+  ],
+  "fluid_inputs": [
+    null,
+    {
+      "fluid": "alone_mechanical:heavy_water",
+      "amount": 1000
+    }
+  ],
+  "fluid_outputs": [
+    {
+      "fluid": "alone_mechanical:end_dimension_conversion",
+      "amount": 1000
+    }
+  ]
+}

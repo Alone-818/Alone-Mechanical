@@ -1,0 +1,22 @@
+{
+  "fluid_outputs": [
+    {
+      "amount": 2000,
+      "fluid": "alone_mechanical:intermediate_electrolyte"
+    }
+  ],
+  "energy_per_tick": 40,
+  "type": "alone_mechanical:machine",
+  "ticks": 160,
+  "machine": "alone_mechanical:liquid_reactor",
+  "fluid_inputs": [
+    {
+      "amount": 1000,
+      "fluid": "alone_mechanical:basic_electrolyte"
+    },
+    {
+      "amount": 1000,
+      "fluid": "alone_mechanical:sulfuric_acid"
+    }
+  ]
+}

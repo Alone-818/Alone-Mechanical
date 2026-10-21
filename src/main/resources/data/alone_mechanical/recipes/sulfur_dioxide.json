@@ -15,7 +15,7 @@
       "gas": "alone_mechanical:sulfur_dioxide"
     }
   ],
-  "machine": "alone_mechanical:solid_gasification",
+  "machine": "alone_mechanical:reaction",
   "gas_inputs": [
     null,
     {

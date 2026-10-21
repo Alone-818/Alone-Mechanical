@@ -138,16 +138,16 @@ public class MachineBlockEntity extends SyncedBlockEntity implements MenuProvide
         List<IItemHandlerModifiable> list=new ArrayList<>();
         for(var s:storage(PartKind.ITEM_VAULT,channel))list.add(s.inventory);return list;
     });}
-    public boolean liquidReactor(){return machineType().equals(MachineDefinitions.LIQUID_REACTOR);}
-    public boolean gasReactor(){return machineType().equals(MachineDefinitions.GAS_REACTOR);}
-    public boolean tankReactor(){return MachineDefinitions.reactor(machineType())!=null;}
+    public boolean liquidReactor(){return tankReactor();}
+    public boolean gasReactor(){return tankReactor();}
+    public boolean tankReactor(){return machineType().equals(MachineDefinitions.REACTION_CORE)||MachineDefinitions.reactor(machineType())!=null;}
     public boolean alloySmelter(){return machineType().equals(MachineDefinitions.ALLOY_SMELTER);}
     public boolean infuser(){return machineType().equals(MachineDefinitions.INFUSER);}
     public boolean boiler(){return machineType().equals(MachineDefinitions.BOILER);}
     public boolean nuclearReactor(){return machineType().equals(MachineDefinitions.NUCLEAR_REACTOR);}
     public boolean heatProcessor(){return boiler()||nuclearReactor();}
     public boolean formingMachine(){return machineType().equals(MachineDefinitions.FORMING_MACHINE);}
-    public boolean separator(){return MachineDefinitions.separator(machineType())!=null;}
+    public boolean separator(){return MachineDefinitions.isSeparator(machineType());}
     public boolean converter(){return machineType().equals(MachineDefinitions.GAS_LIQUID_CONVERTER);}
     public ConversionMode conversionMode(){return conversionMode;}
     /** Called only by the validated server menu; reconfigure all ports as one server operation. */
@@ -181,10 +181,10 @@ public class MachineBlockEntity extends SyncedBlockEntity implements MenuProvide
             }else if(family.equals(MachineDefinitions.SEPARATION_CORE)){
                 if(level instanceof ServerLevel server){
                     var recipe=server.getRecipeManager().getAllRecipesFor(ModRecipes.MACHINE_TYPE.get()).stream()
-                        .filter(r->r.matchesSeparatorInputs(this)&&separatorOutputOrder(MachineDefinitions.separator(r.machine),samples)>=0)
+                        .filter(r->r.matchesSeparatorInputs(this)&&separatorOutputOrder(r.separatorProfile(),samples)>=0)
                         .sorted(Comparator.comparing(r->r.id.toString())).findFirst().orElse(null);
                     if(recipe!=null){
-                        var profile=MachineDefinitions.separator(recipe.machine);int swap=separatorOutputOrder(profile,samples);
+                        var profile=recipe.separatorProfile();int swap=separatorOutputOrder(profile,samples);
                         for(int i=0;i<2;i++){int channel=2+(i^swap);var sample=samples[channel];if(sample.isTank()&&sample.empty())sample.prepareOutput(i==0?profile.firstOutput():profile.secondOutput());}
                     }
                 }
@@ -208,7 +208,7 @@ public class MachineBlockEntity extends SyncedBlockEntity implements MenuProvide
                 if(samples[2]!=null&&samples[2].isTank()&&samples[2].empty()){
                     if(level instanceof ServerLevel server){
                         var recipe=server.getRecipeManager().getAllRecipesFor(ModRecipes.MACHINE_TYPE.get()).stream().filter(r->r.matchesReactorInputs(this)).sorted(Comparator.comparing(r->r.id.toString())).findFirst().orElse(null);
-                        if(recipe!=null)samples[2].prepareOutput(MachineDefinitions.reactor(recipe.machine).output());
+                        if(recipe!=null&&recipe.reactorOutputKind()!=null&&recipe.reactorOutputKind().isTank())samples[2].prepareOutput(recipe.reactorOutputKind());
                     }
                     reactorStores[2]=samples[2].kind();
                     if(MachineDefinitions.resolveReactor(reactorStores).equals(MachineDefinitions.UNKNOWN)){
@@ -237,12 +237,24 @@ public class MachineBlockEntity extends SyncedBlockEntity implements MenuProvide
         var profile=MachineDefinitions.separator(type);
         return profile!=null&&profile.firstOutput()!=profile.secondOutput()&&reactorStores[2]==profile.secondOutput()&&reactorStores[3]==profile.firstOutput()?3-output:2+output;
     }
+    public int recipeOutputChannel(int output,MachineRecipe recipe){
+        if(recipe!=null&&MachineDefinitions.isSeparator(recipe.machine)){
+            var profile=recipe.separatorProfile();
+            return profile!=null&&profile.firstOutput()!=profile.secondOutput()&&reactorStores[2]==profile.secondOutput()&&reactorStores[3]==profile.firstOutput()?3-output:2+output;
+        }
+        return recipeOutputChannel(output,recipe==null?machineType():recipe.machine);
+    }
     public int recipeInputChannel(int channel){
         return recipeInputChannel(channel,machineType());
     }
     public int recipeInputChannel(int channel,ResourceLocation type){
         var profile=MachineDefinitions.reactor(type);
         return profile!=null&&profile.first()!=profile.second()&&reactorStores[0]==profile.second()?1-channel:channel;
+    }
+    public int recipeInputChannel(int channel,MachineRecipe recipe){
+        if(recipe==null||!recipe.machine.equals(MachineDefinitions.REACTION_CORE))return recipeInputChannel(channel,recipe==null?machineType():recipe.machine);
+        var first=recipe.reactorInputKind(0);var second=recipe.reactorInputKind(1);
+        return first!=null&&second!=null&&first!=second&&reactorStores[0]==second&&reactorStores[1]==first?1-channel:channel;
     }
     public IFluidHandler fluidChannel(int channel){if(tower())return towerContents.fluids[channel];return ResourceBanks.fluids(()->{List<IFluidHandler> list=new ArrayList<>();if(!tankReactor()&&!converter()&&!alloySmelter()&&!separator()&&!infuser()&&!formingMachine()&&!heatProcessor()&&!turbine())list.add(fluids[channel]);for(var s:storage(PartKind.FLUID_TANK,channel))list.add(s.tank);return list;});}
     public IGasHandler gasChannel(int channel){if(tower())return towerContents.gases[channel];return ResourceBanks.gases(()->{List<IGasHandler> list=new ArrayList<>();if(!tankReactor()&&!converter()&&!alloySmelter()&&!separator()&&!infuser()&&!formingMachine()&&!heatProcessor()&&!turbine())list.add(gases[channel]);for(var s:storage(PartKind.GAS_TANK,channel))list.add(s.gas);return list;});}
@@ -372,7 +384,9 @@ public class MachineBlockEntity extends SyncedBlockEntity implements MenuProvide
             var available=gasChannel(0).contents();
             if(available.gas().equals(Alone818.com.alone_mechanical.gas.GasStack.STEAM_ID)&&available.amount()>=steam&&(long)storedEnergy+rate<=batteryCapacity()){
                 gasChannel(0).drain(steam,false);storedEnergy+=rate;powered=true;setChanged();
+
             } else powered=false;
+            exportTurbineEnergy(server, rate);
             updateTurbineRotors(powered?steam:0);
             return;
         }
@@ -395,6 +409,11 @@ public class MachineBlockEntity extends SyncedBlockEntity implements MenuProvide
             setChanged();
         }
         if(nuclearReactor())reactorSafety.tick(this,burned,ReactorSafety.fuelGrade(recipe.fluids[0]));
+    }
+    private void exportTurbineEnergy(ServerLevel server, int limit){
+        int remaining=limit;
+        for(var p:members)if(remaining>0&&level.getBlockState(p).getBlock() instanceof MachinePartBlock block&&block.kind==PartKind.ENERGY_MATRIX)
+            remaining-=PowerGridData.get(server).pushEnergy(server,p,battery,remaining);
     }
     private void updateTurbineRotors(int steamPerTick){
         if(level==null||level.isClientSide)return;
@@ -448,8 +467,8 @@ public class MachineBlockEntity extends SyncedBlockEntity implements MenuProvide
         Arrays.fill(gasOutputModes,GasOutputMode.KEEP);var gasModes=n.getIntArray("GasOutputModes");for(int i=0;i<Math.min(2,gasModes.length);i++)gasOutputModes[i]=GasOutputMode.byIndex(gasModes[i]);
         Arrays.fill(reactorStores,null);var stores=n.getIntArray("ReactorStores");
         for(int i=0;i<Math.min(4,stores.length);i++)if(stores[i]>=0&&stores[i]<PartKind.values().length)reactorStores[i]=PartKind.values()[stores[i]];
-        var profile=MachineDefinitions.reactor(resolvedMachine);if(stores.length==0&&profile!=null)for(int i=0;i<3;i++)reactorStores[i]=profile.kind(i);
-        var separation=MachineDefinitions.separator(resolvedMachine);if(stores.length==0&&separation!=null)for(int i=0;i<4;i++)reactorStores[i]=separation.kind(i);
+        var profile=MachineDefinitions.reactor(resolvedMachine);if(stores.length==0&&profile!=null)for(int i=0;i<3;i++)reactorStores[i]=profile.kind(i);if(profile!=null)resolvedMachine=MachineDefinitions.REACTION_CORE;
+        var separation=MachineDefinitions.separator(resolvedMachine);if(stores.length==0&&separation!=null)for(int i=0;i<4;i++)reactorStores[i]=separation.kind(i);if(MachineDefinitions.isSeparator(resolvedMachine))resolvedMachine=MachineDefinitions.SEPARATOR;
         if(stores.length==0&&resolvedMachine.equals(MachineDefinitions.GAS_LIQUID_CONVERTER)){reactorStores[0]=conversionMode.input;reactorStores[2]=conversionMode.output;}
         selected=n.getBoolean("Selected");minimum=n.contains("Minimum")?BlockPos.of(n.getLong("Minimum")):worldPosition;maximum=n.contains("Maximum")?BlockPos.of(n.getLong("Maximum")):worldPosition;
         progress = Math.max(0, n.getInt("Progress")); duration = n.getInt("Duration"); energyCost = n.getInt("EnergyCost");

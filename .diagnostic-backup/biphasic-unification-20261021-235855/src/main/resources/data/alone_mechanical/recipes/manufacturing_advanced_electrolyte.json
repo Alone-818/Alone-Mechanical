@@ -1,0 +1,25 @@
+{
+  "fluid_outputs": [
+    {
+      "amount": 2000,
+      "fluid": "alone_mechanical:advanced_electrolyte"
+    }
+  ],
+  "energy_per_tick": 60,
+  "type": "alone_mechanical:machine",
+  "ticks": 200,
+  "machine": "alone_mechanical:liquid_capture",
+  "fluid_inputs": [
+    {
+      "amount": 1000,
+      "fluid": "alone_mechanical:intermediate_electrolyte"
+    }
+  ],
+  "gas_inputs": [
+    null,
+    {
+      "gas": "alone_mechanical:ammonia",
+      "amount": 1000
+    }
+  ]
+}

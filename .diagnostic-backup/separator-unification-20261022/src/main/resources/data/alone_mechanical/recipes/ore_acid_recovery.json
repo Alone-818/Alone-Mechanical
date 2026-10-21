@@ -1,0 +1,22 @@
+{
+  "type": "alone_mechanical:machine",
+  "machine": "alone_mechanical:separator_liquid_fractionation",
+  "ticks": 160,
+  "energy_per_tick": 80,
+  "fluid_outputs": [
+    {
+      "fluid": "alone_mechanical:sulfuric_acid",
+      "amount": 500
+    },
+    {
+      "fluid": "minecraft:water",
+      "amount": 500
+    }
+  ],
+  "fluid_inputs": [
+    {
+      "fluid": "alone_mechanical:acidic_mother_liquor",
+      "amount": 1000
+    }
+  ]
+}

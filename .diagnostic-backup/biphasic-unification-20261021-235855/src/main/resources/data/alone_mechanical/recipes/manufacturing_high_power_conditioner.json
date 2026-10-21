@@ -1,0 +1,27 @@
+{
+  "fluid_outputs": [
+    {
+      "amount": 1000,
+      "fluid": "alone_mechanical:high_power_conditioner"
+    }
+  ],
+  "energy_per_tick": 60,
+  "type": "alone_mechanical:machine",
+  "ticks": 160,
+  "machine": "alone_mechanical:dissolution",
+  "fluid_inputs": [
+    null,
+    {
+      "amount": 1000,
+      "fluid": "alone_mechanical:advanced_electrolyte"
+    }
+  ],
+  "item_inputs": [
+    {
+      "ingredient": {
+        "item": "minecraft:redstone"
+      },
+      "count": 4
+    }
+  ]
+}

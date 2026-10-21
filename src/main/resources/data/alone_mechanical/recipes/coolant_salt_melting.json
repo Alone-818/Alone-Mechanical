@@ -9,17 +9,17 @@
       "amount": 1000
     }
   ],
-  "gas_outputs": [
-    null,
-    {
-      "amount": 800,
-      "gas": "alone_mechanical:steam"
-    }
-  ],
   "fluid_outputs": [
     {
       "fluid": "alone_mechanical:molten_salt",
       "amount": 200
+    }
+  ],
+  "gas_outputs": [
+    null,
+    {
+      "gas": "alone_mechanical:steam",
+      "amount": 800
     }
   ]
 }

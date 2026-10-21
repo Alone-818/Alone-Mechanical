@@ -52,14 +52,16 @@ public final class ModItems {
     public static final RegistryObject<Item> DIAMOND_DUST = registerItem("diamond_dust", Item::new);
     // Legacy concentrate/crystal IDs now represent nonmetal clumps/shards respectively.
     public static final RegistryObject<Item> WASHED_DIAMOND_CONCENTRATE = registerItem("washed_diamond_concentrate", Item::new);
+    public static final RegistryObject<Item> WASHED_EMERALD_CONCENTRATE = registerItem("washed_emerald_concentrate", Item::new);
     public static final RegistryObject<Item> WASHED_REDSTONE_CONCENTRATE = registerItem("washed_redstone_concentrate", Item::new);
     public static final RegistryObject<Item> WASHED_LAPIS_CONCENTRATE = registerItem("washed_lapis_concentrate", Item::new);
     public static final RegistryObject<Item> DIAMOND_ENRICHED_CRYSTAL = registerItem("diamond_enriched_crystal", Item::new);
+    public static final RegistryObject<Item> EMERALD_ENRICHED_CRYSTAL = registerItem("emerald_enriched_crystal", Item::new);
     public static final RegistryObject<Item> REDSTONE_ENRICHED_CRYSTAL = registerItem("redstone_enriched_crystal", Item::new);
     public static final RegistryObject<Item> LAPIS_ENRICHED_CRYSTAL = registerItem("lapis_enriched_crystal", Item::new);
     public static final java.util.List<RegistryObject<Item>> NONMETAL_ORE_INTERMEDIATES = java.util.List.of(
-        WASHED_DIAMOND_CONCENTRATE,WASHED_REDSTONE_CONCENTRATE,WASHED_LAPIS_CONCENTRATE,
-        DIAMOND_ENRICHED_CRYSTAL,REDSTONE_ENRICHED_CRYSTAL,LAPIS_ENRICHED_CRYSTAL);
+        WASHED_DIAMOND_CONCENTRATE,WASHED_EMERALD_CONCENTRATE,WASHED_REDSTONE_CONCENTRATE,WASHED_LAPIS_CONCENTRATE,
+        DIAMOND_ENRICHED_CRYSTAL,EMERALD_ENRICHED_CRYSTAL,REDSTONE_ENRICHED_CRYSTAL,LAPIS_ENRICHED_CRYSTAL);
     public static final RegistryObject<Item> NETHERITE_DUST = registerItem("netherite_dust", Item::new);
     public static final RegistryObject<Item> QUARTZ_SAND = registerItem("quartz_sand", Item::new);
     public static final RegistryObject<Item> IRON_PLATE = registerItem("iron_plate", Item::new);

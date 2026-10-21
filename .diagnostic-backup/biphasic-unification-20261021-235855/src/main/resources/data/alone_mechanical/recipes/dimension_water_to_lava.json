@@ -1,0 +1,22 @@
+{
+  "type": "alone_mechanical:machine",
+  "machine": "alone_mechanical:liquid_reactor",
+  "ticks": 100,
+  "energy_per_tick": 80,
+  "fluid_inputs": [
+    {
+      "fluid": "minecraft:water",
+      "amount": 1000
+    },
+    {
+      "fluid": "alone_mechanical:nether_dimension_conversion",
+      "amount": 250
+    }
+  ],
+  "fluid_outputs": [
+    {
+      "fluid": "minecraft:lava",
+      "amount": 1000
+    }
+  ]
+}

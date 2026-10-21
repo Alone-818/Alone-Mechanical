@@ -1,6 +1,6 @@
 {
   "type": "alone_mechanical:machine",
-  "machine": "alone_mechanical:liquid_reactor",
+  "machine": "alone_mechanical:reaction",
   "ticks": 160,
   "energy_per_tick": 60,
   "fluid_outputs": [

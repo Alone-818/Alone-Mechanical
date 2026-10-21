@@ -48,26 +48,56 @@ public final class MachineRecipe implements Recipe<SimpleContainer> {
     }
     public boolean matchesMachine(MachineBlockEntity m,int batches) {
         if(!safeBatch(batches))return false;
-        if (!machine.equals(m.machineType())) return false;
+        if (!machine.equals(m.machineType())&&!(MachineDefinitions.isSeparator(machine)&&m.separator())) return false;
+        if(machine.equals(MachineDefinitions.REACTION_CORE)&&!validReactor())return false;
         if(MachineDefinitions.tower(machine)&&!validTower())return false;
         if(machine.equals(MachineDefinitions.DISTILLATION_TOWER)&&hasSecondOutput()&&!m.towerContents.hasSecondOutput())return false;
         if(!validIndustrial())return false;
         if(machine.equals(MachineDefinitions.ALLOY_SMELTER)&&!validAlloy())return false;
         if(machine.equals(MachineDefinitions.BOILER)&&!validBoiler())return false;
         if(machine.equals(MachineDefinitions.NUCLEAR_REACTOR)&&!validNuclear())return false;
-        if(MachineDefinitions.separator(machine)!=null&&!validSeparator())return false;
+        if(MachineDefinitions.isSeparator(machine)&&!validSeparator())return false;
         if(m.converter()&&conversion!=m.conversionMode())return false;
         return matchesInputs(m,batches);
     }
+    public PartKind reactorInputKind(int channel){
+        if(channel<0||channel>1)return null;
+        boolean item=counts[channel]>0&&!ingredients[channel].isEmpty();
+        boolean fluid=!fluids[channel].isEmpty(),gas=!gases[channel].isEmpty();
+        if((item?1:0)+(fluid?1:0)+(gas?1:0)!=1)return null;
+        return item?PartKind.ITEM_VAULT:fluid?PartKind.FLUID_TANK:PartKind.GAS_TANK;
+    }
+    public PartKind reactorOutputKind(){
+        boolean item=!outputs[0].isEmpty(),fluid=!fluids[2].isEmpty(),gas=!gases[2].isEmpty();
+        if((item?1:0)+(fluid?1:0)+(gas?1:0)!=1)return null;
+        return item?PartKind.ITEM_VAULT:fluid?PartKind.FLUID_TANK:PartKind.GAS_TANK;
+    }
+    public boolean validReactor(){
+        return ticks>0&&energy>=0&&alternateOutput.isEmpty()&&reactorInputKind(0)!=null&&reactorInputKind(1)!=null&&reactorOutputKind()!=null
+            &&outputs[1].isEmpty()&&fluids[3].isEmpty()&&gases[3].isEmpty();
+    }
     public boolean matchesReactorInputs(MachineBlockEntity m){
-        var profile=MachineDefinitions.reactor(machine);if(profile==null||!profile.output().isTank())return false;
-        var first=m.reactorStore(0);var second=m.reactorStore(1);
-        return ((first==profile.first()&&second==profile.second())||(first==profile.second()&&second==profile.first()))&&matchesInputs(m,1);
+        if(!machine.equals(MachineDefinitions.REACTION_CORE)||!validReactor())return false;
+        var first=m.reactorStore(0);var second=m.reactorStore(1);var expectedFirst=reactorInputKind(0);var expectedSecond=reactorInputKind(1);
+        return ((first==expectedFirst&&second==expectedSecond)||(first==expectedSecond&&second==expectedFirst))&&matchesInputs(m,1);
     }
     public boolean hasSecondOutput(){return !outputs[1].isEmpty()||!fluids[3].isEmpty()||!gases[3].isEmpty();}
     public boolean matchesSeparatorInputs(MachineBlockEntity m){
-        var profile=MachineDefinitions.separator(machine);
-        return profile!=null&&validSeparator()&&m.reactorStore(0)==profile.input()&&matchesInputs(m,1);
+        var profile=separatorProfile();
+        return profile!=null&&MachineDefinitions.isSeparator(machine)&&m.separator()&&m.reactorStore(0)==profile.input()&&matchesInputs(m,1);
+    }
+    private PartKind separatorPhaseKind(int channel){
+        if(channel<0||channel>3)return null;
+        boolean item=channel<2?counts[channel]>0&&!ingredients[channel].isEmpty():!outputs[channel-2].isEmpty();
+        boolean fluid=!fluids[channel].isEmpty(),gas=!gases[channel].isEmpty();
+        if((item?1:0)+(fluid?1:0)+(gas?1:0)!=1)return null;
+        return item?PartKind.ITEM_VAULT:fluid?PartKind.FLUID_TANK:PartKind.GAS_TANK;
+    }
+    public PartKind separatorInputKind(){return validSeparator()?separatorPhaseKind(0):null;}
+    public PartKind separatorOutputKind(int output){return output<0||output>1||!validSeparator()?null:separatorPhaseKind(output+2);}
+    public MachineDefinitions.SeparatorProfile separatorProfile(){
+        if(!validSeparator())return null;
+        return MachineDefinitions.separatorProfile(separatorPhaseKind(0),separatorPhaseKind(2),separatorPhaseKind(3));
     }
     private boolean matchesInputs(MachineBlockEntity m,int batches){
         if (smeltingSource != null) {
@@ -78,7 +108,7 @@ public final class MachineRecipe implements Recipe<SimpleContainer> {
             return false;
         }
         for (int i = 0; i < 2; i++) {
-            int inputChannel=m.recipeInputChannel(i,machine);
+            int inputChannel=m.recipeInputChannel(i,this);
             long available=0;var channel=m.itemChannel(inputChannel);
             for(int slot=0;slot<channel.getSlots();slot++)if(ingredients[i].test(channel.getStackInSlot(slot)))available+=channel.getStackInSlot(slot).getCount();
             if((long)counts[i]*batches>available)return false;
@@ -93,14 +123,15 @@ public final class MachineRecipe implements Recipe<SimpleContainer> {
     }
     public boolean outputFits(MachineBlockEntity m,int batches) {
         if(!safeBatch(batches))return false;
+        if(machine.equals(MachineDefinitions.REACTION_CORE)&&!validReactor())return false;
         if(MachineDefinitions.tower(machine)&&!validTower())return false;
         if(!validIndustrial())return false;
         if(machine.equals(MachineDefinitions.ALLOY_SMELTER)&&!validAlloy())return false;
         if(machine.equals(MachineDefinitions.BOILER)&&!validBoiler())return false;
         if(machine.equals(MachineDefinitions.NUCLEAR_REACTOR)&&!validNuclear())return false;
-        if(MachineDefinitions.separator(machine)!=null&&!validSeparator())return false;
+        if(MachineDefinitions.isSeparator(machine)&&!validSeparator())return false;
         for (int i = 0; i < 2; i++) {
-            int outputChannel=m.recipeOutputChannel(i,machine);
+            int outputChannel=m.recipeOutputChannel(i,this);
             if(i==0&&!alternateOutput.isEmpty()){
                 if(!randomOutputFits(m,batches))return false;
             }else if (!net.minecraftforge.items.ItemHandlerHelper.insertItem(m.itemChannel(outputChannel),scaled(outputs[i],batches),true).isEmpty()) return false;
@@ -124,8 +155,8 @@ public final class MachineRecipe implements Recipe<SimpleContainer> {
             return true;
         }
         for (int i = 0; i < 2; i++) {
-            int inputChannel=m.recipeInputChannel(i,machine);
-            int outputChannel=m.recipeOutputChannel(i,machine);
+            int inputChannel=m.recipeInputChannel(i,this);
+            int outputChannel=m.recipeOutputChannel(i,this);
             int remaining=counts[i]*batches;var channel=m.itemChannel(inputChannel);
             for(int slot=0;slot<channel.getSlots()&&remaining>0;slot++)if(ingredients[i].test(channel.getStackInSlot(slot)))remaining-=channel.extractItem(slot,remaining,false).getCount();
             if(i==0&&!alternateOutput.isEmpty()){
@@ -142,7 +173,7 @@ public final class MachineRecipe implements Recipe<SimpleContainer> {
         return true;
     }
     private boolean randomOutputFits(MachineBlockEntity m,int batches){
-        var bank=m.itemChannel(m.recipeOutputChannel(0,machine));
+        var bank=m.itemChannel(m.recipeOutputChannel(0,this));
         if(batches==1)return net.minecraftforge.items.ItemHandlerHelper.insertItem(bank,outputs[0],true).isEmpty()
             &&net.minecraftforge.items.ItemHandlerHelper.insertItem(bank,alternateOutput,true).isEmpty();
         // Reserve room for either whole-batch outcome in a shared copy; no RNG is consumed by simulation.
@@ -205,12 +236,12 @@ public final class MachineRecipe implements Recipe<SimpleContainer> {
             &&fluids[0].isEmpty()&&gases[0].isEmpty()&&fluids[2].isEmpty()&&fluids[3].isEmpty()&&gases[2].isEmpty()&&gases[3].isEmpty();
     }
     private boolean validSeparator(){
-        var profile=MachineDefinitions.separator(machine);if(profile==null)return false;
+        if(!MachineDefinitions.isSeparator(machine)||ticks<=0||energy<0||!alternateOutput.isEmpty())return false;
         for(int channel=0;channel<4;channel++){
+            if(channel==1){if(counts[1]!=0||!ingredients[1].isEmpty()||!fluids[1].isEmpty()||!gases[1].isEmpty())return false;continue;}
             boolean item=channel<2?counts[channel]>0&&!ingredients[channel].isEmpty():!outputs[channel-2].isEmpty();
-            boolean fluid=!fluids[channel].isEmpty(),gas=!gases[channel].isEmpty();var kind=profile.kind(channel);
+            boolean fluid=!fluids[channel].isEmpty(),gas=!gases[channel].isEmpty();
             if((item?1:0)+(fluid?1:0)+(gas?1:0)!=(channel==1?0:1))return false;
-            if(kind==PartKind.ITEM_VAULT&&!item||kind==PartKind.FLUID_TANK&&!fluid||kind==PartKind.GAS_TANK&&!gas)return false;
         }
         return true;
     }
@@ -268,15 +299,18 @@ public final class MachineRecipe implements Recipe<SimpleContainer> {
             var alternate=json.has("alternate_output")?ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json,"alternate_output")):ItemStack.EMPTY;
             if(json.has("alternate_output")&&(alternate.isEmpty()||alternate.getCount()>alternate.getMaxStackSize()))throw new JsonSyntaxException("Invalid alternate output");
             var recipe=new MachineRecipe(id,machine,inputs,counts,outputs,fluids,gases,positive(json,"ticks",100,1000000),energy,conversion,alternate);
-            validateConversion(recipe);validateAlloy(recipe);validateSeparator(recipe);validateIndustrial(recipe);if(recipe.machine.equals(MachineDefinitions.BOILER)&&!recipe.validBoiler())throw new JsonSyntaxException("Boiler needs two fluid/gas inputs and two fluid/gas outputs");if(recipe.machine.equals(MachineDefinitions.NUCLEAR_REACTOR)&&!recipe.validNuclear())throw new JsonSyntaxException("Nuclear reactor requires two liquid inputs, liquid waste Output 1 and a heated fluid/gas Output 2, with zero FE cost");return recipe;
+            validateConversion(recipe);validateAlloy(recipe);validateSeparator(recipe);validateIndustrial(recipe);validateReactor(recipe);if(recipe.machine.equals(MachineDefinitions.BOILER)&&!recipe.validBoiler())throw new JsonSyntaxException("Boiler needs two fluid/gas inputs and two fluid/gas outputs");if(recipe.machine.equals(MachineDefinitions.NUCLEAR_REACTOR)&&!recipe.validNuclear())throw new JsonSyntaxException("Nuclear reactor requires two liquid inputs, liquid waste Output 1 and a heated fluid/gas Output 2, with zero FE cost");return recipe;
         }
         private static void validateIndustrial(MachineRecipe recipe){
             if(MachineDefinitions.tower(recipe.machine)&&!recipe.validTower())throw new JsonSyntaxException("Distillation: liquid Input 1 and one/two fluid/gas outputs; condensation: gas Input 1 to liquid Output 1; exchange: two independent fluid/gas inputs and outputs. No items or mixed phases per channel.");
             if(!recipe.validIndustrial())throw new JsonSyntaxException("Forming needs item Input 1 -> item Output 1 only; infusion additionally needs exactly one fluid OR gas on Input 2");
         }
+        private static void validateReactor(MachineRecipe recipe){
+            if(recipe.machine.equals(MachineDefinitions.REACTION_CORE)&&!recipe.validReactor())throw new JsonSyntaxException("Biphasic reactor needs one item/fluid/gas medium for each of two inputs and one output, with no secondary output");
+        }
         private static void validateSeparator(MachineRecipe recipe){
-            if(recipe.machine.getPath().startsWith("separator_")&&recipe.machine.getNamespace().equals("alone_mechanical")&&(MachineDefinitions.separator(recipe.machine)==null||!recipe.validSeparator()))
-                throw new JsonSyntaxException("Separator recipe needs one Input 1, no Input 2, and exactly one product on each of Output 1 and Output 2 matching its storage profile");
+            if(MachineDefinitions.isSeparator(recipe.machine)&&!recipe.validSeparator())
+                throw new JsonSyntaxException("Separator recipe needs one input, no second input, and exactly one product on each output with phases matching the declared resources");
         }
         private static void validateAlloy(MachineRecipe recipe) {
             if(recipe.machine.equals(MachineDefinitions.ALLOY_SMELTER)&&!recipe.validAlloy())
@@ -316,7 +350,7 @@ public final class MachineRecipe implements Recipe<SimpleContainer> {
             for (int i = 0; i < 4; i++) { f[i] = b.readFluidStack(); g[i] = new GasStack(b.readResourceLocation(), b.readVarInt()); }
             ConversionMode conversion=machine.equals(MachineDefinitions.GAS_LIQUID_CONVERTER)?b.readEnum(ConversionMode.class):null;
             var alternate=b.readItem();
-            var recipe=new MachineRecipe(id, machine, in, counts, out, f, g, ticks, energy,conversion,alternate);validateConversion(recipe);validateAlloy(recipe);validateSeparator(recipe);validateIndustrial(recipe);if(recipe.machine.equals(MachineDefinitions.BOILER)&&!recipe.validBoiler())throw new JsonSyntaxException("Boiler needs two fluid/gas inputs and two fluid/gas outputs");if(recipe.machine.equals(MachineDefinitions.NUCLEAR_REACTOR)&&!recipe.validNuclear())throw new JsonSyntaxException("Nuclear reactor requires two liquid inputs, liquid waste Output 1 and a heated fluid/gas Output 2, with zero FE cost");return recipe;
+            var recipe=new MachineRecipe(id, machine, in, counts, out, f, g, ticks, energy,conversion,alternate);validateConversion(recipe);validateAlloy(recipe);validateSeparator(recipe);validateIndustrial(recipe);validateReactor(recipe);if(recipe.machine.equals(MachineDefinitions.BOILER)&&!recipe.validBoiler())throw new JsonSyntaxException("Boiler needs two fluid/gas inputs and two fluid/gas outputs");if(recipe.machine.equals(MachineDefinitions.NUCLEAR_REACTOR)&&!recipe.validNuclear())throw new JsonSyntaxException("Nuclear reactor requires two liquid inputs, liquid waste Output 1 and a heated fluid/gas Output 2, with zero FE cost");return recipe;
         }
         @Override public void toNetwork(FriendlyByteBuf b, MachineRecipe r) {
             b.writeResourceLocation(r.machine); b.writeVarInt(r.ticks); b.writeVarInt(r.energy);

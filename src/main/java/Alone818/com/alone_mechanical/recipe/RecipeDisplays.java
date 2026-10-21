@@ -51,5 +51,25 @@ public final class RecipeDisplays {
         }
         out.sort(Comparator.comparing(d->d.id().toString()));return List.copyOf(out);
     }
+    /** A cross-machine index used by JEI so every liquid and gas has one stable recipe lookup. */
+    public static List<Display> collectMedia(Level level, boolean gasesOnly) {
+        List<Display> out=new ArrayList<>();
+        for(var r:level.getRecipeManager().getAllRecipesFor(ModRecipes.MACHINE_TYPE.get())) {
+            boolean hasFluid=Arrays.stream(r.fluids).anyMatch(s->!s.isEmpty());
+            boolean hasGas=Arrays.stream(r.gases).anyMatch(s->!s.isEmpty());
+            if((gasesOnly&&hasGas)||(!gasesOnly&&hasFluid)) {
+                // Use the normal display builder so recipe names, gas notes, aliases and amounts stay identical.
+                out.addAll(collectOne(level,r));
+            }
+        }
+        out.sort(Comparator.comparing(d->d.id().toString()));
+        return List.copyOf(out);
+    }
+    private static List<Display> collectOne(Level level, MachineRecipe target) {
+        List<Display> result=new ArrayList<>();
+        var machine=target.machine.getPath();
+        for(var display:collect(level,machine)) if(display.id().equals(target.id)) result.add(display);
+        return result;
+    }
     private RecipeDisplays() {}
 }

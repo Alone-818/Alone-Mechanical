@@ -1,0 +1,27 @@
+{
+  "type": "alone_mechanical:machine",
+  "machine": "alone_mechanical:gas_solid_refining",
+  "ticks": 100,
+  "energy_per_tick": 80,
+  "item_inputs": [
+    {
+      "ingredient": {
+        "item": "alone_mechanical:gold_compound_crystal"
+      },
+      "count": 1
+    }
+  ],
+  "item_outputs": [
+    {
+      "count": 1,
+      "item": "alone_mechanical:leached_gold_concentrate"
+    }
+  ],
+  "gas_inputs": [
+    null,
+    {
+      "amount": 200,
+      "gas": "alone_mechanical:hydrogen"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "alone_mechanical:item/mechanical_tech_chip"
+                 },
+    "parent":  "minecraft:item/generated"
+}

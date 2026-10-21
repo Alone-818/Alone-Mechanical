@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "Q": {
+      "item": "alone_mechanical:quantum_ingot"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "C": {
+      "item": "alone_mechanical:quantum_circuit"
+    },
+    "B": {
+      "item": "alone_mechanical:superconducting_tech_chip"
+    }
+  },
+  "result": {
+    "item": "alone_mechanical:quantum_tech_chip",
+    "count": 2
+  },
+  "pattern": [
+    "QDQ",
+    "BCB",
+    "QDQ"
+  ],
+  "category": "misc"
+}

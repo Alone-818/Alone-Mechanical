@@ -1,0 +1,27 @@
+{
+  "fluid_outputs": [
+    {
+      "amount": 1000,
+      "fluid": "alone_mechanical:basic_electrolyte"
+    }
+  ],
+  "energy_per_tick": 30,
+  "type": "alone_mechanical:machine",
+  "ticks": 100,
+  "machine": "alone_mechanical:dissolution",
+  "fluid_inputs": [
+    null,
+    {
+      "amount": 1000,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "item_inputs": [
+    {
+      "ingredient": {
+        "item": "alone_mechanical:sulfur"
+      },
+      "count": 2
+    }
+  ]
+}

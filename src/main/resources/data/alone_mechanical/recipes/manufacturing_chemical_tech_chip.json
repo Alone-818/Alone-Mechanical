@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "W": {
+      "item": "alone_mechanical:copper_wire"
+    },
+    "R": {
+      "item": "alone_mechanical:resonant_ingot"
+    },
+    "C": {
+      "item": "alone_mechanical:chemical_circuit"
+    },
+    "B": {
+      "item": "alone_mechanical:mechanical_tech_chip"
+    }
+  },
+  "result": {
+    "item": "alone_mechanical:chemical_tech_chip",
+    "count": 2
+  },
+  "pattern": [
+    "RWR",
+    "BCB",
+    "RWR"
+  ],
+  "category": "misc"
+}

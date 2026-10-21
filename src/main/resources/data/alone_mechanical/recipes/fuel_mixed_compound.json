@@ -1,8 +1,14 @@
 {
   "type": "alone_mechanical:machine",
-  "machine": "alone_mechanical:solid_fusion",
+  "machine": "alone_mechanical:reaction",
   "ticks": 160,
   "energy_per_tick": 80,
+  "item_outputs": [
+    {
+      "item": "alone_mechanical:mixed_fuel_compound",
+      "count": 1
+    }
+  ],
   "item_inputs": [
     {
       "ingredient": {
@@ -15,12 +21,6 @@
         "item": "alone_mechanical:depleted_uranium_dust"
       },
       "count": 3
-    }
-  ],
-  "item_outputs": [
-    {
-      "count": 1,
-      "item": "alone_mechanical:mixed_fuel_compound"
     }
   ]
 }

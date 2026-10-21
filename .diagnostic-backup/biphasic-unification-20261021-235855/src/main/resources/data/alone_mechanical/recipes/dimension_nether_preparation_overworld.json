@@ -1,0 +1,27 @@
+{
+  "type": "alone_mechanical:machine",
+  "machine": "alone_mechanical:dissolution",
+  "ticks": 400,
+  "energy_per_tick": 240,
+  "item_inputs": [
+    {
+      "ingredient": {
+        "item": "minecraft:obsidian"
+      },
+      "count": 8
+    }
+  ],
+  "fluid_inputs": [
+    null,
+    {
+      "fluid": "minecraft:lava",
+      "amount": 1000
+    }
+  ],
+  "fluid_outputs": [
+    {
+      "fluid": "alone_mechanical:nether_dimension_conversion",
+      "amount": 250
+    }
+  ]
+}

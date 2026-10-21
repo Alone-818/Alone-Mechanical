@@ -1,6 +1,6 @@
 {
   "type": "alone_mechanical:machine",
-  "machine": "alone_mechanical:gas_reactor",
+  "machine": "alone_mechanical:reaction",
   "ticks": 200,
   "energy_per_tick": 80,
   "gas_inputs": [

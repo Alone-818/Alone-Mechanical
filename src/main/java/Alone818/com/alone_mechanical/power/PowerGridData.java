@@ -2,6 +2,7 @@ package Alone818.com.alone_mechanical.power;
 
 import Alone818.com.alone_mechanical.Config;
 import Alone818.com.alone_mechanical.blockentity.GridNodeBlockEntity;
+import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.*;
 import net.minecraft.server.level.ServerLevel;
@@ -107,6 +108,41 @@ public final class PowerGridData extends SavedData {
         if (limit <= 0) return 0;
         GridNodeBlockEntity core = supplyingCore(level, machine, 1);
         return core == null ? 0 : core.energy().extractEnergy(limit, false);
+    }
+    /**
+     * Pushes generated FE into the first connected core that has room.  Generators
+     * use the same pylon coverage as consumers, while a directly adjacent core
+     * remains a valid short path.  The source is simulated before either side is
+     * committed so partial transfers never create or delete energy.
+     */
+    public int pushEnergy(ServerLevel level, BlockPos machine, IEnergyStorage source, int limit) {
+        if (limit <= 0 || source == null) return 0;
+        GridNodeBlockEntity core = receivingCore(level, machine);
+        if (core == null) return 0;
+        int offer = source.extractEnergy(limit, true);
+        if (offer <= 0) return 0;
+        int accepted = core.energy().receiveEnergy(offer, true);
+        if (accepted <= 0) return 0;
+        int extracted = source.extractEnergy(accepted, false);
+        return extracted <= 0 ? 0 : core.energy().receiveEnergy(extracted, false);
+    }
+    private GridNodeBlockEntity receivingCore(ServerLevel level, BlockPos machine) {
+        for (var direction : net.minecraft.core.Direction.values()) {
+            if (level.getBlockEntity(machine.relative(direction)) instanceof GridNodeBlockEntity core
+                    && core.kind() == NodeKind.CORE
+                    && core.energy().receiveEnergy(1, true) > 0) return core;
+        }
+        int r = Config.SUPPLY_RADIUS.get(), h = Config.SUPPLY_HEIGHT.get();
+        Set<GridNodeBlockEntity> checked = new HashSet<>();
+        for (int x = (machine.getX() - r) >> 4; x <= (machine.getX() + r) >> 4; x++)
+            for (int z = (machine.getZ() - r) >> 4; z <= (machine.getZ() + r) >> 4; z++)
+                for (BlockPos p : pylonsByChunk.getOrDefault(ChunkPos.asLong(x, z), Set.of())) {
+                    if (Math.abs(p.getX() - machine.getX()) > r || Math.abs(p.getZ() - machine.getZ()) > r
+                            || Math.abs(p.getY() - machine.getY()) > h || !level.hasChunkAt(p)) continue;
+                    GridNodeBlockEntity core = core(level, p);
+                    if (core != null && checked.add(core) && core.energy().receiveEnergy(1, true) > 0) return core;
+                }
+        return null;
     }
     private static void syncNode(ServerLevel level, BlockPos pos) {
         if (level.hasChunkAt(pos) && level.getBlockEntity(pos) instanceof GridNodeBlockEntity node) node.refresh();

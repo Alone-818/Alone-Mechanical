@@ -1,0 +1,27 @@
+{
+  "type": "alone_mechanical:machine",
+  "machine": "alone_mechanical:dissolution",
+  "ticks": 120,
+  "energy_per_tick": 60,
+  "item_inputs": [
+    {
+      "ingredient": {
+        "item": "alone_mechanical:thorium_dust"
+      },
+      "count": 4
+    }
+  ],
+  "fluid_inputs": [
+    null,
+    {
+      "fluid": "minecraft:water",
+      "amount": 1000
+    }
+  ],
+  "fluid_outputs": [
+    {
+      "fluid": "alone_mechanical:thorium_fuel",
+      "amount": 1000
+    }
+  ]
+}

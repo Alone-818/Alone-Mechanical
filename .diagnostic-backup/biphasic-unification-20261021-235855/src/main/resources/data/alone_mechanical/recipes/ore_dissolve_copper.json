@@ -1,0 +1,27 @@
+{
+  "type": "alone_mechanical:machine",
+  "machine": "alone_mechanical:dissolution",
+  "ticks": 200,
+  "energy_per_tick": 80,
+  "fluid_inputs": [
+    null,
+    {
+      "fluid": "alone_mechanical:sulfuric_acid",
+      "amount": 1000
+    }
+  ],
+  "item_inputs": [
+    {
+      "ingredient": {
+        "tag": "forge:raw_materials/copper"
+      },
+      "count": 1
+    }
+  ],
+  "fluid_outputs": [
+    {
+      "fluid": "alone_mechanical:crude_copper_slurry",
+      "amount": 1000
+    }
+  ]
+}
