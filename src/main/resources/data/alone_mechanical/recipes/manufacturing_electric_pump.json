@@ -8,16 +8,16 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "B": {
-      "item": "alone_mechanical:basic_circuit"
+      "item": "alone_mechanical:mechanical_tech_chip"
     },
     "C": {
-      "item": "minecraft:copper_ingot"
+      "item": "alone_mechanical:red_copper_ingot"
     },
     "P": {
       "item": "minecraft:piston"
     },
     "I": {
-      "item": "minecraft:iron_ingot"
+      "item": "alone_mechanical:steel_plate"
     }
   },
   "result": {

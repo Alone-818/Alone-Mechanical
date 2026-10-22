@@ -25,6 +25,7 @@ public final class TutorialScreen extends Screen {
         new Chapter("grid",()->new ItemStack(ModBlocks.POWER_CORE.get())),
         new Chapter("structure",()->new ItemStack(ModItems.ENGINEERING_HAMMER.get())),
         new Chapter("machines",()->new ItemStack(ModBlocks.CRUSHER_CORE.get())),
+        new Chapter("synthesis",()->new ItemStack(ModBlocks.SYNTHESIS_COMPONENT.get())),
         new Chapter("builds",()->new ItemStack(ModItems.ENGINEERING_HAMMER.get())),
         new Chapter("towers",()->new ItemStack(ModBlocks.DISTILLATION_COMPONENT.get())),
         new Chapter("boiler",()->new ItemStack(ModBlocks.BOILER_CORE.get())),

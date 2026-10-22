@@ -1,17 +1,20 @@
 {
   "category": "misc",
   "pattern": [
-    "GIG",
-    "IGI",
-    "GIG"
+    "GCG",
+    "CMC",
+    "GCG"
   ],
   "type": "minecraft:crafting_shaped",
   "key": {
-    "I": {
-      "item": "minecraft:iron_nugget"
-    },
     "G": {
       "tag": "forge:glass"
+    },
+    "M": {
+      "item": "alone_mechanical:machine_casing"
+    },
+    "C": {
+      "item": "minecraft:iron_nugget"
     }
   },
   "result": {

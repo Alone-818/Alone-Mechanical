@@ -1,14 +1,14 @@
 {
   "category": "misc",
   "pattern": [
-    "IRI",
-    "CBC",
-    "IRI"
+    "SSS",
+    "CMC",
+    "SBS"
   ],
   "type": "minecraft:crafting_shaped",
   "key": {
-    "R": {
-      "item": "minecraft:redstone"
+    "S": {
+      "item": "minecraft:iron_ingot"
     },
     "B": {
       "item": "alone_mechanical:basic_circuit"
@@ -16,8 +16,8 @@
     "C": {
       "item": "minecraft:copper_ingot"
     },
-    "I": {
-      "item": "minecraft:iron_ingot"
+    "M": {
+      "item": "alone_mechanical:machine_casing"
     }
   },
   "result": {

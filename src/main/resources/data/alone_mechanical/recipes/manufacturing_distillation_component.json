@@ -11,10 +11,10 @@
       "item": "alone_mechanical:steel_plate"
     },
     "B": {
-      "item": "alone_mechanical:basic_circuit"
+      "item": "alone_mechanical:chemical_circuit"
     },
     "F": {
-      "item": "minecraft:furnace"
+      "item": "minecraft:blast_furnace"
     },
     "W": {
       "item": "alone_mechanical:copper_wire"

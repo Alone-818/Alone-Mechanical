@@ -13,7 +13,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 public final class ClientSetup {
     @SubscribeEvent public static void shaders(net.minecraftforge.client.event.RegisterShadersEvent event)throws java.io.IOException{GasWaterRendering.register(event);}
     @SubscribeEvent public static void setup(FMLClientSetupEvent e) { e.enqueueWork(() -> {
-        MenuScreens.<Alone818.com.alone_mechanical.menu.MachineMenu,net.minecraft.client.gui.screens.inventory.AbstractContainerScreen<Alone818.com.alone_mechanical.menu.MachineMenu>>register(ModMenus.MACHINE.get(), (menu,inventory,title)->menu.machine.turbine()?new TurbineScreen(menu,inventory,title):new MachineScreen(menu,inventory,title)); MenuScreens.register(ModMenus.GRID.get(), GridScreen::new);
+        MenuScreens.<Alone818.com.alone_mechanical.menu.MachineMenu,net.minecraft.client.gui.screens.inventory.AbstractContainerScreen<Alone818.com.alone_mechanical.menu.MachineMenu>>register(ModMenus.MACHINE.get(), (menu,inventory,title)->menu.machine.nuclearReactor()?new NuclearReactorScreen(menu,inventory,title):menu.machine.turbine()?new TurbineScreen(menu,inventory,title):new MachineScreen(menu,inventory,title)); MenuScreens.register(ModMenus.GRID.get(), GridScreen::new);
         MenuScreens.register(ModMenus.STORAGE.get(), StorageScreen::new);
         MenuScreens.register(ModMenus.GENERATOR.get(), GeneratorScreen::new);
         MenuScreens.register(ModMenus.PUMP.get(),PumpScreen::new);

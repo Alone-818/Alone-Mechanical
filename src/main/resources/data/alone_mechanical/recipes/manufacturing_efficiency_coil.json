@@ -8,7 +8,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "R": {
-      "item": "minecraft:redstone_block"
+      "item": "alone_mechanical:resonant_matrix"
     },
     "W": {
       "item": "alone_mechanical:copper_wire"

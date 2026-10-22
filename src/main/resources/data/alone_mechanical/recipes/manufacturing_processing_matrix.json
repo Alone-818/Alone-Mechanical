@@ -8,16 +8,16 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "D": {
-      "item": "minecraft:diamond"
+      "item": "alone_mechanical:quantum_ingot"
     },
     "B": {
-      "item": "alone_mechanical:high_power_battery"
+      "item": "alone_mechanical:advanced_battery"
     },
     "G": {
       "item": "alone_mechanical:steel_gear"
     },
     "C": {
-      "item": "alone_mechanical:advanced_circuit"
+      "item": "alone_mechanical:quantum_circuit"
     }
   },
   "result": {

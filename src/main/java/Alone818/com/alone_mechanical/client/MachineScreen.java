@@ -24,6 +24,7 @@ public class MachineScreen extends AbstractContainerScreen<MachineMenu> {
     private TowerSpeedSlider towerSpeed;
     private Button airToggle;
     private Button reactorToggle;
+    private Button synthesisPrevious,synthesisNext;
     private boolean cacheView;
     private boolean populationMachine(){return menu.populationMachine();}
     public MachineScreen(MachineMenu menu, Inventory inventory, Component title) {
@@ -56,6 +57,10 @@ public class MachineScreen extends AbstractContainerScreen<MachineMenu> {
             reactorToggle=addRenderableWidget(new PanelButton(leftPos+8,topPos+98,342,14,tr("reactor_scram"),b->{if(minecraft.gameMode!=null)minecraft.gameMode.handleInventoryButtonClick(menu.containerId,MachineMenu.REACTOR_TOGGLE);}));
             reactorToggle.setTooltip(Tooltip.create(tr("reactor_safety_help")));
         }
+        if(menu.synthesis){
+            synthesisPrevious=addRenderableWidget(new PanelButton(leftPos+14,topPos+98,16,14,Component.literal("‹"),b->{if(minecraft.gameMode!=null)minecraft.gameMode.handleInventoryButtonClick(menu.containerId,MachineMenu.SYNTHESIS_PREVIOUS);}));
+            synthesisNext=addRenderableWidget(new PanelButton(leftPos+150,topPos+98,16,14,Component.literal("›"),b->{if(minecraft.gameMode!=null)minecraft.gameMode.handleInventoryButtonClick(menu.containerId,MachineMenu.SYNTHESIS_NEXT);}));
+        }
         if(populationMachine()){
             addRenderableWidget(new PanelButton(leftPos+14,topPos+(menu.breeding?27:47),148,menu.breeding?12:20,tr("field_config"),b->minecraft.setScreen(new FieldConfigScreen(menu,minecraft.player.getInventory(),title))));
         }
@@ -80,11 +85,12 @@ public class MachineScreen extends AbstractContainerScreen<MachineMenu> {
         for(int i=0;i<4;i++) {
             int page=menu.value(i<2?21:22),pages=Math.max(1,menu.value(i<2?23:24));
             pageButtons[i].active=i%2==0?page>0:page+1<pages;
-            pageButtons[i].visible=!menu.threeColumns()&&!menu.fourColumns()&&!menu.converter&&(!menu.fieldMachine||(menu.breeding||menu.harvesting())&&!menu.fieldConfiguration||i>=2);
+            pageButtons[i].visible=!menu.threeColumns()&&!menu.fourColumns()&&!menu.converter&&!menu.synthesis&&(!menu.fieldMachine||(menu.breeding||menu.harvesting())&&!menu.fieldConfiguration||i>=2);
         }
         for(int i=0;i<6;i++)if(reactorPages[i]!=null){int channel=menu.columnChannel(i/2);reactorPages[i].active=i%2==0?menu.pageValue(channel)>0:menu.pageValue(channel)+1<menu.pageCount(channel);}
         statusTab.active=cacheView;cacheTab.active=!cacheView;
         if(liquefyButton!=null){liquefyButton.active=menu.value(0)==1&&menu.conversionMode()!=Alone818.com.alone_mechanical.machine.ConversionMode.GAS_TO_LIQUID;vaporizeButton.active=menu.value(0)==1&&menu.conversionMode()!=Alone818.com.alone_mechanical.machine.ConversionMode.LIQUID_TO_GAS;}
+        if(synthesisPrevious!=null){synthesisPrevious.active=menu.value(61)>0&&menu.value(60)>0;synthesisNext.active=menu.value(61)>0&&menu.value(60)+1<menu.value(61);}
     }
     @Override protected void containerTick() {super.containerTick();updateButtons();}
     private String statusKey() {
@@ -192,6 +198,9 @@ public class MachineScreen extends AbstractContainerScreen<MachineMenu> {
             }
         }else{
             if(!menu.breeding)text(g,tr(menu.harvesting()?"fertilizer_input":menu.fieldMachine?"field_settings":"input_title"),14,29,150,INPUT);text(g,tr("output_title"),194,29,94,OUTPUT);
+            if(menu.synthesis){
+                text(g,tr("synthesis_target",menu.synthesisTargetName(),menu.value(60)+1,Math.max(1,menu.value(61))),14,103,340,TEXT);
+            }
             if(!menu.fieldMachine)right(g,tr("slot_count",compact(menu.value(19))),166,29,MUTED);right(g,tr("slot_count",compact(menu.value(20))),346,29,MUTED);
             for(int i=0;i<2;i++)if(i==1||!menu.fieldMachine||(menu.breeding||menu.harvesting())&&!menu.fieldConfiguration)g.drawCenteredString(font,tr("page_number",menu.value(21+i)+1,Math.max(1,menu.value(23+i))),89+i*180,101,MUTED);
         }

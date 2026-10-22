@@ -19,6 +19,8 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.*;
 import net.minecraft.world.entity.player.*;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.ItemStackHandler;
@@ -60,6 +62,8 @@ public class MachineBlockEntity extends SyncedBlockEntity implements MenuProvide
     };
     private LazyOptional<IEnergyStorage> energyCap = LazyOptional.of(() -> battery);
     private ResourceLocation recipeId;
+    /** Selected vanilla crafting recipe for the synthesis component. The id is server-owned. */
+    private ResourceLocation synthesisRecipeId;
     private ResourceLocation resolvedMachine=MachineDefinitions.UNKNOWN;
     private final PartKind[] reactorStores=new PartKind[4];
     private int turbineRotors;
@@ -147,8 +151,36 @@ public class MachineBlockEntity extends SyncedBlockEntity implements MenuProvide
     public boolean nuclearReactor(){return machineType().equals(MachineDefinitions.NUCLEAR_REACTOR);}
     public boolean heatProcessor(){return boiler()||nuclearReactor();}
     public boolean formingMachine(){return machineType().equals(MachineDefinitions.FORMING_MACHINE);}
+    public boolean synthesisMachine(){return machineType().equals(MachineDefinitions.SYNTHESIS_MACHINE);}
     public boolean separator(){return MachineDefinitions.isSeparator(machineType());}
     public boolean converter(){return machineType().equals(MachineDefinitions.GAS_LIQUID_CONVERTER);}
+    private List<? extends Recipe<?>> synthesisRecipes(ServerLevel server){
+        return server.getRecipeManager().getAllRecipesFor(RecipeType.CRAFTING).stream()
+            .filter(recipe -> !recipe.getResultItem(server.registryAccess()).isEmpty()
+                && recipe.getIngredients().stream().anyMatch(ingredient -> !ingredient.isEmpty()))
+            .sorted(Comparator.comparing(recipe -> recipe.getId().toString())).toList();
+    }
+    public int synthesisRecipeCount(){return level instanceof ServerLevel server?synthesisRecipes(server).size():0;}
+    public int synthesisRecipeIndex(){
+        if(!(level instanceof ServerLevel server))return 0;
+        var recipes=synthesisRecipes(server);if(recipes.isEmpty())return 0;
+        int index=0;
+        if(synthesisRecipeId!=null){for(int i=0;i<recipes.size();i++)if(recipes.get(i).getId().equals(synthesisRecipeId)){index=i;break;}}
+        return index;
+    }
+    public Recipe<?> selectedSynthesisRecipe(ServerLevel server){
+        var recipes=synthesisRecipes(server);if(recipes.isEmpty())return null;
+        int index=synthesisRecipeIndex();var recipe=recipes.get(Math.min(index,recipes.size()-1));
+        if(synthesisRecipeId==null||!synthesisRecipeId.equals(recipe.getId())){synthesisRecipeId=recipe.getId();setChanged();}
+        return recipe;
+    }
+    /** Change the target recipe using the current server recipe list; client ids are never trusted. */
+    public boolean cycleSynthesisRecipe(int delta){
+        if(level==null||level.isClientSide||!formed||!synthesisMachine()||!MultiblockStructure.valid(this))return false;
+        var recipes=synthesisRecipes((ServerLevel)level);if(recipes.isEmpty())return false;
+        int index=Math.floorMod(synthesisRecipeIndex()+delta,recipes.size());
+        synthesisRecipeId=recipes.get(index).getId();progress=duration=energyCost=activeBatch=0;powered=false;sync();return true;
+    }
     public ConversionMode conversionMode(){return conversionMode;}
     /** Called only by the validated server menu; reconfigure all ports as one server operation. */
     public boolean setConversionMode(ConversionMode mode){
@@ -390,6 +422,7 @@ public class MachineBlockEntity extends SyncedBlockEntity implements MenuProvide
             updateTurbineRotors(powered?steam:0);
             return;
         }
+        if(synthesisMachine()) { tickSynthesis(server); return; }
         MachineRecipe recipe = server.getRecipeManager().getAllRecipesFor(ModRecipes.MACHINE_TYPE.get()).stream()
             .filter(r -> r.matchesMachine(this))
             .sorted(Comparator.comparingInt((MachineRecipe r)->tower()&&r.hasSecondOutput()?0:1).thenComparing(r->r.id.toString())).findFirst().orElse(null);
@@ -409,6 +442,37 @@ public class MachineBlockEntity extends SyncedBlockEntity implements MenuProvide
             setChanged();
         }
         if(nuclearReactor())reactorSafety.tick(this,burned,ReactorSafety.fuelGrade(recipe.fluids[0]));
+    }
+    private void tickSynthesis(ServerLevel server){
+        var recipe=selectedSynthesisRecipe(server);
+        if(recipe==null){progress=duration=energyCost=activeBatch=0;powered=false;return;}
+        if(!recipe.getId().equals(recipeId)){progress=0;recipeId=recipe.getId();}
+        duration=100;activeBatch=1;
+        var result=recipe.getResultItem(server.registryAccess()).copy();
+        var input=itemChannel(0);var output=itemChannel(2);
+        if(result.isEmpty()||!net.minecraftforge.items.ItemHandlerHelper.insertItem(output,result,true).isEmpty()){
+            powered=false;return;
+        }
+        Map<Integer,Integer> used=new HashMap<>();
+        for(var ingredient:recipe.getIngredients()){
+            if(ingredient.isEmpty())continue;
+            int found=-1;
+            for(int slot=0;slot<input.getSlots();slot++){
+                var stack=input.getStackInSlot(slot);int already=used.getOrDefault(slot,0);
+                if(!stack.isEmpty()&&ingredient.test(stack)&&already<stack.getCount()){found=slot;break;}
+            }
+            if(found<0){progress=0;energyCost=0;powered=false;return;}
+            used.merge(found,1,Integer::sum);
+        }
+        int singleCost=Math.max(1,(int)Math.ceil(40*energyMultiplier()-1.0e-9));
+        energyCost=singleCost;powered=false;
+        if(storedEnergy<energyCost)return;
+        storedEnergy-=energyCost;powered=true;progress+=speedPercent();
+        if(progress>=duration){
+            for(var entry:used.entrySet())input.extractItem(entry.getKey(),entry.getValue(),false);
+            net.minecraftforge.items.ItemHandlerHelper.insertItem(output,result,false);progress=0;
+        }
+        setChanged();
     }
     private void exportTurbineEnergy(ServerLevel server, int limit){
         int remaining=limit;
@@ -454,6 +518,7 @@ public class MachineBlockEntity extends SyncedBlockEntity implements MenuProvide
         n.putInt("ProcessingMatrices",processingMatrices);n.putInt("ActiveBatch",activeBatch);
         n.putInt("TurbineRotors",turbineRotors);
         if (recipeId != null) n.putString("Recipe", recipeId.toString());
+        if (synthesisRecipeId != null) n.putString("SynthesisRecipe", synthesisRecipeId.toString());
         for (int i = 0; i < 4; i++) { n.put("Fluid" + i, fluids[i].writeToNBT(new CompoundTag())); n.put("Gas" + i, gases[i].contents().save()); }
     }
     @Override public void load(CompoundTag n) {
@@ -478,6 +543,7 @@ public class MachineBlockEntity extends SyncedBlockEntity implements MenuProvide
         turbineRotors=Math.max(0,n.getInt("TurbineRotors"));
         activeBatch=Math.max(0,Math.min(MAX_PARALLEL,n.contains("ActiveBatch")?n.getInt("ActiveBatch"):1));
         recipeId = ResourceLocation.tryParse(n.getString("Recipe"));
+        synthesisRecipeId = ResourceLocation.tryParse(n.getString("SynthesisRecipe"));
         for (int i = 0; i < 4; i++) { fluids[i].readFromNBT(n.getCompound("Fluid" + i)); gases[i].set(GasStack.load(n.getCompound("Gas" + i))); }
     }
     @Override public Component getDisplayName() { return Component.translatable("machine." + machineType().getNamespace() + "." + machineType().getPath()); }

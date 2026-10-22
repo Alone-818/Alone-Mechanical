@@ -11,16 +11,16 @@
       "item": "alone_mechanical:steel_plate"
     },
     "B": {
-      "item": "alone_mechanical:basic_circuit"
+      "item": "alone_mechanical:chemical_circuit"
     },
     "G": {
       "tag": "forge:glass"
     },
     "W": {
-      "item": "alone_mechanical:copper_wire"
+      "item": "alone_mechanical:resonant_ingot"
     },
     "C": {
-      "item": "minecraft:copper_block"
+      "item": "alone_mechanical:red_copper_ingot"
     }
   },
   "result": {

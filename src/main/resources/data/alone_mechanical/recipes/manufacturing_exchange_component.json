@@ -17,7 +17,7 @@
       "item": "alone_mechanical:copper_wire"
     },
     "C": {
-      "item": "minecraft:copper_block"
+      "item": "alone_mechanical:red_copper_ingot"
     }
   },
   "result": {

@@ -11,10 +11,10 @@
       "item": "alone_mechanical:steel_plate"
     },
     "O": {
-      "item": "minecraft:obsidian"
+      "item": "alone_mechanical:quantum_ingot"
     },
     "C": {
-      "item": "alone_mechanical:advanced_circuit"
+      "item": "alone_mechanical:superconducting_tech_chip"
     }
   },
   "result": {

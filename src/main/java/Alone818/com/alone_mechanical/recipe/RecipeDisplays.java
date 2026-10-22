@@ -13,7 +13,12 @@ import java.util.*;
 /** Shared display data, built from the current recipe manager after every reload. */
 public final class RecipeDisplays {
     public record Display(ResourceLocation id, Ingredient[] inputs, int[] counts, ItemStack[] outputs, FluidStack[] fluids, GasStack[] gases, String gasInfo, int ticks, int energy,ItemStack alternateOutput) {}
-    public static net.minecraft.network.chat.Component recipeName(Display recipe){return net.minecraft.network.chat.Component.translatable("recipe."+recipe.id().getNamespace()+"."+recipe.id().getPath().replace('/','.'));}
+    public static net.minecraft.network.chat.Component recipeName(Display recipe){
+        String key="recipe."+recipe.id().getNamespace()+"."+recipe.id().getPath().replace('/','.');
+        return net.minecraft.locale.Language.getInstance().has(key)
+            ?net.minecraft.network.chat.Component.translatable(key)
+            :net.minecraft.network.chat.Component.literal(recipe.id().getPath().replace('_',' '));
+    }
     public static List<Display> collect(Level level,String machine) {
         List<Display> out=new ArrayList<>();
         var machineId=new ResourceLocation("alone_mechanical",machine);

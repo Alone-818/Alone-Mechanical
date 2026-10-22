@@ -20,7 +20,7 @@
       "item": "alone_mechanical:chemical_circuit"
     },
     "B": {
-      "item": "alone_mechanical:basic_battery"
+      "item": "alone_mechanical:intermediate_battery"
     }
   },
   "result": {

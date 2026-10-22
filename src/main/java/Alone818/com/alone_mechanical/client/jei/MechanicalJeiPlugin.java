@@ -112,6 +112,7 @@ public final class MechanicalJeiPlugin implements IModPlugin {
         registration.addRecipes(GAS_INTERFACE,RecipeDisplays.collectMedia(level,true));
         registration.addItemStackInfo(new ItemStack(ModBlocks.UNIVERSAL_PORT.get()),Component.translatable("jei.alone_mechanical.universal_interface"));
         registration.addItemStackInfo(new ItemStack(ModBlocks.DECOMPOSITION_COMPONENT.get()),Component.translatable("jei.alone_mechanical.separator"));
+        registration.addItemStackInfo(new ItemStack(ModBlocks.SYNTHESIS_COMPONENT.get()),Component.translatable("tutorial.alone_mechanical.synthesis.body"));
         registration.addItemStackInfo(new ItemStack(ModBlocks.REACTION_CORE.get()),Component.translatable("jei.alone_mechanical.biphasic_reactor"));
         registration.addItemStackInfo(new ItemStack(ModBlocks.CRUSHER_CORE.get()),Component.translatable("jei.alone_mechanical.structure"));
         registration.addItemStackInfo(new ItemStack(ModBlocks.SMELTING_CORE.get()),Component.translatable("jei.alone_mechanical.structure"),Component.translatable("jei.alone_mechanical.smelting"));

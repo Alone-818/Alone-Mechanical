@@ -47,6 +47,7 @@ public final class ModBlocks {
     public static final RegistryObject<MachinePartBlock> CONDENSATION_COMPONENT = part("condensation_component",PartKind.CONDENSATION_COMPONENT);
     public static final RegistryObject<MachinePartBlock> EXCHANGE_COMPONENT = part("exchange_component",PartKind.EXCHANGE_COMPONENT);
     public static final RegistryObject<MachinePartBlock> AIR_SEPARATION_COMPONENT = part("air_separation_component",PartKind.AIR_SEPARATION_COMPONENT);
+    public static final RegistryObject<MachinePartBlock> SYNTHESIS_COMPONENT = part("synthesis_component",PartKind.SYNTHESIS_COMPONENT);
     public static final RegistryObject<MachinePartBlock> SLAUGHTER_COMPONENT = part("slaughter_component",PartKind.SLAUGHTER_FIELD_COMPONENT);
     public static final RegistryObject<MachinePartBlock> BREEDING_COMPONENT = part("breeding_component",PartKind.BREEDING_FIELD_COMPONENT);
     public static final RegistryObject<MachinePartBlock> HARVEST_COMPONENT = part("harvest_component",PartKind.HARVEST_FIELD_COMPONENT);

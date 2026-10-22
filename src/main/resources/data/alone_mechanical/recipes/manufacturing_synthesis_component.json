@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "pattern": [
+    "SCS",
+    "GMG",
+    "SBS"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": { "item": "alone_mechanical:steel_plate" },
+    "C": { "item": "alone_mechanical:resonant_ingot" },
+    "G": { "item": "alone_mechanical:structural_glass" },
+    "M": { "item": "alone_mechanical:machine_casing" },
+    "B": { "item": "alone_mechanical:mechanical_tech_chip" }
+  },
+  "result": { "count": 1, "item": "alone_mechanical:synthesis_component" }
+}

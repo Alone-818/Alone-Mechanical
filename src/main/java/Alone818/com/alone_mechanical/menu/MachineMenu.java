@@ -21,6 +21,7 @@ public class MachineMenu extends AbstractContainerMenu implements FluidMenuData.
     public final boolean liquidReactor;
     public final boolean reactor;
     public final boolean separator;
+    public final boolean synthesis;
     public boolean boiler(){return machine.boiler();}
     public boolean towerChannelActive(int channel){if(machine.airSeparationTower())return channel>=2;return !machine.tower()||machine.machineType().equals(Alone818.com.alone_mechanical.machine.MachineDefinitions.EXCHANGE_TOWER)||channel!=1&&(channel!=3||machine.machineType().equals(Alone818.com.alone_mechanical.machine.MachineDefinitions.DISTILLATION_TOWER));}
     public boolean threeColumns(){return !fourColumns()&&(reactor||separator);}
@@ -33,6 +34,7 @@ public class MachineMenu extends AbstractContainerMenu implements FluidMenuData.
     public static final int AIR_TOGGLE=10;
     public static final int REACTOR_TOGGLE=140;
     public static final int GAS_OUTPUT_MODE_BASE=130;
+    public static final int SYNTHESIS_PREVIOUS=200, SYNTHESIS_NEXT=201;
     private final GasMenuData gasData;
     private int secondInputPage;
     private final int ownSlots;
@@ -60,6 +62,7 @@ public class MachineMenu extends AbstractContainerMenu implements FluidMenuData.
         boolean client = inv.player.level().isClientSide;
         liquidReactor=machine.liquidReactor();reactor=machine.tankReactor()||machine.alloySmelter()||machine.infuser()||machine.turbine()||machine.heatProcessor()||machine.tower();
         separator=machine.separator();
+        synthesis=machine.synthesisMachine();
         converter=machine.converter();
         fieldMachine=machine.fieldMachine();breeding=machine.machineType().equals(Alone818.com.alone_mechanical.machine.MachineDefinitions.BREEDING);
         fieldConfiguration=fieldMachine&&!populationMachine()&&!harvesting();
@@ -67,12 +70,17 @@ public class MachineMenu extends AbstractContainerMenu implements FluidMenuData.
         ownSlots=converter||fourColumns()?0:threeColumns()?itemStores*9:fieldMachine&&!breeding&&!harvesting()?27:54;
         fluidData=new FluidMenuData(inv.player,4,machine::fluidChannel);
         gasData=new GasMenuData(inv.player,4,machine::gasChannel);
-        data = new SyncedIntData(57, client ? null : i -> switch (i) {
+        data = new SyncedIntData(62, client ? null : i -> switch (i) {
             case 52 -> machine.reactorSafety.temperature();
             case 53 -> machine.reactorSafety.residual();
             case 54 -> machine.reactorSafety.enabled()?1:0;
             case 55 -> machine.reactorSafety.grade();
             case 56 -> machine.reactorSafety.failed()?1:0;
+            case 57 -> machine.reactorSafety.stage();
+            case 58 -> machine.reactorSafety.countdown();
+            case 59 -> machine.reactorSafety.pressure();
+            case 60 -> machine.synthesisRecipeIndex();
+            case 61 -> machine.synthesisRecipeCount();
             case 50,51 -> machine.gasOutputMode(i-48).ordinal();
             case 49 -> machine.towerContents.enabled()?1:0;
             case 40 -> machine.towerContents.speedPercent();
@@ -116,6 +124,14 @@ public class MachineMenu extends AbstractContainerMenu implements FluidMenuData.
         for (int x = 0; x < 9; x++) addSlot(new Slot(inv, x, INVENTORY_X + x * 18, HOTBAR_Y){@Override public boolean isActive(){return !configurationView&&(!populationMachine()||!fieldConfiguration);}});
     }
     public int value(int i) { return data.value(i); }
+    public net.minecraft.network.chat.Component synthesisTargetName(){
+        if(!synthesis||machine.getLevel()==null)return net.minecraft.network.chat.Component.empty();
+        var recipes=machine.getLevel().getRecipeManager().getAllRecipesFor(net.minecraft.world.item.crafting.RecipeType.CRAFTING).stream()
+            .filter(recipe->!recipe.getResultItem(machine.getLevel().registryAccess()).isEmpty()&&recipe.getIngredients().stream().anyMatch(i->!i.isEmpty()))
+            .sorted(java.util.Comparator.comparing(recipe->recipe.getId().toString())).toList();
+        if(recipes.isEmpty())return net.minecraft.network.chat.Component.translatable("gui.alone_mechanical.no_recipe");
+        return recipes.get(Math.min(value(60),recipes.size()-1)).getResultItem(machine.getLevel().registryAccess()).getHoverName();
+    }
     public Alone818.com.alone_mechanical.machine.ConversionMode conversionMode(){return Alone818.com.alone_mechanical.machine.ConversionMode.byIndex(value(30));}
     @Override public FluidMenuData fluidData(){return fluidData;}
     @Override public GasMenuData gasData(){return gasData;}
@@ -125,6 +141,10 @@ public class MachineMenu extends AbstractContainerMenu implements FluidMenuData.
     public int pageCount(int channel){return value(channel==0?23:channel==2?24:29);}
     private int pages(int channel) {int size=threeColumns()?9:27;return Math.max(1, (machine.itemChannel(channel).getSlots()+size-1)/size); }
     @Override public boolean clickMenuButton(Player player, int button) {
+        if(button==SYNTHESIS_PREVIOUS||button==SYNTHESIS_NEXT){
+            if(!synthesis||player.level().isClientSide||player.containerMenu!=this||!stillValid(player))return false;
+            return machine.cycleSynthesisRecipe(button==SYNTHESIS_PREVIOUS?-1:1);
+        }
         if(button==REACTOR_TOGGLE){
             if(player.level().isClientSide||player.containerMenu!=this||!stillValid(player))return false;
             boolean changed=machine.toggleReactor();if(changed)broadcastChanges();return changed;

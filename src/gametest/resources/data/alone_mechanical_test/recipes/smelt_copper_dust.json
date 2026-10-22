@@ -1,9 +1,0 @@
-{
-  "ingredient": {
-    "item": "alone_mechanical:copper_dust"
-  },
-  "experience": 0.7,
-  "cookingtime": 200,
-  "type": "minecraft:smelting",
-  "result": "minecraft:copper_ingot"
-}

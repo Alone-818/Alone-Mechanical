@@ -1,0 +1,9 @@
+{
+  "type": "alone_mechanical:machine",
+  "machine": "alone_mechanical:infuser",
+  "ticks": 240,
+  "energy_per_tick": 280,
+  "fluid_inputs": [null, {"fluid": "alone_mechanical:liquid_void", "amount": 1000}],
+  "item_inputs": [{"ingredient": {"item": "minecraft:lapis_lazuli"}, "count": 9}],
+  "item_outputs": [{"count": 1, "item": "minecraft:lapis_ore"}]
+}

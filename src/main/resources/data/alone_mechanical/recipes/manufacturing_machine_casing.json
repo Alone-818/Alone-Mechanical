@@ -10,9 +10,6 @@
     "C": {
       "item": "minecraft:copper_ingot"
     },
-    "G": {
-      "tag": "forge:glass"
-    },
     "I": {
       "item": "minecraft:iron_ingot"
     }

@@ -1,8 +1,0 @@
-{
-  "type": "alone_mechanical:machine",
-  "machine": "alone_mechanical:crusher",
-  "fluid_inputs": [{"fluid": "minecraft:water", "amount": 1000}],
-  "gas_outputs": [{"gas": "alone_mechanical:hydrogen", "amount": 1000}, {"gas": "alone_mechanical:oxygen", "amount": 500}],
-  "ticks": 100,
-  "energy_per_tick": 40
-}

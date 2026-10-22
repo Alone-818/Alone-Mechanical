@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {"item": "minecraft:amethyst_shard"},
-  "result": {"item": "minecraft:emerald", "count": 3},
-  "experience": 0,
-  "cookingtime": 5
-}

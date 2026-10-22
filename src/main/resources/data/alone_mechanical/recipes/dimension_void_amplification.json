@@ -16,7 +16,7 @@
   "fluid_outputs": [
     {
       "fluid": "alone_mechanical:liquid_void",
-      "amount": 1000
+      "amount": 500
     }
   ]
 }

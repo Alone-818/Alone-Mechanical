@@ -75,7 +75,7 @@ public final class MechanicalJadePlugin implements IWailaPlugin {
             tooltip.add(Component.translatable("gui.alone_mechanical.fluid_capacity",gas.amount(),capacity).withStyle(net.minecraft.ChatFormatting.WHITE),GAS_STORAGE);
             var helper=IElementHelper.get();
             tooltip.add(helper.progress(Math.min(1,gas.amount()/(float)capacity),
-                null,
+                Component.translatable("gui.alone_mechanical.fluid_capacity",gas.amount(),capacity),
                 helper.progressStyle().color(GasRendering.color(gas)|0xff000000),BoxStyle.DEFAULT,true).tag(GAS_STORAGE));
         }
     }

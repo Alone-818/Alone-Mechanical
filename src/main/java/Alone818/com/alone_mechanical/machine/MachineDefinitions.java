@@ -26,6 +26,8 @@ public final class MachineDefinitions {
     public static final ResourceLocation INFUSION_FAMILY=new ResourceLocation("alone_mechanical","industrial_infusion");
     public static final ResourceLocation FORMING_MACHINE=new ResourceLocation("alone_mechanical","forming_machine");
     public static final ResourceLocation INFUSER=new ResourceLocation("alone_mechanical","infuser");
+    public static final ResourceLocation SYNTHESIS_FAMILY=new ResourceLocation("alone_mechanical","industrial_synthesis");
+    public static final ResourceLocation SYNTHESIS_MACHINE=new ResourceLocation("alone_mechanical","synthesis_machine");
     public static final ResourceLocation ALLOY_CORE=new ResourceLocation("alone_mechanical","alloy");
     public static final ResourceLocation ALLOY_SMELTER=new ResourceLocation("alone_mechanical","alloy_smelter");
     public static final ResourceLocation LIQUID_REACTOR=new ResourceLocation("alone_mechanical","liquid_reactor");
@@ -90,6 +92,7 @@ public final class MachineDefinitions {
         register(new Definition(FORGING_PRESS,INDUSTRIAL_CORE,k->k.contains(PartKind.ITEM_VAULT)));
         register(new Definition(FORMING_MACHINE,FORMING_FAMILY,k->k.equals(Set.of(PartKind.ITEM_VAULT))));
         register(new Definition(INFUSER,INFUSION_FAMILY,k->k.equals(Set.of(PartKind.ITEM_VAULT,PartKind.FLUID_TANK))||k.equals(Set.of(PartKind.ITEM_VAULT,PartKind.GAS_TANK))));
+        register(new Definition(SYNTHESIS_MACHINE,SYNTHESIS_FAMILY,k->k.contains(PartKind.ITEM_VAULT)));
         register(new Definition(ALLOY_SMELTER,ALLOY_CORE,k->k.contains(PartKind.ITEM_VAULT)));
         register(new Definition(GAS_LIQUID_CONVERTER,CONVERSION_CORE,k->k.equals(Set.of(PartKind.FLUID_TANK,PartKind.GAS_TANK))));
         register(new Definition(LIQUID_REACTOR,REACTION_CORE,k->k.contains(PartKind.FLUID_TANK)&&!k.contains(PartKind.GAS_TANK)));
@@ -122,6 +125,7 @@ public final class MachineDefinitions {
             case FORGING_COMPONENT -> INDUSTRIAL_CORE;
             case FORMING_COMPONENT -> FORMING_FAMILY;
             case INFUSION_COMPONENT -> INFUSION_FAMILY;
+            case SYNTHESIS_COMPONENT -> SYNTHESIS_FAMILY;
             case SLAUGHTER_FIELD_COMPONENT -> SLAUGHTER;
             case BREEDING_FIELD_COMPONENT -> BREEDING;
             case HARVEST_FIELD_COMPONENT -> HARVEST;

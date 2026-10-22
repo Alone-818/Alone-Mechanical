@@ -14,7 +14,7 @@
       "item": "alone_mechanical:basic_circuit"
     },
     "G": {
-      "tag": "forge:glass"
+      "item": "alone_mechanical:structural_glass"
     },
     "I": {
       "item": "minecraft:iron_ingot"

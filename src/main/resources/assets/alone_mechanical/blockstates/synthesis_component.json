@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "alone_mechanical:block/synthesis_component", "y": 0 },
+    "facing=east": { "model": "alone_mechanical:block/synthesis_component", "y": 90 },
+    "facing=south": { "model": "alone_mechanical:block/synthesis_component", "y": 180 },
+    "facing=west": { "model": "alone_mechanical:block/synthesis_component", "y": 270 }
+  }
+}

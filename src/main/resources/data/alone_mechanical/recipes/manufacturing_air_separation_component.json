@@ -11,10 +11,10 @@
       "item": "alone_mechanical:steel_plate"
     },
     "B": {
-      "item": "alone_mechanical:basic_circuit"
+      "item": "alone_mechanical:chemical_circuit"
     },
     "G": {
-      "item": "alone_mechanical:steel_gear"
+      "item": "alone_mechanical:resonant_ingot"
     },
     "W": {
       "item": "alone_mechanical:copper_wire"

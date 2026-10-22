@@ -1,0 +1,9 @@
+{
+  "type": "alone_mechanical:machine",
+  "machine": "alone_mechanical:infuser",
+  "ticks": 300,
+  "energy_per_tick": 360,
+  "fluid_inputs": [null, {"fluid": "alone_mechanical:liquid_void", "amount": 1000}],
+  "item_inputs": [{"ingredient": {"item": "minecraft:diamond"}, "count": 1}],
+  "item_outputs": [{"count": 1, "item": "minecraft:diamond_ore"}]
+}

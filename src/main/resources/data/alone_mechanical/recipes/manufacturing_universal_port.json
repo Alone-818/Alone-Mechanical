@@ -8,7 +8,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "H": {
-      "item": "minecraft:hopper"
+      "item": "alone_mechanical:basic_circuit"
     },
     "C": {
       "item": "minecraft:copper_ingot"
