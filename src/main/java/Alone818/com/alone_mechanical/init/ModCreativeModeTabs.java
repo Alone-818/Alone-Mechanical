@@ -42,6 +42,6 @@ public final class ModCreativeModeTabs {
         }).build());
     public static final RegistryObject<CreativeModeTab> MISC = TABS.register("misc", () -> CreativeModeTab.builder()
         .title(Component.translatable("tab.alone_mechanical.misc")).icon(() -> ModItems.WRENCH.get().getDefaultInstance())
-        .displayItems((p, out) -> { out.accept(ModItems.WRENCH.get()); out.accept(ModItems.FLUID_SAMPLING_GUN.get()); out.accept(ModItems.ENGINEERING_HAMMER.get()); out.accept(ModItems.ENGINEERING_GOGGLES.get()); out.accept(ModItems.TUTORIAL_BOOK.get()); out.accept(ModBlocks.CREATIVE_POWER_SOURCE.get()); Alone818.com.alone_mechanical.item.CreativeTankItem.variants().forEach(out::accept); }).build());
+        .displayItems((p, out) -> { out.accept(ModItems.WRENCH.get()); out.accept(ModItems.ZIPLINE_HOOK.get()); out.accept(ModItems.GRID_ANALYZER.get()); out.accept(ModItems.PIPE_FILTER_CHIP.get()); out.accept(ModItems.PRIORITY_CHIP.get()); out.accept(ModItems.MAINTENANCE_BATTERY_PACK.get()); out.accept(ModItems.FLUID_SAMPLING_GUN.get()); out.accept(ModItems.ENGINEERING_HAMMER.get()); out.accept(ModItems.ENGINEERING_GOGGLES.get()); out.accept(ModItems.TUTORIAL_BOOK.get()); out.accept(ModBlocks.CREATIVE_POWER_SOURCE.get()); Alone818.com.alone_mechanical.item.CreativeTankItem.variants().forEach(out::accept); }).build());
     private ModCreativeModeTabs() {}
 }

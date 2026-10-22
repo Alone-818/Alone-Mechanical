@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [" C ", "WRI", " S "],
+  "key": {
+    "C": { "item": "alone_mechanical:basic_circuit" },
+    "W": { "item": "alone_mechanical:copper_wire" },
+    "R": { "item": "minecraft:redstone" },
+    "I": { "item": "alone_mechanical:iron_ingot" },
+    "S": { "item": "minecraft:stick" }
+  },
+  "result": { "item": "alone_mechanical:grid_analyzer" }
+}

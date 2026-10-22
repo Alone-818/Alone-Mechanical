@@ -1,6 +1,7 @@
 package Alone818.com.alone_mechanical.client.jei;
 
 import Alone818.com.alone_mechanical.recipe.RecipeDisplays;
+import Alone818.com.alone_mechanical.recipe.TechnologyStages;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -52,20 +53,14 @@ public final class MachineJeiCategory implements IRecipeCategory<RecipeDisplays.
             graphics.pose().pushPose();graphics.pose().translate(6,0,0);float scale=Math.min(1,156f/Math.max(1,font.width(name)));graphics.pose().scale(scale,scale,1);graphics.drawString(font,name,0,0,0xff526573,false);graphics.pose().popPose();
         } else graphics.drawString(font,name,6,0,0xff526573,false);
         graphics.drawString(font,Component.translatable("jei.alone_mechanical.component"),8,52,0xff526573,false);
-        Minecraft.getInstance().getItemRenderer().renderAndDecorateItem(component,144,48);
-        graphics.drawString(font,Component.translatable("jei.alone_mechanical.component_technology",technology(),component.getHoverName()),8,66,0xff526573,false);
+        graphics.renderItem(component,144,48);
+        var stage=TechnologyStages.forMachine(type.getUid().getPath());
+        graphics.drawString(font,Component.translatable("jei.alone_mechanical.component_technology",stage.id(),component.getHoverName()),8,66,0xff526573,false);
         graphics.drawString(font,Component.translatable("jei.alone_mechanical.duration",r.ticks()),8,78,0xff526573,false);
         graphics.drawString(font,Component.translatable("jei.alone_mechanical.energy",r.energy()),8,90,0xff526573,false);
         if(!r.gasInfo().isEmpty()){
             graphics.pose().pushPose();graphics.pose().translate(8,102,0);float scale=Math.min(1,152f/Math.max(1,font.width(r.gasInfo())));graphics.pose().scale(scale,scale,1);graphics.drawString(font,r.gasInfo(),0,0,0xff526573,false);graphics.pose().popPose();
         }
-    }
-    private String technology(){
-        String path=type.getUid().getPath();
-        if(path.equals("nuclear_reactor")||path.equals("turbine")||path.equals("boiler"))return "T4";
-        if(path.equals("air_separation_tower")||path.equals("distillation_tower")||path.equals("condensation_tower")||path.equals("exchange_tower")||path.equals("reaction")||path.equals("separator"))return "T2/T3";
-        if(path.equals("gas_liquid_converter")||path.equals("infuser")||path.equals("alloy_smelter")||path.equals("synthesis_machine"))return "T2";
-        return "T1";
     }
     @Override public List<Component> getTooltipStrings(RecipeDisplays.Display r,IRecipeSlotsView slots,double mouseX,double mouseY){
         return List.of();

@@ -18,7 +18,7 @@ import net.minecraft.world.phys.shapes.*;
 import net.minecraftforge.network.NetworkHooks;
 
 public class GridNodeBlock extends BaseEntityBlock {
-    public static final IntegerProperty PART = IntegerProperty.create("part", 0, 4);
+    public static final IntegerProperty PART = IntegerProperty.create("part", 0, 8);
     public final NodeKind kind;
     public GridNodeBlock(NodeKind kind, Properties p) { super(p); this.kind = kind; registerDefaultState(stateDefinition.any().setValue(PART, 0)); }
     public static BlockPos base(BlockPos p, BlockState s) { return p.below(s.getValue(PART)); }
@@ -29,13 +29,13 @@ public class GridNodeBlock extends BaseEntityBlock {
         return s.getValue(PART) == 0 ? Block.box(2, 0, 2, 14, 16, 14) : Block.box(6, 0, 6, 10, 16, 10);
     }
     @Override public BlockState getStateForPlacement(BlockPlaceContext ctx) {
-        int height = kind == NodeKind.CORE ? 1 : 5;
+        int height = height(kind);
         if (ctx.getClickedPos().getY() + height > ctx.getLevel().getMaxBuildHeight()) return null;
         for (int i = 0; i < height; i++) if (!ctx.getLevel().getBlockState(ctx.getClickedPos().above(i)).canBeReplaced(ctx)) return null;
         return defaultBlockState();
     }
     @Override public void setPlacedBy(Level l, BlockPos p, BlockState s, LivingEntity e, ItemStack stack) {
-        if (!l.isClientSide && kind != NodeKind.CORE) for (int i = 1; i < 5; i++) l.setBlock(p.above(i), defaultBlockState().setValue(PART, i), 3);
+        if (!l.isClientSide && kind != NodeKind.CORE) for (int i = 1; i < height(kind); i++) l.setBlock(p.above(i), defaultBlockState().setValue(PART, i), 3);
     }
     @Override public BlockEntity newBlockEntity(BlockPos p, BlockState s) { return s.getValue(PART) == 0 ? new GridNodeBlockEntity(p, s) : null; }
     @Override public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level l, BlockState s, BlockEntityType<T> t) {
@@ -60,10 +60,11 @@ public class GridNodeBlock extends BaseEntityBlock {
             if (l instanceof ServerLevel server) PowerGridData.get(server).remove(server, base);
             // Remove the bottom entity first; reentrant calls skip already removed segments.
             super.onRemove(s, l, p, next, moving);
-            if (kind != NodeKind.CORE) for (int i = 0; i < 5; i++) {
+            if (kind != NodeKind.CORE) for (int i = 0; i < height(kind); i++) {
                 BlockPos part = base.above(i);
                 if (!part.equals(p) && l.getBlockState(part).is(this)) l.removeBlock(part, false);
             }
         } else super.onRemove(s, l, p, next, moving);
     }
+    public static int height(NodeKind kind) { return kind == NodeKind.CORE ? 1 : kind == NodeKind.SIGNAL ? 9 : 7; }
 }

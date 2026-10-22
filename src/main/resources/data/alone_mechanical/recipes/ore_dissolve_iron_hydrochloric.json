@@ -1,0 +1,15 @@
+{
+  "type": "alone_mechanical:machine",
+  "machine": "alone_mechanical:reaction",
+  "ticks": 180,
+  "energy_per_tick": 70,
+  "item_inputs": [
+    { "ingredient": { "tag": "forge:raw_materials/iron" }, "count": 1 }
+  ],
+  "fluid_inputs": [
+    { "fluid": "alone_mechanical:hydrochloric_acid", "amount": 1000 }
+  ],
+  "fluid_outputs": [
+    { "fluid": "alone_mechanical:crude_iron_slurry", "amount": 1200 }
+  ]
+}

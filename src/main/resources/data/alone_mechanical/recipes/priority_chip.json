@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["CRC", "BWB", "CRC"],
+  "key": {
+    "C": { "item": "alone_mechanical:advanced_circuit" },
+    "R": { "item": "minecraft:redstone" },
+    "B": { "item": "alone_mechanical:copper_wire" },
+    "W": { "item": "alone_mechanical:steel_plate" }
+  },
+  "result": { "item": "alone_mechanical:priority_chip" }
+}

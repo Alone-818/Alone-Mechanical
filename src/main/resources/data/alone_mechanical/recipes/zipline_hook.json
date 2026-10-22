@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [" WI", "SIC", "  S"],
+  "key": {
+    "W": { "item": "alone_mechanical:copper_wire" },
+    "I": { "item": "alone_mechanical:steel_ingot" },
+    "S": { "item": "alone_mechanical:steel_plate" },
+    "C": { "item": "alone_mechanical:mechanical_tech_chip" }
+  },
+  "result": { "item": "alone_mechanical:zipline_hook" }
+}

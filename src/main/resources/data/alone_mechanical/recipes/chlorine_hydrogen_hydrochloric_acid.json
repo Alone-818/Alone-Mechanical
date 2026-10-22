@@ -1,0 +1,13 @@
+{
+  "type": "alone_mechanical:machine",
+  "machine": "alone_mechanical:reaction",
+  "ticks": 160,
+  "energy_per_tick": 70,
+  "gas_inputs": [
+    { "gas": "alone_mechanical:hydrogen", "amount": 1000 },
+    { "gas": "alone_mechanical:chlorine", "amount": 1000 }
+  ],
+  "fluid_outputs": [
+    { "fluid": "alone_mechanical:hydrochloric_acid", "amount": 1000 }
+  ]
+}

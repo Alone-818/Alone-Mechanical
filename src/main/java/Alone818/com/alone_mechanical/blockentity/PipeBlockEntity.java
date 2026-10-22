@@ -15,6 +15,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.*;
+import net.minecraftforge.registries.ForgeRegistries;
 import java.util.*;
 
 /** Loaded adjacency graph. Each transfer charges every segment on its shortest usable path. */
@@ -31,6 +32,8 @@ public class PipeBlockEntity extends SyncedBlockEntity {
     private int spent, sinkCursor, pullCursor, slotCursor;
     // Item escrow is separate from the regular 1000 mB liquid/gas buffer.
     private Object pending;
+    private String filterId="";
+    private int priority;
     private final Map<Object, Long> delivered = new HashMap<>();
     private final Map<Direction, LazyOptional<IItemHandler>> sideItems = new EnumMap<>(Direction.class);
     private final Map<Direction, LazyOptional<IFluidHandler>> sideFluids = new EnumMap<>(Direction.class);
@@ -83,10 +86,21 @@ public class PipeBlockEntity extends SyncedBlockEntity {
         sync();
     }
     private boolean canCarry(Object resource) {
+        if(!filterId.isEmpty()&&!filterMatches(resource))return false;
         if(resource instanceof ItemStack)return block().kind==TransportKind.ITEM;
         if(resource instanceof FluidStack fluid)return block().kind==TransportKind.FLUID && (fluidBuffer.isEmpty()||fluidBuffer.getFluid().isFluidEqual(fluid));
         return resource instanceof GasStack gas && block().kind==TransportKind.GAS && (gasBuffer.contents().isEmpty()||gasBuffer.contents().gas().equals(gas.gas()));
     }
+    private boolean filterMatches(Object resource){
+        String id=resource instanceof ItemStack stack?"item:"+Objects.toString(ForgeRegistries.ITEMS.getKey(stack.getItem()),""):
+            resource instanceof FluidStack fluid?"fluid:"+Objects.toString(ForgeRegistries.FLUIDS.getKey(fluid.getFluid()),""):
+            resource instanceof GasStack gas?"gas:"+gas.gas():"";
+        return filterId.equals(id);
+    }
+    public String filterId(){return filterId;}
+    public void setFilter(String id){filterId=id==null?"":id;sync();}
+    public int priority(){return priority;}
+    public void setPriority(int value){priority=Math.max(-8,Math.min(8,value));sync();}
     private int store(Object resource,int amount,boolean simulate,Direction side) {
         if(amount<=0)return 0;
         int accepted=resource instanceof FluidStack fluid?fluidBuffer.fill(new FluidStack(fluid,amount),simulate?IFluidHandler.FluidAction.SIMULATE:IFluidHandler.FluidAction.EXECUTE)
@@ -155,7 +169,7 @@ public class PipeBlockEntity extends SyncedBlockEntity {
         }
         return new Endpoint(target, key);
     }
-    private record Sink(Object handler, Object key, List<PipeBlockEntity> path) {}
+    private record Sink(Object handler, Object key, List<PipeBlockEntity> path, int priority) {}
     private List<Sink> sinks(Object resource,Object excluded) {
         List<Sink> result = new ArrayList<>();
         Map<BlockPos, List<PipeBlockEntity>> paths = new HashMap<>();
@@ -177,10 +191,11 @@ public class PipeBlockEntity extends SyncedBlockEntity {
                     Endpoint target = endpoint(other, d.getOpposite());
                     if (target != null && (!(excluded instanceof Endpoint source) || !target.key.equals(source.key))
                         && (!(excluded instanceof Set<?> sources)||!sources.contains(target.key))
-                        && seenHandlers.add(target.key)) result.add(new Sink(target.handler, target.key, path));
+                        && seenHandlers.add(target.key)) result.add(new Sink(target.handler, target.key, path, pipe.priority));
                 }
             }
         }
+        result.sort(Comparator.comparingInt(Sink::priority).reversed());
         if (!result.isEmpty()) Collections.rotate(result, -Math.floorMod(sinkCursor, result.size()));
         return result;
     }
@@ -345,6 +360,8 @@ public class PipeBlockEntity extends SyncedBlockEntity {
     }
     @Override protected void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag); tag.putIntArray("Modes", Arrays.stream(modes).mapToInt(Enum::ordinal).toArray());
+        if(!filterId.isEmpty())tag.putString("Filter",filterId);
+        tag.putInt("Priority",priority);
         tag.putInt("SinkCursor", sinkCursor); tag.putInt("PullCursor", pullCursor); tag.putInt("SlotCursor", slotCursor);
         if(!fluidBuffer.isEmpty())tag.put("BufferFluid",fluidBuffer.writeToNBT(new CompoundTag()));
         if(!gasBuffer.contents().isEmpty())tag.put("BufferGas",gasBuffer.contents().save());
@@ -354,7 +371,7 @@ public class PipeBlockEntity extends SyncedBlockEntity {
         else if (pending instanceof GasStack gas) tag.put("PendingGas", gas.save());
     }
     @Override public void load(CompoundTag tag) {
-        super.load(tag); Arrays.fill(modes, PipeMode.NORMAL); int[] saved = tag.getIntArray("Modes");
+        super.load(tag); Arrays.fill(modes, PipeMode.NORMAL); filterId=tag.getString("Filter"); priority=Math.max(-8,Math.min(8,tag.getInt("Priority"))); int[] saved = tag.getIntArray("Modes");
         for (int i = 0; i < Math.min(6, saved.length); i++) if (saved[i] >= 0 && saved[i] < PipeMode.values().length) modes[i] = PipeMode.values()[saved[i]];
         sinkCursor = tag.getInt("SinkCursor"); pullCursor = tag.getInt("PullCursor"); slotCursor = tag.getInt("SlotCursor"); pending = null;
         if (tag.contains("PendingItem")) pending = ItemStack.of(tag.getCompound("PendingItem"));

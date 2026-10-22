@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["BHB", "CSC", "BWB"],
+  "key": {
+    "B": { "item": "alone_mechanical:copper_wire" },
+    "H": { "item": "alone_mechanical:high_power_battery" },
+    "C": { "item": "alone_mechanical:chemical_circuit" },
+    "S": { "item": "alone_mechanical:steel_plate" },
+    "W": { "item": "minecraft:iron_block" }
+  },
+  "result": { "item": "alone_mechanical:maintenance_battery_pack", "count": 4 }
+}

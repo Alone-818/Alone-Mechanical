@@ -56,6 +56,13 @@ public class GridNodeBlockEntity extends SyncedBlockEntity implements MenuProvid
     public Map<BlockPos, Double> wires() { return Collections.unmodifiableMap(wires); }
     @Override public void onLoad() {
         super.onLoad();
+        if (level instanceof ServerLevel server && kind() != NodeKind.CORE) {
+            // Upgrade legacy five-block towers in place when the old top is still intact.
+            int height=GridNodeBlock.height(kind());
+            if (server.getBlockState(worldPosition.above(4)).is(getBlockState().getBlock()))
+                for(int i=5;i<height;i++)if(server.getBlockState(worldPosition.above(i)).canBeReplaced())
+                    server.setBlock(worldPosition.above(i),getBlockState().setValue(GridNodeBlock.PART,i),3);
+        }
         if (level instanceof ServerLevel server) { PowerGridData.get(server).register(worldPosition, kind()); refresh(); }
     }
     public void refresh() {
@@ -104,5 +111,5 @@ public class GridNodeBlockEntity extends SyncedBlockEntity implements MenuProvid
     }
     @Override public Component getDisplayName() { return getBlockState().getBlock().getName(); }
     @Override public AbstractContainerMenu createMenu(int id, Inventory inv, Player p) { return new GridMenu(id, inv, this); }
-    @Override public net.minecraft.world.phys.AABB getRenderBoundingBox() { return new net.minecraft.world.phys.AABB(worldPosition).inflate(82); }
+    @Override public net.minecraft.world.phys.AABB getRenderBoundingBox() { return new net.minecraft.world.phys.AABB(worldPosition).expandTowards(0, GridNodeBlock.height(kind()) - 1, 0).inflate(82); }
 }

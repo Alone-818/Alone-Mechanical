@@ -93,6 +93,11 @@ public final class ModItems {
     public static final RegistryObject<Item> LONG_LIFE_BATTERY = registerItem("long_life_battery", p -> new BatteryItem(p,2,100,150));
     public static final RegistryObject<Item> EMERGENCY_BATTERY = registerItem("emergency_battery", EmergencyBatteryItem::new);
     public static final RegistryObject<Item> WRENCH = registerItem("wrench", p -> new WrenchItem(p.stacksTo(1)));
+    public static final RegistryObject<Item> ZIPLINE_HOOK = registerItem("zipline_hook", p -> new ZiplineHookItem(p.stacksTo(1)));
+    public static final RegistryObject<Item> GRID_ANALYZER = registerItem("grid_analyzer", GridAnalyzerItem::new);
+    public static final RegistryObject<Item> PIPE_FILTER_CHIP = registerItem("pipe_filter_chip", PipeFilterChipItem::new);
+    public static final RegistryObject<Item> PRIORITY_CHIP = registerItem("priority_chip", PriorityChipItem::new);
+    public static final RegistryObject<Item> MAINTENANCE_BATTERY_PACK = registerItem("maintenance_battery_pack", MaintenanceBatteryPackItem::new);
     public static final RegistryObject<Item> FLUID_SAMPLING_GUN = registerItem("fluid_sampling_gun", FluidSamplingGunItem::new);
     public static final RegistryObject<Item> ENGINEERING_HAMMER = registerItem("engineering_hammer", p -> new EngineeringHammerItem(p.stacksTo(1)));
     public static final RegistryObject<Item> ENGINEERING_GOGGLES = registerItem("engineering_goggles", EngineeringGogglesItem::new);

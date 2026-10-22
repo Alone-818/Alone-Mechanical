@@ -1,0 +1,10 @@
+{
+  "stages": [
+    {"id":"T0","title":"工业起步","chip":"alone_mechanical:basic_tech_chip","goal":"原版矿物→粉碎→钢；发电→电网→机器"},
+    {"id":"T1","title":"钢与机械","chip":"alone_mechanical:mechanical_tech_chip","goal":"板、线、齿轮、管道和定向自动化"},
+    {"id":"T2","title":"基础化工","chip":"alone_mechanical:chemical_tech_chip","goal":"气体、流体、矿物清洗和仓储自动化"},
+    {"id":"T3","title":"强化加工与电池","chip":"alone_mechanical:chemical_tech_chip","goal":"三倍/五倍加工、电解液和电池"},
+    {"id":"T4","title":"热工与核能","chip":"alone_mechanical:superconducting_tech_chip","goal":"核燃料、热载体、蒸汽和核废物"},
+    {"id":"T5","title":"末地与量子","chip":"alone_mechanical:quantum_tech_chip","goal":"虚空矿石再造、量子电路和终局物流"}
+  ]
+}

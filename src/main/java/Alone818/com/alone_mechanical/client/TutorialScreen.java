@@ -23,6 +23,8 @@ public final class TutorialScreen extends Screen {
         new Chapter("manufacturing",()->new ItemStack(ModItems.BASIC_CIRCUIT.get())),
         new Chapter("battery_manufacturing",()->new ItemStack(ModItems.ADVANCED_BATTERY.get())),
         new Chapter("grid",()->new ItemStack(ModBlocks.POWER_CORE.get())),
+        new Chapter("grid_tools",()->new ItemStack(ModItems.GRID_ANALYZER.get())),
+        new Chapter("pipe_tools",()->new ItemStack(ModItems.PIPE_FILTER_CHIP.get())),
         new Chapter("structure",()->new ItemStack(ModItems.ENGINEERING_HAMMER.get())),
         new Chapter("machines",()->new ItemStack(ModBlocks.CRUSHER_CORE.get())),
         new Chapter("synthesis",()->new ItemStack(ModBlocks.SYNTHESIS_COMPONENT.get())),

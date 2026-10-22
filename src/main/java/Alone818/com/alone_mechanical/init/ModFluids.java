@@ -31,6 +31,7 @@ public final class ModFluids {
     public static final ProcessFluid URANIUM_SLURRY=processFluid("uranium_slurry",0xff809b45);
     public static final int SULFURIC_ACID_COLOR=0xb8e8edc9;
     public static final ProcessFluid SULFURIC_ACID=processFluid("sulfuric_acid",SULFURIC_ACID_COLOR);
+    public static final ProcessFluid HYDROCHLORIC_ACID=processFluid("hydrochloric_acid",0xffd6e6d0);
     public static final ProcessFluid CRUDE_IRON_SLURRY=processFluid("crude_iron_slurry",0xff765546);
     public static final ProcessFluid WASHED_IRON_SLURRY=processFluid("washed_iron_slurry",0xffb5a38c);
     public static final ProcessFluid CRUDE_COPPER_SLURRY=processFluid("crude_copper_slurry",0xff9c5c3d);
